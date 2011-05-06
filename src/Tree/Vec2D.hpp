@@ -38,6 +38,14 @@ public:
     bool operator == ( const Vec2D &v ) const { return x == v.x && y == v.y; }
     bool operator != ( const Vec2D &v ) const { return !(*this == v); }
 
+    // If we want to use it en a set we need them to be comparable unique
+    // Use conversion to Magnitude or MagnitudeSq before if you want sensible compare
+    // Could've probably used something to specify comparison but w/e
+    bool operator < ( const Vec2D &v ) const {
+        if( x == v.x ) return y < v.y;
+        else return x < v.x;
+    }
+
     T Dot( const Vec2D &v ) const { return x * v.x + y * v.y; }
 
     T Magnitude() const { return std::sqrt( x * x + y * y ); }
@@ -77,6 +85,12 @@ inline Vec2D<T> operator * ( const T f, const Vec2D<T> v ) {
 template<typename T>
 inline std::ostream &operator << ( std::ostream &o, const Vec2D<T> &v ) {
     return o << v.x << "," << v.y;
+}
+
+template<typename T>
+inline std::istream &operator >> ( std::istream &i, Vec2D<T> &v ) {
+    i >> v.x >> v.y;
+    return i;
 }
 
 template<typename T>

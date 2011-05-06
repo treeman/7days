@@ -1,11 +1,11 @@
 export CC=gcc
 #speed add flags -O3 -minline-all-stringops
 export CFLAGS=-c -Wno-unused-value -Wall -I./
-export LIBS=-lX11 -lGL -lXrandr -lfreetype -lsndfile -lopenal -lpthread -lsfml-graphics-s -lsfml-window-s -lsfml-system-s -lboost_iostreams -llua
+export LIBS=-lX11 -lGL -lXrandr -lfreetype -lsndfile -lopenal -lpthread -lsfml-graphics-s -lsfml-audio -lsfml-window-s -lsfml-system-s -lboost_iostreams -llua
 
 SRC=\
 main.cpp \
-Demo.cpp \
+Demo.cpp
 
 TREE_SRC=\
 Tree/Game.cpp \
@@ -24,7 +24,8 @@ Tree/Console.cpp \
 Tree/Settings.cpp \
 Tree/WindowManager.cpp \
 Tree/GameDebug.cpp \
-Tree/DrawnLazy.cpp
+Tree/DrawnLazy.cpp \
+Tree/VisualObject.cpp
 
 OBJ=$(SRC:.cpp=.o)
 TREE_OBJ=$(TREE_SRC:.cpp=.o)

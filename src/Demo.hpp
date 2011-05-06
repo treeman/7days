@@ -1,9 +1,6 @@
 #pragma once
 
-#include "Tree/Graphics.hpp"
-#include "Tree/GameState.hpp"
-#include "Tree/Timer.hpp"
-#include "Tree/Shufflebag.hpp"
+#include "Tree/All.hpp"
 
 //this demo tests some things :)
 class Demo : public Tree::GameState {

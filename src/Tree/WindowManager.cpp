@@ -8,17 +8,31 @@ using Tree::WindowManager;
 
 WindowManager::WindowManager() : window( new sf::RenderWindow() ), has_setup( false )
 {
-    width.reset( new Dator<int>( 800, boost::bind( &WindowManager::SetScreenWidth, this, _1 ) ) );
-    height.reset( new Dator<int>( 600, boost::bind( &WindowManager::SetScreenHeight, this, _1 ) ) );
-    bpp.reset( new Dator<int>( 32, boost::bind( &WindowManager::SetScreenBPP, this, _1 ) ) );
-    is_windowed.reset( new Dator<bool>( true, boost::bind( &WindowManager::SetWindowed, this, _1 ) ) );
-    title.reset( new Dator<std::string>( "W00t nuthing initialized!", boost::bind( &WindowManager::SetScreenTitle, this, _1 ) ) );
+    width.reset( new Dator<int>( 800,
+        boost::bind( &WindowManager::SetScreenWidth, this, _1 ) ) );
+    height.reset( new Dator<int>( 600,
+        boost::bind( &WindowManager::SetScreenHeight, this, _1 ) ) );
+    bpp.reset( new Dator<int>( 32,
+        boost::bind( &WindowManager::SetScreenBPP, this, _1 ) ) );
+    is_windowed.reset( new Dator<bool>( true,
+        boost::bind( &WindowManager::SetWindowed, this, _1 ) ) );
+    title.reset( new Dator<std::string>( "W00t nuthing initialized!",
+        boost::bind( &WindowManager::SetScreenTitle, this, _1 ) ) );
+    framerate.reset( new Dator<int>( 0,
+        boost::bind( &WindowManager::SetFrameRate, this, _1 ) ) );
 
-    Tree::GetSettings()->RegisterVariable( "video_screen_width", boost::weak_ptr<BaseDator>( width ) );
-    Tree::GetSettings()->RegisterVariable( "video_screen_height", boost::weak_ptr<BaseDator>( height ) );
-    Tree::GetSettings()->RegisterVariable( "video_screen_bpp", boost::weak_ptr<BaseDator>( bpp ) );
-    Tree::GetSettings()->RegisterVariable( "video_screen_windowed", boost::weak_ptr<BaseDator>( is_windowed ) );
-    Tree::GetSettings()->RegisterVariable( "video_caption_title", boost::weak_ptr<BaseDator>( title ) );
+    Tree::GetSettings()->RegisterVariable( "video_screen_width",
+        boost::weak_ptr<BaseDator>( width ) );
+    Tree::GetSettings()->RegisterVariable( "video_screen_height",
+        boost::weak_ptr<BaseDator>( height ) );
+    Tree::GetSettings()->RegisterVariable( "video_screen_bpp",
+        boost::weak_ptr<BaseDator>( bpp ) );
+    Tree::GetSettings()->RegisterVariable( "video_screen_windowed",
+        boost::weak_ptr<BaseDator>( is_windowed ) );
+    Tree::GetSettings()->RegisterVariable( "video_caption_title",
+        boost::weak_ptr<BaseDator>( title ) );
+    Tree::GetSettings()->RegisterVariable( "frame_rate_limit",
+        boost::weak_ptr<BaseDator>( framerate ) );
 
     has_setup = true;
 
@@ -47,7 +61,7 @@ void WindowManager::UpdateWindow()
         title->Val(), style, sf::WindowSettings::WindowSettings( 24, 8, 0) );
     window->ShowMouseCursor( false );
     window->UseVerticalSync( false );
-    window->SetFramerateLimit( 1000 );
+    window->SetFramerateLimit( framerate->Val() );
 }
 
 std::string WindowManager::SetWindowed( bool predicate )
@@ -79,5 +93,14 @@ std::string WindowManager::SetScreenTitle( std::string val )
 {
     UpdateWindow();
     return "setting window title to '" + val + "'";
+}
+std::string WindowManager::SetFrameRate( int val )
+{
+    if( val < 1 || val > 1000 ) {
+        val = 1000;
+        framerate->Set( 1000 );
+    }
+    window->SetFramerateLimit( framerate->Val() );
+    return "";
 }
 

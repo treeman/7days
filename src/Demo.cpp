@@ -1,9 +1,6 @@
 #include <boost/foreach.hpp>
 #include <boost/lexical_cast.hpp>
 
-#include "Tree/Log.hpp"
-#include "Tree/Butler.hpp"
-#include "Tree/Tweaks.hpp"
 #include "Demo.hpp"
 
 Demo::Demo()

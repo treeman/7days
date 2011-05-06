@@ -20,6 +20,7 @@ namespace Tree
         std::string SetScreenHeight( int val );
         std::string SetScreenBPP( int val );
         std::string SetScreenTitle( std::string val );
+        std::string SetFrameRate( int val );
     private:
         void UpdateWindow();
         boost::shared_ptr<sf::RenderWindow> window;
@@ -29,6 +30,7 @@ namespace Tree
         boost::shared_ptr<Dator<int> > bpp;
         boost::shared_ptr<Dator<bool> > is_windowed;
         boost::shared_ptr<Dator<std::string> > title;
+        boost::shared_ptr<Dator<int> > framerate;
 
         bool has_setup;
     };
