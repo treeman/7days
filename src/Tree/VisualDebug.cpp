@@ -13,7 +13,8 @@ Debug::Debug() :
     line_height( 12 )
 {
     render_str = BUTLER->CreateString( "fnt/consola.ttf", 10 );
-    render_str.SetColor( Tree::Color( Tree::GetTweaks()->GetNum( "font_debug_color" ) ) );
+    render_str.SetColor( Tree::Color(
+        Tree::GetTweaks()->GetNum( "font_debug_color" ) ) );
 }
 
 void Debug::Add( std::string s )

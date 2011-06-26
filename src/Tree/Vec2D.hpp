@@ -4,6 +4,8 @@
 #include <cmath>
 #include <ostream>
 #include <SFML/Graphics.hpp>
+#include <boost/unordered_set.hpp>
+#include <sstream>
 
 #include "Math.hpp"
 
@@ -73,6 +75,16 @@ public:
     static const Vec2D up;
     static const Vec2D down;
 };
+
+// work with boost hash functions eg unordered_set
+template<typename T>
+std::size_t hash_value( const Vec2D<T> &v )
+{
+    boost::hash<std::string> hasher;
+    std::stringstream s;
+    s << v;
+    return hasher( s.str() );
+}
 
 typedef Vec2D<float> Vec2f;
 typedef Vec2D<int> Vec2i;

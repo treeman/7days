@@ -9,7 +9,7 @@ namespace Tree
 
         // one function to render it lazily
         void Draw();
-        // foce it to render whatsoever
+        // force it to render whatsoever
         void ForceDraw();
 
         // flag for us to redraw when we call draw
@@ -19,7 +19,7 @@ namespace Tree
         // called when Redraw is called
         virtual void NewRedraw() { }
 
-        // function to actually draw something
+        // function to actually draw something after clear
         virtual void Render() = 0;
 
         bool need_to_redraw;

@@ -33,12 +33,16 @@ namespace Tree
         void ClearWindow( const sf::Color color );
 
         //if we're drawing lazy and something has been drawn in front
+        //borked
         bool NeedRedraw() const;
         bool NeedRedraw( const Tree::Rect &rect ) const;
 
         void DrawLazy();
         void DrawNormal();
         bool DrawingLazy();
+
+        void NeverClear();
+        void SetClear();
 
         float GetFPS();
         const sf::Input &GetInput();
@@ -89,6 +93,7 @@ namespace Tree
         bool drawn_lazy;
         bool need_redraw;
         bool shall_clear_window;
+        bool clear_allowed;
 
         typedef std::vector<Tree::Rect> Rects;
         Rects portions_redrawn;

@@ -14,10 +14,12 @@ using Tree::GameDebug;
 GameDebug::GameDebug()
 {
     show_mouse_pos.reset( new Dator<bool>( false ) );
-    Tree::GetSettings()->RegisterVariable( "mouse_pos_show", boost::weak_ptr<BaseDator>( show_mouse_pos ) );
+    Tree::GetSettings()->RegisterVariable( "mouse_pos_show",
+        boost::weak_ptr<BaseDator>( show_mouse_pos ) );
 
     show_fps.reset( new Dator<bool>( false ) );
-    Tree::GetSettings()->RegisterVariable( "fps_show", boost::weak_ptr<BaseDator>( show_fps ) );
+    Tree::GetSettings()->RegisterVariable( "fps_show",
+        boost::weak_ptr<BaseDator>( show_fps ) );
 
     fps = Tree::GetButler()->CreateString( "fnt/lucon.ttf", 20 );
     fps.SetColor( Tree::Color( Tree::GetTweaks()->GetNum( "font_debug_color" ) ) );
@@ -41,9 +43,9 @@ void GameDebug::Update( float )
     const std::string old_s = fps.GetText();
     fps.SetText( s );
 
-    if( s != old_s ) {
+    /*if( s != old_s ) {
         Tree::Redraw();
-    }
+    }*/
 
     Vec2f mouse_pos = Tree::GetMousePos();
     std::stringstream ss;
@@ -52,9 +54,9 @@ void GameDebug::Update( float )
 }
 void GameDebug::Render()
 {
-    if( show_fps->Val() ) {
-        Tree::Draw( fps );
-    }
+    //if( show_fps->Val() ) {
+        //Tree::Draw( fps );
+    //}
     if( show_mouse_pos->Val() ) {
         Tree::Draw( mpos );
     }

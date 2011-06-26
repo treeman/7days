@@ -2,7 +2,7 @@
 
 #include "Tree/All.hpp"
 
-#include "Pix.hpp"
+#include "PixMap.hpp"
 
 // A simple pixelated font
 class PixFont {

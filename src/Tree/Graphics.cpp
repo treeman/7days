@@ -45,12 +45,99 @@ bool Tree::DrawingLazy()
     return GAME->DrawingLazy();
 }
 
-sf::Color Tree::Color( unsigned long hex_color )
+void Tree::NeverClear()
 {
-    int a = hex_color >> 24;
-    int r = (hex_color >> 16) & 0xFF;
-    int g = (hex_color >> 8) & 0xFF;
-    int b = hex_color & 0xFF;
-    return sf::Color( r, g, b, a );
+    GAME->NeverClear();
+}
+void Tree::SetClear()
+{
+    GAME->SetClear();
+}
+
+using Tree::Color;
+
+Color::Color()
+{
+    a = r = g = b = 255;
+}
+Color::Color( unsigned long col )
+{
+    a = col >> 24;
+    r = (col >> 16) & 0xFF;
+    g = (col >> 8) & 0xFF;
+    b = col & 0xFF;
+}
+Color::Color( sf::Color col )
+{
+    a = col.a;
+    r = col.r;
+    g = col.g;
+    b = col.b;
+}
+
+Color::operator sf::Color() const
+{
+    sf::Color color( r, g, b, a );
+    return color;
+}
+
+unsigned long Color::Hex() const
+{
+    unsigned long col = 0;
+    col = col | (a << 24);
+    col = col | (r << 16);
+    col = col | (g << 8);
+    col = col | b;
+    return col;
+}
+
+bool Color::operator == ( const Color &c )
+{
+    return a == c.a && r == c.r &&
+           g == c.g && b == c.b;
+}
+bool Color::operator != ( const Color &c )
+{
+    return !(*this == c);
+}
+
+Color Tree::linear( Color start, Color end, float percent )
+{
+    Color result;
+    result.a = start.a * ( 1.0f - percent ) + end.a * percent;
+    result.r = start.r * ( 1.0f - percent ) + end.r * percent;
+    result.g = start.g * ( 1.0f - percent ) + end.g * percent;
+    result.b = start.b * ( 1.0f - percent ) + end.b * percent;
+    return result;
+}
+
+Color Tree::normalize( Color start, Color end, float percent )
+{
+    float start_length = std::sqrt( start.r * start.r +
+                                    start.g * start.g +
+                                    start.b * start.b );
+
+    float end_length = std::sqrt( end.r * end.r +
+                                  end.g * end.g +
+                                  end.b * end.b );
+
+    float length = start_length * ( 1.0f - percent ) + end_length * percent;
+
+    Color result;
+    result.r = start.r * ( 1.0f - percent ) + end.r * percent;
+    result.g = start.g * ( 1.0f - percent ) + end.g * percent;
+    result.b = start.b * ( 1.0f - percent ) + end.b * percent;
+
+    float cur_length = sqrt ( result.r * result.r +
+                              result.g * result.g +
+                              result.b * result.b );
+
+    float ratio = length / cur_length;
+
+    result.r *= ratio;
+    result.g *= ratio;
+    result.b *= ratio;
+
+    return result;
 }
 

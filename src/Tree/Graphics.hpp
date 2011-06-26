@@ -20,8 +20,31 @@ namespace Tree
     void DrawNonLazy();
     bool DrawingLazy();
 
-    //create an sfml color from a hex value eg 0xff00ffff
-    //with a r g b as the parts
-    extern sf::Color Color( unsigned long hex_color );
+    void NeverClear();
+    void SetClear();
+
+    class Color {
+    public:
+        Color();
+        Color( unsigned long color );
+        Color( sf::Color color );
+
+        operator sf::Color() const;
+        unsigned long Hex() const;
+
+        bool operator == ( const Color &c );
+        bool operator != ( const Color &c );
+
+        unsigned int r, g, b, a;
+    };
+
+    Color linear( Color start, Color end, float percent );
+    Color normalize( Color start, Color end, float percent );
+
+    inline std::ostream &operator << ( std::ostream &o, const Color &c )
+    {
+        sf::Color col = c;
+        return o << col.a <<","<< col.r <<","<< col.g <<","<< col.b << '\n';
+    }
 }
 

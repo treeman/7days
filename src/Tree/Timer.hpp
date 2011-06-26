@@ -13,6 +13,8 @@ namespace Tree {
         void Start();
         void Pause();
         void Stop();
+        void Toggle();
+
         void Restart();
         void Reset();
 

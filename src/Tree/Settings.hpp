@@ -21,7 +21,8 @@ namespace Tree
     class SettingsListener {
     public:
         virtual ~SettingsListener() { }
-        virtual void HearSetting( std::string setting, std::string value, std::string return_val ) = 0;
+        virtual void HearSetting( std::string setting, std::string value,
+            std::string return_val ) = 0;
     };
 
     class Settings {

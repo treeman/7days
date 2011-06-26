@@ -9,7 +9,7 @@ using Tree::Game;
 
 Game::Game() : exit_called( false ), state_changed( true ),
     fps( 0 ), fps_buff( 0 ), fps_frame_count( 0 ),
-    drawn_lazy( false ), need_redraw( false )
+    drawn_lazy( false ), need_redraw( false ), clear_allowed( true )
 {
     settings.reset( new Settings() );
     input_chain.reset( new InputChain() );
@@ -62,6 +62,15 @@ void Game::DrawNormal()
 bool Game::DrawingLazy()
 {
     return drawn_lazy;
+}
+
+void Game::NeverClear()
+{
+    clear_allowed = false;
+}
+void Game::SetClear()
+{
+    clear_allowed = true;
 }
 
 float Game::GetFPS()
@@ -200,7 +209,7 @@ void Game::Start()
 
         //begin render loop
         if( !drawn_lazy || shall_clear_window ) {
-            window->Clear( sf::Color() );
+            if( clear_allowed ) { window->Clear( sf::Color() ); }
             shall_clear_window = false;
         }
 

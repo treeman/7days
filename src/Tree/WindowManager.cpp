@@ -58,7 +58,7 @@ void WindowManager::UpdateWindow()
     }
 
     window->Create( sf::VideoMode( width->Val(), height->Val(), bpp->Val() ),
-        title->Val(), style, sf::WindowSettings::WindowSettings( 24, 8, 0) );
+        title->Val(), style, sf::WindowSettings( 24, 8, 0) );
     window->ShowMouseCursor( false );
     window->UseVerticalSync( false );
     window->SetFramerateLimit( framerate->Val() );

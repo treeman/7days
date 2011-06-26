@@ -32,6 +32,15 @@ void Timer::Stop()
     time = 0;
     is_started = is_paused = false;
 }
+void Timer::Toggle()
+{
+    if( !IsStarted() || IsPaused() ) {
+        Start();
+    }
+    else {
+        Pause();
+    }
+}
 
 void Timer::Restart()
 {
