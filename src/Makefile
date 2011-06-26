@@ -25,7 +25,9 @@ Tree/Settings.cpp \
 Tree/WindowManager.cpp \
 Tree/GameDebug.cpp \
 Tree/DrawnLazy.cpp \
-Tree/VisualObject.cpp
+Tree/VisualObject.cpp \
+Tree/PixFont.cpp \
+Tree/PixMap.cpp
 
 OBJ=$(SRC:.cpp=.o)
 TREE_OBJ=$(TREE_SRC:.cpp=.o)
