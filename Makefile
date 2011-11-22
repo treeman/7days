@@ -1,52 +1,50 @@
-export CC=gcc
-# For speed add -O3 -minline-all-stringops
-export CFLAGS=-c -Wno-unused-value -Wall -I./include/
-export LIBS=-lX11 -lGL -lXrandr -lfreetype -lsndfile -lopenal -lpthread\
- -lsfml-graphics-s -lsfml-audio -lsfml-window-s -lsfml-system-s -lboost_iostreams -llua
 
-SRC=\
-include/Tree/Game.cpp \
-include/Tree/Util.cpp \
-include/Tree/InputHandler.cpp \
-include/Tree/Graphics.cpp \
-include/Tree/Butler.cpp \
-include/Tree/Sprite.cpp \
-include/Tree/Timer.cpp \
-include/Tree/Logo.cpp \
-include/Tree/Tweaks.cpp \
-include/Tree/Loghelper.cpp \
-include/Tree/Rect.cpp \
-include/Tree/VisualDebug.cpp \
-include/Tree/Console.cpp \
-include/Tree/Settings.cpp \
-include/Tree/WindowManager.cpp \
-include/Tree/GameDebug.cpp \
-include/Tree/DrawnLazy.cpp \
-include/Tree/VisualObject.cpp \
-include/Tree/PixFont.cpp \
-include/Tree/PixMap.cpp
 
-OBJ=$(SRC:.cpp=.o)
-LIB=./lib/lib7days.a
+export CC = gcc
+
+# Speed:
+# export CFLAGS= -O3 -minline-all-stringops -Wno-unused-value -Wall -I$(SRCDIR)
+# Plain compiling:
+export CFLAGS= -Wno-unused-value -Wall -I$(SRCDIR)
+
+export SRCDIR = src
+# Bunch up all cpp files
+SRC = $(wildcard $(SRCDIR)/Tree/*cpp)
+
+export OBJDIR = obj
+# Place object files in an object directory
+OBJ = $(patsubst %,$(OBJDIR)/%,$(SRC:.cpp=.o))
+
+# Output name of our static library
+LIB = ./lib/lib7days.a
+
+export EXAMPLEDIR = examples
+_EXAMPLES = startup
+EXAMPLES = $(patsubst %,$(EXAMPLEDIR)/%,$(_EXAMPLES))
 
 .PHONY: all clean lib remake examples
 
 all: lib examples
 
+# Recursively call make all in the examples directories
 examples:
-	@(cd ./examples && $(MAKE) all)
+	$(foreach path,$(EXAMPLES),cd $(path) && $(MAKE) all)
+
+$(EXAMPLES):
+	cd $< && $(MAKE) $@
 
 lib: $(LIB)
 
 $(LIB): $(OBJ)
 	ar -rcs $(LIB) $(OBJ)
 
-.cpp.o:
-	$(CC) $(CFLAGS) $< -o $@
+$(OBJDIR)/%.o: %.cpp
+	@(mkdir -p $(@D))
+	$(CC) -c -o $@ $< $(CFLAGS)
 
 clean:
-	@(cd ./examples && $(MAKE) $@)
-	rm $(OBJ) $(LIB)
+	$(foreach path,$(EXAMPLES),cd $(path) && $(MAKE) $@)
+	rm $(OBJDIR)/* $(LIB) -r
 
 remake: clean all
 

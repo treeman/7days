@@ -12,3 +12,4 @@ callgrind*
 out
 */startme
 lib/*
+obj/*
