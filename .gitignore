@@ -1,3 +1,4 @@
+*~
 *.o
 *depend
 *layout
@@ -9,5 +10,5 @@ misc/
 *.dll
 callgrind*
 out
-src/Test
 */startme
+lib/*
