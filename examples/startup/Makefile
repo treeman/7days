@@ -1,9 +1,8 @@
+export CC = gcc
 
-export CC=gcc
+export CFLAGS = -Wno-unused-value -Wall -I./src -I../../src/
 
-export CFLAGS= -Wno-unused-value -Wall -I./src -I../../src/
-
-export LIBS=-L../../lib -l7days -lX11 -lGL -lXrandr -lfreetype -lsndfile -lopenal -lpthread\
+export LIBS = -L../../lib -l7days -lX11 -lGL -lXrandr -lfreetype -lsndfile -lopenal -lpthread\
  -lsfml-graphics-s -lsfml-audio -lsfml-window-s -lsfml-system-s -lboost_iostreams -llua
 
 SRC = $(wildcard src/*cpp)
@@ -29,8 +28,8 @@ $(OBJDIR)/%.o: %.cpp
 	@(mkdir -p $(@D))
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-remake: clean all
-
 clean:
-	rm $(EXE) $(DEBUG_EXE) $(OBJDIR)/* -r
+	rm $(EXE) $(DEBUG_EXE) $(OBJDIR)/* -rf
+
+remake: clean all
 

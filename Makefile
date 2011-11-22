@@ -1,5 +1,3 @@
-
-
 export CC = gcc
 
 # Speed:
@@ -30,9 +28,6 @@ all: lib examples
 examples:
 	$(foreach path,$(EXAMPLES),cd $(path) && $(MAKE) all)
 
-$(EXAMPLES):
-	cd $< && $(MAKE) $@
-
 lib: $(LIB)
 
 $(LIB): $(OBJ)
@@ -44,7 +39,7 @@ $(OBJDIR)/%.o: %.cpp
 
 clean:
 	$(foreach path,$(EXAMPLES),cd $(path) && $(MAKE) $@)
-	rm $(OBJDIR)/* $(LIB) -r
+	rm $(OBJDIR)/* $(LIB) -rf
 
 remake: clean all
 
