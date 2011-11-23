@@ -19,7 +19,7 @@ namespace math
     {
         return x0 + ( (x1 - x0) * dt );
     }
-    // 0 > x > 1
+    // 0 < x < 1
     inline const float frandom() {
         return (float)rand() / (float)RAND_MAX;
     }
@@ -27,7 +27,9 @@ namespace math
         return min + ( frandom() * ( max - min ) );
     }
 
+    // min <= x <= max
     inline const int irandom( int min, int max ) {
+        if( min == max ) return min;
         return min + (int)( frandom() * ( max - min ) + 1 );
     }
 

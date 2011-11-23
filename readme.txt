@@ -14,9 +14,8 @@ Todo/Ideas:
     Versioning and numbering inside
 
     What name shall we have?
-        Tree?
-        7days?
-        Either way maybe a little bit more consistency (it's named 7days but we use Tree/<file> hmm...)
+        Namespace shouldn't start with a number so 7days won't work
+        Is Tree okay? Or maybe Seven? or something?
 
     Developer build
         Either don't build static library but link to source directly or update library automatically?
@@ -32,11 +31,8 @@ Todo/Ideas:
         Isometric tiles and stuff with that
         Square tiled with objects moving around there
         Lazy drawing
-        Blank, very basic
 
     Go through whole codebase and find stuff to refactor/change
-        Take lessons from Java project there
-            immutable Vec2D (dunno if it is now)
         Incorporate more lua perhaps?
 
         Stuff to check:
@@ -47,8 +43,6 @@ Todo/Ideas:
             Comment Dator a bit?
 
             Make a macro for creating exceptions?
-
-            Some uncommented code in game debug, dunno what it's for
 
             Graphics isVisible not working
                 Changed it, test if it's working
@@ -61,18 +55,12 @@ Todo/Ideas:
 
             How does Settings work? Why do we need it? Comment a bit better
 
-            Don't use iterators for ShuffleBag, slow and ugly code
-                Use a simple vector...
-
             We don't have any animation sprite?
                 We only use sf::Sprite? Check how it works, and can we do something better?
 
             What does Tweak do? Why?
                 Change name? T.T
 
-            Make Vec2D immutable
-
             Does VisualDebug work?
                 Make examples of all functionality!
-
 

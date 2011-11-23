@@ -14,11 +14,14 @@ namespace Tree {
         ShuffleBag() { }
         ~ShuffleBag() { }
 
+        // Add item to bag
         ShuffleBag &Add( T val )
         {
             bag.push_back( val );
             return *this;
         }
+
+        // Take item from rest and place it in bag
         ShuffleBag &MakeAvailable( T val )
         {
             typename List::iterator it = std::find( rest.begin(), rest.end(), val );
@@ -30,9 +33,12 @@ namespace Tree {
 
             return *this;
         }
+
+        // Return an item, remove from bag and place in rest
+        // If bag is empty put back everything from rest in bag
         T Get()
         {
-            if( Empty() ) {
+            if( IsEmpty() ) {
                 throw( std::out_of_range( "Shufflebag is empty" ) );
             }
 
@@ -40,22 +46,23 @@ namespace Tree {
                 bag.swap( rest );
             }
 
-            typename List::iterator it = math::random( bag.begin(), bag.end() );
+            int i = math::irandom( 0, bag.size() - 1 );
 
-            T temp = *it;
+            T item = bag.at(i);
+            rest.push_back( item );
+            bag.erase( bag.begin() + i );
 
-            rest.push_back( *it );
-            bag.erase( it );
-
-            return temp;
+            return item;
         }
+
+        // Clear bag and rest
         void Clear()
         {
             bag.clear();
             rest.clear();
         }
 
-        bool Empty()
+        bool IsEmpty()
         {
             return bag.empty() && rest.empty();
         }
