@@ -15,6 +15,7 @@ Demo::Demo()
     time_str = BUTLER->CreateString( "fnt/consola.ttf", 14 );
     time_str.SetColor( Tree::Color( 0xFFFFFFFF ) );
 
+
     shuffle_str = BUTLER->CreateString( "fnt/consola.ttf", 10 );
     shuffle_str.SetColor( sf::Color( 255, 255, 255 ) );
 
@@ -100,7 +101,6 @@ void Demo::Draw()
     time_str.SetPosition( 50, 15 );
     Tree::Draw( time_str );
 
-    // Draw shuffle bag's contents
     int n = 1;
     const float h = 10;
     for( Ints::iterator it = bagged.begin(); it != bagged.end(); ++it, ++n )
