@@ -1,12 +1,12 @@
 export CC = gcc
 
-export CFLAGS = -Wno-unused-value -Wall -I./src -I../../src/
+export CFLAGS = -Wno-unused-value -Wall -I./src
 
-export LIBS = -L../../lib -l7days -lX11 -lGL -lXrandr -lfreetype -lsndfile -lopenal -lpthread\
+export LIBS = -lX11 -lGL -lXrandr -lfreetype -lsndfile -lopenal -lpthread\
  -lsfml-graphics-s -lsfml-audio -lsfml-window-s -lsfml-system-s -lboost_iostreams -llua
 
 export SRCDIR = src
-SRC = $(wildcard $(SRCDIR)/*cpp)
+SRC = $(wildcard $(SRCDIR)/*cpp) $(wildcard $(SRCDIR)/Tree/*cpp)
 
 export OBJDIR = obj
 OBJ = $(patsubst %,$(OBJDIR)/%,$(SRC:.cpp=.o))
