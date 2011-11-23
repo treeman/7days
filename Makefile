@@ -38,7 +38,7 @@ $(OBJDIR)/%.o: %.cpp
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 clean:
-	$(foreach path,$(EXAMPLES),cd $(path) && $(MAKE) $@)
+	$(foreach path,$(EXAMPLES),cd $(path) && $(MAKE) $@; cd ../../;)
 	rm $(OBJDIR)/* $(LIB) -rf
 
 remake: clean all

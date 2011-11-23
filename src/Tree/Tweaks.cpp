@@ -15,15 +15,18 @@ void Tweaks::Load( std::string path )
 {
     L_ << "Loading tweaks file '" << path << "'\n";
     LuaState L;
+    // Parse file
     if( luaL_dofile( L, path.c_str() ) ) {
         const char *str = lua_tostring( L, -1 );
         lua_pop( L, -1 );
         throw( Tree::lua_error( str ) );
     }
 
+    // Go through everything in the file
     lua_getglobal( L, "_G" );
     for( lua_pushnil( L ); lua_next( L, -2 ); lua_pop( L, 1 ) )
     {
+        // Register numbers and strings
         if( lua_isnumber( L, -1 ) ) {
             doubles[lua_tostring( L, -2 )] = (double)lua_tonumber( L, -1 );
         }

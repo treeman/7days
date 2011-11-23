@@ -6,6 +6,8 @@
 
 #include "Util.hpp"
 
+// Load a lua file with numbers or strings in it. Like a config or a tweak file.
+
 namespace Tree
 {
     class Tweaks {

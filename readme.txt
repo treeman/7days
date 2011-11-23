@@ -41,10 +41,10 @@ Todo/Ideas:
             Console is huge and not commented enough
                 + We should be able to make some gui elements out of it or something
 
-            Make a macro for creating exceptions?
+            Log should be able to print like printf! Clearly a far superious choice :p
 
             Graphics isVisible not working
-                Changed it, test if it's working
+                + Changed it, test if it's working
 
             Is PixFont used inside Pix graphics style?
                 Maybe make a subfolder for Pix graphics style?
@@ -57,9 +57,6 @@ Todo/Ideas:
 
             We don't have any animation sprite?
                 We only use sf::Sprite? Check how it works, and can we do something better?
-
-            What does Tweak do? Why?
-                Change name? T.T
 
             Does VisualDebug work?
                 Make examples of all functionality!

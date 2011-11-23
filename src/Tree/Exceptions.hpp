@@ -4,6 +4,13 @@
 #include <stdexcept>
 #include <string>
 
+// Shortcut for making a new exception with a different name
+#define MAKEEXCEPTION(name) \
+class name : public my_exception { \
+public: \
+    name( std::string err ) : my_exception( err ) { } \
+};
+
 namespace Tree
 {
     class my_exception : public std::exception {
@@ -17,24 +24,18 @@ namespace Tree
         const std::string s;
     };
 
-    class resource_not_found : public my_exception {
-    public:
-        resource_not_found( std::string err ) : my_exception( err ) { }
-    };
+    // A bunch of exceptions for different things
 
-    class setting_not_found : public my_exception {
-    public:
-        setting_not_found( std::string err ) : my_exception( err ) { }
-    };
+    // When a resource doesn't exist
+    MAKEEXCEPTION(resource_not_found)
 
-    class lua_error : public my_exception {
-    public:
-        lua_error( std::string err ) : my_exception( err ) { }
-    };
+    // When a setting can't be found
+    MAKEEXCEPTION(setting_not_found)
 
-    class logical_fault : public my_exception {
-    public:
-        logical_fault( std::string err ) : my_exception( err ) { }
-    };
+    // Something gone wrong with our lua loading
+    MAKEEXCEPTION(lua_error)
+
+    // A logical fault (similar to assert?)
+    MAKEEXCEPTION(logical_fault)
 }
 

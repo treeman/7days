@@ -37,6 +37,8 @@ Demo::Demo()
 
     background = BUTLER->CreateSprite( "gfx/dude.png" );
     background.SetPosition( 0, 0 );
+
+    L_( "hi: %d\n", 1337 );
 }
 
 bool Demo::HandleEvent( sf::Event &e )
