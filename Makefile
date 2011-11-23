@@ -22,11 +22,16 @@ EXAMPLES = $(patsubst %,$(EXAMPLEDIR)/%,$(_EXAMPLES))
 
 .PHONY: all clean lib remake examples
 
-all: lib examples
+all: lib
 
 # Recursively call make all in the examples directories
 examples:
 	$(foreach path,$(EXAMPLES),cd $(path) && $(MAKE) all; cd ../../;)
+
+clean_examples:
+	$(foreach path,$(EXAMPLES),cd $(path) && $(MAKE) clean; cd ../../;)
+
+remake_examples: clean_examples examples
 
 lib: $(LIB)
 
@@ -38,8 +43,9 @@ $(OBJDIR)/%.o: %.cpp
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 clean:
-	$(foreach path,$(EXAMPLES),cd $(path) && $(MAKE) $@; cd ../../;)
 	rm $(OBJDIR)/* $(LIB) -rf
 
 remake: clean all
+
+remake_all: remake remake_examples
 
