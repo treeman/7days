@@ -9,7 +9,7 @@ using Tree::Game;
 
 Game::Game() : exit_called( false ), state_changed( true ),
     fps( 0 ), fps_buff( 0 ), fps_frame_count( 0 ),
-    drawn_lazy( false ), need_redraw( false ), clear_allowed( true )
+    drawn_lazy( false ), need_redraw( false ), clear_allowed( true ), clear_color( sf::Color() )
 {
     settings.reset( new Settings() );
     input_chain.reset( new InputChain() );
@@ -35,6 +35,7 @@ void Game::ClearWindow( const sf::Color color )
 {
     shall_clear_window = true;
     need_redraw = true;
+    clear_color = color;
 }
 bool Game::NeedRedraw() const
 {
@@ -209,7 +210,7 @@ void Game::Start()
 
         //begin render loop
         if( !drawn_lazy || shall_clear_window ) {
-            if( clear_allowed ) { window->Clear( sf::Color() ); }
+            if( clear_allowed ) { window->Clear( clear_color ); }
             shall_clear_window = false;
         }
 

@@ -10,14 +10,17 @@ namespace Tree
     public:
         virtual ~GameState() { }
 
-        //called before we run it
-        //may happen more than once if we don't destroy it between switcing
+        // Called before we run it
+        // May happen more than once if we don't destroy it between switcing
         virtual void Loaded() { }
 
-        //same but before we unload it
+        // Same but before we unload it
         virtual void Unloaded() { }
 
-        virtual void Update( float dt ) = 0;
+        // Not necessary to overload this
+        virtual bool HandleEvent( sf::Event &e ) { return true; }
+
+        virtual void Update( float dt ) { }
         virtual void Draw() = 0;
     };
 }

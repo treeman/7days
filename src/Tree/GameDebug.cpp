@@ -23,7 +23,7 @@ GameDebug::GameDebug()
 
     fps = Tree::GetButler()->CreateString( "fnt/lucon.ttf", 20 );
     fps.SetColor( Tree::Color( Tree::GetTweaks()->GetNum( "font_debug_color" ) ) );
-    fps.SetPosition( 5, 5 );
+    fps.SetPosition( 5, 3 );
 
     mpos = Tree::GetButler()->CreateString( "fnt/consola.ttf", 10 );
     mpos.SetColor( Tree::Color( Tree::GetTweaks()->GetNum( "font_debug_color" ) ) );
@@ -43,6 +43,7 @@ void GameDebug::Update( float )
     const std::string old_s = fps.GetText();
     fps.SetText( s );
 
+    // Will not really work with lazy drawing!
     /*if( s != old_s ) {
         Tree::Redraw();
     }*/
@@ -54,9 +55,9 @@ void GameDebug::Update( float )
 }
 void GameDebug::Render()
 {
-    //if( show_fps->Val() ) {
-        //Tree::Draw( fps );
-    //}
+    if( show_fps->Val() ) {
+        Tree::Draw( fps );
+    }
     if( show_mouse_pos->Val() ) {
         Tree::Draw( mpos );
     }

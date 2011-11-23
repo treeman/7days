@@ -10,7 +10,7 @@ namespace Tree
 
     bool IsVisible( const Tree::Rect &r );
 
-    //mostly for lazy drawing
+    // Mostly for lazy drawing
     void Redraw();
     void Redraw( const Tree::Rect &rect );
     void ClearWindow( sf::Color col = sf::Color() );

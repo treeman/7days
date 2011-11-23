@@ -94,6 +94,7 @@ namespace Tree
         bool need_redraw;
         bool shall_clear_window;
         bool clear_allowed;
+        sf::Color clear_color;
 
         typedef std::vector<Tree::Rect> Rects;
         Rects portions_redrawn;
