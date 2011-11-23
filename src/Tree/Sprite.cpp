@@ -7,7 +7,7 @@
 using Tree::SpriteLoader;
 SpriteLoader::SpriteLoader() { }
 
-void SpriteLoader::Load( std::string lua_file ) throw( Error::lua_error & )
+void SpriteLoader::Load( std::string lua_file ) throw( Tree::lua_error & )
 {
     if( std::find( parsed_files.begin(), parsed_files.end(), lua_file ) != parsed_files.end() ) {
         return;
@@ -18,7 +18,7 @@ void SpriteLoader::Load( std::string lua_file ) throw( Error::lua_error & )
     parsed_files.push_back( lua_file );
 }
 
-void SpriteLoader::ForceLoad( std::string lua_file ) throw( Error::lua_error & )
+void SpriteLoader::ForceLoad( std::string lua_file ) throw( Tree::lua_error & )
 {
     L_ << "loading sprite file '" << lua_file << "'\n";
     Tree::LuaState L;
@@ -26,7 +26,7 @@ void SpriteLoader::ForceLoad( std::string lua_file ) throw( Error::lua_error & )
     if( luaL_dofile( L, lua_file.c_str() ) ) {
         const char *str = lua_tostring( L, -1 );
         lua_pop( L, -1 );
-        throw( Error::lua_error( str ) );
+        throw( Tree::lua_error( str ) );
     }
 
     lua_getglobal( L, "_G" );
@@ -48,16 +48,16 @@ bool SpriteLoader::HasCustomSprite( std::string name )
     return sprite_map.find( name ) != sprite_map.end();
 }
 
-sf::Sprite SpriteLoader::Create( std::string name ) throw( Error::resource_not_found & )
+sf::Sprite SpriteLoader::Create( std::string name ) throw( Tree::resource_not_found & )
 {
     SpriteMap::iterator it = sprite_map.find( name );
     if( it == sprite_map.end() ) {
-        throw( Error::resource_not_found( ( "sprite '" + name + "' not found\n" ).c_str() ) );
+        throw( Tree::resource_not_found( ( "sprite '" + name + "' not found\n" ).c_str() ) );
     }
     else { return it->second; }
 }
 
-bool SpriteLoader::LoadSprite( lua_State *L, sf::Sprite *spr ) throw( Error::lua_error & )
+bool SpriteLoader::LoadSprite( lua_State *L, sf::Sprite *spr ) throw( Tree::lua_error & )
 {
     if( lua_istable( L, -1 ) ) {
         // Hack to not try to load package.path into our sprite loading

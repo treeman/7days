@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <string>
 
-namespace Error
+namespace Tree
 {
     class my_exception : public std::exception {
     public:

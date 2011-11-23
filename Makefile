@@ -17,7 +17,7 @@ OBJ = $(patsubst %,$(OBJDIR)/%,$(SRC:.cpp=.o))
 LIB = ./lib/lib7days.a
 
 export EXAMPLEDIR = examples
-_EXAMPLES = startup
+_EXAMPLES = hello-world startup
 EXAMPLES = $(patsubst %,$(EXAMPLEDIR)/%,$(_EXAMPLES))
 
 .PHONY: all clean lib remake examples
@@ -26,7 +26,7 @@ all: lib examples
 
 # Recursively call make all in the examples directories
 examples:
-	$(foreach path,$(EXAMPLES),cd $(path) && $(MAKE) all)
+	$(foreach path,$(EXAMPLES),cd $(path) && $(MAKE) all; cd ../../;)
 
 lib: $(LIB)
 

@@ -1,4 +1,4 @@
-#include "Errorhandling.hpp"
+#include "Exceptions.hpp"
 #include "Lua.hpp"
 #include "Log.hpp"
 #include "Game.hpp"
@@ -18,7 +18,7 @@ void Tweaks::Load( std::string path )
     if( luaL_dofile( L, path.c_str() ) ) {
         const char *str = lua_tostring( L, -1 );
         lua_pop( L, -1 );
-        throw( Error::lua_error( str ) );
+        throw( Tree::lua_error( str ) );
     }
 
     lua_getglobal( L, "_G" );
@@ -38,7 +38,7 @@ double Tweaks::GetNum( std::string s )
     DoubleMap::iterator it = doubles.find( s );
     if( it != doubles.end() ) { return it->second; }
     else {
-        throw( Error::setting_not_found( ("The double " + s +
+        throw( Tree::setting_not_found( ("The double " + s +
             " wasn't found in tweaks\n").c_str() ) );
     }
 }
@@ -48,7 +48,7 @@ std::string Tweaks::GetString( std::string s )
     StringMap::iterator it = strings.find( s );
     if( it != strings.end() ) { return it->second; }
     else {
-        throw( Error::setting_not_found( ("The string " + s +
+        throw( Tree::setting_not_found( ("The string " + s +
             " wasn't found in tweaks\n").c_str() ) );
     }
 }

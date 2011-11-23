@@ -56,7 +56,7 @@ Tree::Color PixMap::GetPix( int x, int y )
 
     std::stringstream s;
     s << "Out of pixmap bounds: " << x << "," << y;
-    throw Error::logical_fault( s.str() );
+    throw Tree::logical_fault( s.str() );
 }
 
 int PixMap::Width() const

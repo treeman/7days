@@ -5,7 +5,7 @@
 #include "Tree/Controller.hpp"
 #include "Tree/Dator.hpp"
 #include "Tree/DrawnLazy.hpp"
-#include "Tree/Errorhandling.hpp"
+#include "Tree/Exceptions.hpp"
 #include "Tree/Game.hpp"
 #include "Tree/GameDebug.hpp"
 #include "Tree/GameState.hpp"

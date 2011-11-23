@@ -39,10 +39,7 @@ Todo/Ideas:
 
         Stuff to check:
             Console is huge and not commented enough
-
-            Uncommented debug code there, should use a switch or remove it
-
-            Comment Dator a bit?
+                + We should be able to make some gui elements out of it or something
 
             Make a macro for creating exceptions?
 
@@ -56,6 +53,7 @@ Todo/Ideas:
                 Might want to find a faster way of drawing pixmap
 
             How does Settings work? Why do we need it? Comment a bit better
+                * Made a small comment on top, might want to comment functions a bit more
 
             We don't have any animation sprite?
                 We only use sf::Sprite? Check how it works, and can we do something better?

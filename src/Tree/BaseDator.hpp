@@ -4,6 +4,7 @@
 
 namespace Tree
 {
+    // Base class for all Dators
     class BaseDator {
     public:
         virtual ~BaseDator() { }

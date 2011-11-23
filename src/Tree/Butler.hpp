@@ -8,7 +8,7 @@
 #include <SFML/Audio.hpp>
 
 #include "Singleton.hpp"
-#include "Errorhandling.hpp"
+#include "Exceptions.hpp"
 #include "Sprite.hpp"
 #include "Util.hpp"
 
@@ -26,18 +26,18 @@ namespace Tree
         void LoadSprites( std::string lua_file );
 
         FntPtr GetFont( std::string path, unsigned int size = 30 )
-            throw( Error::resource_not_found );
+            throw( Tree::resource_not_found );
         ImgPtr GetImage( std::string path, bool shall_smooth = false )
-            throw( Error::resource_not_found );
+            throw( Tree::resource_not_found );
         SndPtr GetSoundBuffer( std::string path )
-            throw( Error::resource_not_found );
+            throw( Tree::resource_not_found );
 
         sf::Sprite CreateSprite( std::string name )
-            throw( Error::resource_not_found );
+            throw( Tree::resource_not_found );
         sf::String CreateString( std::string fnt_path, int size )
-            throw( Error::resource_not_found );
+            throw( Tree::resource_not_found );
         sf::Sound CreateSound( std::string snd_path )
-            throw( Error::resource_not_found );
+            throw( Tree::resource_not_found );
     private:
         SpriteLoader spr_loader;
 

@@ -10,11 +10,18 @@
 #include <map>
 #include <list>
 
-#include "Errorhandling.hpp"
+#include "Exceptions.hpp"
 #include "Singleton.hpp"
 #include "BaseDator.hpp"
 #include "Dator.hpp"
 #include "Util.hpp"
+
+/*
+ * Settings is a class used for keeping track of basic settings inside the game.
+ * We can change and view them through a console and parse settings files on them etc.
+ * If we want we can register a function callback or keep track of their value through
+ * the use of a Dator.
+ */
 
 namespace Tree
 {
@@ -36,7 +43,7 @@ namespace Tree
         void Unregister( std::string name );
 
         template<typename T>
-        T GetValue( std::string name ) throw( Error::setting_not_found );
+        T GetValue( std::string name ) throw( Tree::setting_not_found );
         template<typename T>
         void SetValue( std::string name, T value );
 
@@ -45,7 +52,7 @@ namespace Tree
         std::vector<std::string> GetSettings();
         std::map<std::string, std::string> GetSettingsValues();
 
-        void ParseFile( std::string path ) throw( Error::resource_not_found );
+        void ParseFile( std::string path ) throw( Tree::resource_not_found );
         void ParseSetting( std::string str ) throw();
 
         void CreateSettingsFile( std::string path );
@@ -81,7 +88,7 @@ void Tree::Settings::Register( std::string name, T val )
 }
 
 template<typename T>
-T Tree::Settings::GetValue( std::string name ) throw( Error::setting_not_found )
+T Tree::Settings::GetValue( std::string name ) throw( Tree::setting_not_found )
 {
     DatorMap::iterator it = dator_map.find( name );
     if( it != dator_map.end() ) {
@@ -94,7 +101,7 @@ T Tree::Settings::GetValue( std::string name ) throw( Error::setting_not_found )
         }
     }
     std::string s = "Setting '" + name + "' not found";
-    throw( Error::setting_not_found( s.c_str() ) );
+    throw( Tree::setting_not_found( s.c_str() ) );
 }
 
 template<typename T>

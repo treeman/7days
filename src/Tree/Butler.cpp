@@ -17,7 +17,7 @@ void Butler::LoadSprites( std::string lua_file )
 }
 
 Tree::FntPtr Butler::GetFont( std::string path,
-    unsigned int size ) throw( Error::resource_not_found )
+    unsigned int size ) throw( Tree::resource_not_found )
 {
     typedef std::pair<FontMap::iterator, FontMap::iterator> ItPair;
 
@@ -36,7 +36,7 @@ Tree::FntPtr Butler::GetFont( std::string path,
     FntPtr fnt( new sf::Font() );
 
     if( !fnt->LoadFromFile( path.c_str(), size ) ) {
-        throw( Error::resource_not_found( "Unable to load font: '" + path + "'" ) );
+        throw( Tree::resource_not_found( "Unable to load font: '" + path + "'" ) );
     }
 
     font_map.insert( std::make_pair( path, fnt ) );
@@ -44,7 +44,7 @@ Tree::FntPtr Butler::GetFont( std::string path,
 }
 
 Tree::ImgPtr Butler::GetImage( std::string path, bool shall_smooth )
-    throw( Error::resource_not_found )
+    throw( Tree::resource_not_found )
 {
     ImageMap::iterator it = image_map.find( path );
     if( it != image_map.end() ) {
@@ -54,7 +54,7 @@ Tree::ImgPtr Butler::GetImage( std::string path, bool shall_smooth )
         ImgPtr img( new sf::Image() );
 
         if( !img->LoadFromFile( path.c_str() ) ) {
-            throw( Error::resource_not_found(
+            throw( Tree::resource_not_found(
                 "Unable to load image: '" + path + "'" ) );
         }
         img->SetSmooth( shall_smooth );
@@ -65,7 +65,7 @@ Tree::ImgPtr Butler::GetImage( std::string path, bool shall_smooth )
 }
 
 Tree::SndPtr Butler::GetSoundBuffer( std::string path )
-    throw( Error::resource_not_found )
+    throw( Tree::resource_not_found )
 {
     SoundMap::iterator it = sound_map.find( path );
     if( it != sound_map.end() ) {
@@ -75,7 +75,7 @@ Tree::SndPtr Butler::GetSoundBuffer( std::string path )
         SndPtr snd( new sf::SoundBuffer() );
 
         if( !snd->LoadFromFile( path.c_str() ) ) {
-            throw( Error::resource_not_found(
+            throw( Tree::resource_not_found(
                 "Unable to load sound: '" + path + "'" ) );
         }
 
@@ -85,7 +85,7 @@ Tree::SndPtr Butler::GetSoundBuffer( std::string path )
 }
 
 sf::Sprite Butler::CreateSprite( std::string name )
-    throw( Error::resource_not_found )
+    throw( Tree::resource_not_found )
 {
     if( spr_loader.HasCustomSprite( name ) ) {
         return spr_loader.Create( name );
@@ -96,15 +96,15 @@ sf::Sprite Butler::CreateSprite( std::string name )
             spr.SetImage( *GetImage( name ) );
             return spr;
         }
-        catch( Error::resource_not_found & ) {
-            throw( Error::resource_not_found(
+        catch( Tree::resource_not_found & ) {
+            throw( Tree::resource_not_found(
                 "Unable to load sprite: '" + name + "'" ) );
         }
     }
 }
 
 sf::String Butler::CreateString( std::string fnt_path, int size )
-    throw( Error::resource_not_found )
+    throw( Tree::resource_not_found )
 {
     sf::String str;
     str.SetFont( *GetFont( fnt_path, size ) );
@@ -113,7 +113,7 @@ sf::String Butler::CreateString( std::string fnt_path, int size )
 }
 
 sf::Sound Butler::CreateSound( std::string path )
-    throw( Error::resource_not_found )
+    throw( Tree::resource_not_found )
 {
     sf::Sound snd;
     snd.SetBuffer( *GetSoundBuffer( path ) );

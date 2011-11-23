@@ -9,8 +9,19 @@
 
 #include "BaseDator.hpp"
 
+/*
+ * A Dator is an object which will act as a link between the internal console settings
+ * and a physical value. Register it with Settings and it's value will always
+ * reflect what the internal setting is, wheter we change it in a settings file or
+ * through console.
+ *
+ * You have the option of executing a function when the value is changed, so we can do
+ * things like change resolution on the fly.
+ */
+
 namespace Tree
 {
+    // Dator for simply calling a function with no arguments
     class CallDator : public BaseDator {
     public:
         CallDator( boost::function<std::string()> func ) :
@@ -24,6 +35,7 @@ namespace Tree
         boost::function<std::string()> call_func;
     };
 
+    // Generic Dator
     template<typename T>
     class Dator : public BaseDator {
     public:
@@ -56,6 +68,7 @@ namespace Tree
         boost::function<std::string( const T )> change_func;
     };
 
+    // String Dator
     template<>
     class Dator<std::string> : public BaseDator {
     public:

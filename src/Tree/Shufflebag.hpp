@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "Math.hpp"
-#include "Errorhandling.hpp"
+#include "Exceptions.hpp"
 
 namespace Tree {
 

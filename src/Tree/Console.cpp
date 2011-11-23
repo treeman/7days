@@ -234,7 +234,6 @@ void Console::Draw()
     RenderHistory();
     RenderInputLine();
     RenderTypeSuggestions();
-    RenderDebug();
 }
 
 void Console::Activate()
@@ -538,19 +537,6 @@ void Console::SelectionPaste( int pos )
 void Console::RenderBones()
 {
     Tree::Draw( back );
-
-//  //line above input line
-//  const float x1 = x;
-//  const float x2 = x + w;
-//  const float y1 = y + h - text_off_down - fnt->GetHeight();
-//
-//  hge->Gfx_RenderLine( x1, y1, x2, y1, SETA( delimiter_color, delimiter_opacity ) );
-
-//  const float x3 = x + w;
-//  const float y2 = y + h;
-//  const float y3 = y2 - text_off_down - fnt->GetHeight();
-//
-//  hge->Gfx_RenderLine( x3, y2, x3, y3, SETA( delimiter_color, delimiter_opacity ) );
 }
 void Console::RenderHistory()
 {
@@ -679,30 +665,5 @@ void Console::RenderTypeSuggestions()
         Tree::Draw( render_str );
         n++;
     }
-}
-
-void Console::RenderDebug()
-{
-    /*if( !showDebug->Val() ) return;
-
-    fnt->SetColor( 0xffffffff );
-    fnt->printf( x + w + text_off_left, y, HGETEXT_LEFT, "line_pos: %i history_pos: %i history_length: %i",
-        input_line_pos, cmd_pos, cmd_history.size() );
-
-    std::string s;
-    if( sel_start == -1 || sel_length == 0 ) {
-        s = "nop";
-    }
-    else {
-        if( sel_length > 0 ) {
-            s = input_line.substr( sel_start, sel_length );
-        }
-        else {
-            s = input_line.substr( sel_start + sel_length, -sel_length );
-        }
-    }
-    fnt->printf( x + w + text_off_left, y + line_height, HGETEXT_LEFT, "sel_start: %i sel_length: %i substr: %s",
-        sel_start, sel_length, s.c_str() );
-    */
 }
 
