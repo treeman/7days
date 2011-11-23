@@ -43,11 +43,6 @@ void GameDebug::Update( float )
     const std::string old_s = fps.GetText();
     fps.SetText( s );
 
-    // Will not really work with lazy drawing!
-    /*if( s != old_s ) {
-        Tree::Redraw();
-    }*/
-
     Vec2f mouse_pos = Tree::GetMousePos();
     std::stringstream ss;
     ss << mouse_pos.x << "," << mouse_pos.y;
@@ -55,6 +50,7 @@ void GameDebug::Update( float )
 }
 void GameDebug::Render()
 {
+    // Will not really work with lazy drawing!
     if( show_fps->Val() ) {
         Tree::Draw( fps );
     }
