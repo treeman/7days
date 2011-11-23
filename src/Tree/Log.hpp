@@ -4,7 +4,7 @@
 #include <fstream>
 #include <iostream>
 
-#include "Tree/Singleton.hpp"
+#include "Singleton.hpp"
 
 #define L_ (*Tree::Log::Instance())
 

@@ -1,9 +1,9 @@
 #include <boost/weak_ptr.hpp>
 
-#include "Tree/Console.hpp"
-#include "Tree/Butler.hpp"
-#include "Tree/Util.hpp"
-#include "Tree/Log.hpp"
+#include "Console.hpp"
+#include "Butler.hpp"
+#include "Util.hpp"
+#include "Log.hpp"
 
 using Tree::Console;
 

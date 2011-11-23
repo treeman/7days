@@ -3,8 +3,8 @@
 
 #include <vector>
 
-#include "Tree/Math.hpp"
-#include "Tree/Errorhandling.hpp"
+#include "Math.hpp"
+#include "Errorhandling.hpp"
 
 namespace Tree {
 

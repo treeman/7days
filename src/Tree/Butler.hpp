@@ -7,10 +7,10 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
-#include "Tree/Singleton.hpp"
-#include "Tree/Errorhandling.hpp"
-#include "Tree/Sprite.hpp"
-#include "Tree/Util.hpp"
+#include "Singleton.hpp"
+#include "Errorhandling.hpp"
+#include "Sprite.hpp"
+#include "Util.hpp"
 
 namespace Tree
 {

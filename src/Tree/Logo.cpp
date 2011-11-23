@@ -1,6 +1,6 @@
-#include "Tree/Logo.hpp"
-#include "Tree/Game.hpp"
-#include "Tree/Util.hpp"
+#include "Logo.hpp"
+#include "Game.hpp"
+#include "Util.hpp"
 
 using Tree::Logo;
 

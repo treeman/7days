@@ -1,13 +1,13 @@
 #include <boost/lexical_cast.hpp>
 #include <sstream>
 
-#include "Tree/GameDebug.hpp"
-#include "Tree/Butler.hpp"
-#include "Tree/Util.hpp"
-#include "Tree/Vec2D.hpp"
-#include "Tree/Tweaks.hpp"
-#include "Tree/Graphics.hpp"
-#include "Tree/Log.hpp"
+#include "GameDebug.hpp"
+#include "Butler.hpp"
+#include "Util.hpp"
+#include "Vec2D.hpp"
+#include "Tweaks.hpp"
+#include "Graphics.hpp"
+#include "Log.hpp"
 
 using Tree::GameDebug;
 

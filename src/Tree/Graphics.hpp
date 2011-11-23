@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "Tree/Rect.hpp"
+#include "Rect.hpp"
 
 namespace Tree
 {

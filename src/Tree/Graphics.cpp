@@ -1,5 +1,5 @@
-#include "Tree/Graphics.hpp"
-#include "Tree/Game.hpp"
+#include "Graphics.hpp"
+#include "Game.hpp"
 
 void Tree::Draw( const sf::Drawable &obj )
 {

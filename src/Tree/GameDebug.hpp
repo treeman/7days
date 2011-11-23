@@ -2,11 +2,11 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include "Tree/Graphics.hpp"
-#include "Tree/InputHandler.hpp"
-#include "Tree/Settings.hpp"
-#include "Tree/Dator.hpp"
-#include "Tree/DrawnLazy.hpp"
+#include "Graphics.hpp"
+#include "InputHandler.hpp"
+#include "Settings.hpp"
+#include "Dator.hpp"
+#include "DrawnLazy.hpp"
 
 namespace Tree
 {

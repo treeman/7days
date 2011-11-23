@@ -1,6 +1,6 @@
 #include "Sprite.hpp"
-#include "Tree/Log.hpp"
-#include "Tree/Butler.hpp"
+#include "Log.hpp"
+#include "Butler.hpp"
 
 #include <boost/foreach.hpp>
 

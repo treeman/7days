@@ -5,10 +5,10 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include "Tree/Lua.hpp"
-#include "Tree/Errorhandling.hpp"
-#include "Tree/Graphics.hpp"
-#include "Tree/Util.hpp"
+#include "Lua.hpp"
+#include "Errorhandling.hpp"
+#include "Graphics.hpp"
+#include "Util.hpp"
 
 namespace Tree
 {

@@ -1,7 +1,7 @@
-#include "Tree/Errorhandling.hpp"
-#include "Tree/Lua.hpp"
-#include "Tree/Log.hpp"
-#include "Tree/Game.hpp"
+#include "Errorhandling.hpp"
+#include "Lua.hpp"
+#include "Log.hpp"
+#include "Game.hpp"
 #include "Tweaks.hpp"
 
 using Tree::Tweaks;

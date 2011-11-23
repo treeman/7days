@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Tree/Graphics.hpp"
-#include "Tree/Vec2D.hpp"
-#include "Tree/DrawnLazy.hpp"
+#include "Graphics.hpp"
+#include "Vec2D.hpp"
+#include "DrawnLazy.hpp"
 
 namespace Tree
 {

@@ -4,8 +4,8 @@
 #include <vector>
 #include <map>
 
-#include "Tree/Graphics.hpp"
-#include "Tree/DrawnLazy.hpp"
+#include "Graphics.hpp"
+#include "DrawnLazy.hpp"
 
 namespace Tree
 {

@@ -2,7 +2,7 @@
 
 #include <boost/unordered_set.hpp>
 
-#include "Tree/Graphics.hpp"
+#include "Graphics.hpp"
 
 #include "PixSpr.hpp"
 

@@ -1,6 +1,6 @@
-#include "Tree/DrawnLazy.hpp"
-#include "Tree/Graphics.hpp"
-#include "Tree/Log.hpp"
+#include "DrawnLazy.hpp"
+#include "Graphics.hpp"
+#include "Log.hpp"
 
 using Tree::DrawnLazy;
 

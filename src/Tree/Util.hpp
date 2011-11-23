@@ -8,7 +8,7 @@
 #include <boost/shared_ptr.hpp>
 #include <SFML/Window.hpp>
 
-#include "Tree/Vec2D.hpp"
+#include "Vec2D.hpp"
 
 #define BUTLER Tree::GetButler()
 #define TWEAKS Tree::GetTweaks()

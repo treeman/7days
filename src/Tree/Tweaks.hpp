@@ -4,7 +4,7 @@
 #include <map>
 #include <boost/shared_ptr.hpp>
 
-#include "Tree/Util.hpp"
+#include "Util.hpp"
 
 namespace Tree
 {

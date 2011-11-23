@@ -9,11 +9,11 @@
 #include <boost/function.hpp>
 #include <boost/ref.hpp>
 
-#include "Tree/Graphics.hpp"
-#include "Tree/InputHandler.hpp"
-#include "Tree/Timer.hpp"
-#include "Tree/Dator.hpp"
-#include "Tree/Settings.hpp"
+#include "Graphics.hpp"
+#include "InputHandler.hpp"
+#include "Timer.hpp"
+#include "Dator.hpp"
+#include "Settings.hpp"
 
 namespace Tree
 {

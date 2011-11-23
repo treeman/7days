@@ -1,8 +1,8 @@
 #include <boost/bind.hpp>
 #include <boost/function.hpp>
 
-#include "Tree/WindowManager.hpp"
-#include "Tree/Settings.hpp"
+#include "WindowManager.hpp"
+#include "Settings.hpp"
 
 using Tree::WindowManager;
 

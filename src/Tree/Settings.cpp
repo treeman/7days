@@ -1,9 +1,9 @@
 #include <boost/algorithm/string/trim.hpp>
 #include <fstream>
 
-#include "Tree/Settings.hpp"
-#include "Tree/Dator.hpp"
-#include "Tree/Game.hpp"
+#include "Settings.hpp"
+#include "Dator.hpp"
+#include "Game.hpp"
 
 using Tree::Settings;
 

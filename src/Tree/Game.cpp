@@ -2,8 +2,8 @@
 #include <time.h>
 #include <SFML/Graphics.hpp>
 
-#include "Tree/Game.hpp"
-#include "Tree/Log.hpp"
+#include "Game.hpp"
+#include "Log.hpp"
 
 using Tree::Game;
 

@@ -1,4 +1,4 @@
-#include "Tree/InputHandler.hpp"
+#include "InputHandler.hpp"
 
 using Tree::InputChain;
 

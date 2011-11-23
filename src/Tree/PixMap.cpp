@@ -1,6 +1,6 @@
-#include "Tree/Util.hpp"
-#include "Tree/Butler.hpp"
-#include "Tree/Tweaks.hpp"
+#include "Util.hpp"
+#include "Butler.hpp"
+#include "Tweaks.hpp"
 
 #include "PixMap.hpp"
 

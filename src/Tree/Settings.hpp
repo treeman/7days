@@ -10,11 +10,11 @@
 #include <map>
 #include <list>
 
-#include "Tree/Errorhandling.hpp"
-#include "Tree/Singleton.hpp"
-#include "Tree/BaseDator.hpp"
-#include "Tree/Dator.hpp"
-#include "Tree/Util.hpp"
+#include "Errorhandling.hpp"
+#include "Singleton.hpp"
+#include "BaseDator.hpp"
+#include "Dator.hpp"
+#include "Util.hpp"
 
 namespace Tree
 {

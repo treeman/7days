@@ -3,9 +3,9 @@
 
 #include <boost/shared_ptr.hpp>
 
-#include "Tree/GameState.hpp"
-#include "Tree/Timer.hpp"
-#include "Tree/Graphics.hpp"
+#include "GameState.hpp"
+#include "Timer.hpp"
+#include "Graphics.hpp"
 
 namespace Tree {
 

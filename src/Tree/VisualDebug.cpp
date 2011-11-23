@@ -1,9 +1,9 @@
-#include "Tree/Butler.hpp"
-#include "Tree/Util.hpp"
-#include "Tree/VisualDebug.hpp"
-#include "Tree/Tweaks.hpp"
-#include "Tree/Graphics.hpp"
-#include "Tree/Log.hpp"
+#include "Butler.hpp"
+#include "Util.hpp"
+#include "VisualDebug.hpp"
+#include "Tweaks.hpp"
+#include "Graphics.hpp"
+#include "Log.hpp"
 
 using Tree::Debug;
 

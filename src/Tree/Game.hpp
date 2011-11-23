@@ -5,18 +5,18 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "Tree/GameState.hpp"
-#include "Tree/Settings.hpp"
-#include "Tree/Console.hpp"
-#include "Tree/GameDebug.hpp"
-#include "Tree/Singleton.hpp"
-#include "Tree/Vec2D.hpp"
-#include "Tree/Butler.hpp"
-#include "Tree/Tweaks.hpp"
-#include "Tree/Loghelper.hpp"
-#include "Tree/VisualDebug.hpp"
-#include "Tree/WindowManager.hpp"
-#include "Tree/Rect.hpp"
+#include "GameState.hpp"
+#include "Settings.hpp"
+#include "Console.hpp"
+#include "GameDebug.hpp"
+#include "Singleton.hpp"
+#include "Vec2D.hpp"
+#include "Butler.hpp"
+#include "Tweaks.hpp"
+#include "Loghelper.hpp"
+#include "VisualDebug.hpp"
+#include "WindowManager.hpp"
+#include "Rect.hpp"
 
 #define GAME Tree::Game::Instance()
 

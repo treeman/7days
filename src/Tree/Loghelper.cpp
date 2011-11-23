@@ -1,5 +1,5 @@
-#include "Tree/Loghelper.hpp"
-#include "Tree/Game.hpp"
+#include "Loghelper.hpp"
+#include "Game.hpp"
 
 using Tree::LogHelper;
 
