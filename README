@@ -13,13 +13,6 @@ License:
 Todo/Ideas:
     Versioning and numbering inside
 
-    What name shall we have?
-        Namespace shouldn't start with a number so 7days won't work
-        Is Tree okay? Or maybe Seven? or something?
-
-    Developer build
-        Either don't build static library but link to source directly or update library automatically?
-
     Makefile
         Install/Remove
 
@@ -32,29 +25,24 @@ Todo/Ideas:
     Share resources between examples!
 
     Go through whole codebase and find stuff to refactor/change
-        Incorporate more lua perhaps?
+        Console is huge and not commented enough
+            + We should be able to make some gui elements out of it or something
 
-        Stuff to check:
-            Console is huge and not commented enough
-                + We should be able to make some gui elements out of it or something
+        Graphics isVisible not working
+            + Changed it, test if it's working
 
-            Log should be able to print like printf! Clearly a far superious choice :p
+        Is PixFont used inside Pix graphics style?
+            Maybe make a subfolder for Pix graphics style?
+            Comment a bit more?
+            What does PixMap do? Why do we need it?
+            Might want to find a faster way of drawing pixmap
 
-            Graphics isVisible not working
-                + Changed it, test if it's working
+        How does Settings work? Why do we need it? Comment a bit better
+            * Made a small comment on top, might want to comment functions a bit more
 
-            Is PixFont used inside Pix graphics style?
-                Maybe make a subfolder for Pix graphics style?
-                Comment a bit more?
-                What does PixMap do? Why do we need it?
-                Might want to find a faster way of drawing pixmap
+        We don't have any animation sprite?
+            We only use sf::Sprite? Check how it works, and can we do something better?
 
-            How does Settings work? Why do we need it? Comment a bit better
-                * Made a small comment on top, might want to comment functions a bit more
-
-            We don't have any animation sprite?
-                We only use sf::Sprite? Check how it works, and can we do something better?
-
-            Does VisualDebug work?
-                Make examples of all functionality!
+        Does VisualDebug work?
+            Make examples of all functionality!
 
