@@ -33,9 +33,18 @@ void Game::PortionRedrawn( const Tree::Rect &rect )
 }
 void Game::ClearWindow( const sf::Color color )
 {
-    shall_clear_window = true;
-    need_redraw = true;
-    clear_color = color;
+    // If we're lazy drawing defer clearing until next loop
+    if( drawn_lazy ) {
+        shall_clear_window = true;
+        need_redraw = true;
+        clear_color = color;
+    }
+    // Otherwise clear the window right now, so we don't have to wait until next loop
+    else {
+        window->Clear( color );
+        shall_clear_window = false;
+        need_redraw = false;
+    }
 }
 bool Game::NeedRedraw() const
 {
@@ -210,7 +219,10 @@ void Game::Start()
 
         //begin render loop
         if( !drawn_lazy || shall_clear_window ) {
-            if( clear_allowed ) { window->Clear( clear_color ); }
+            if( clear_allowed ) {
+                window->Clear( clear_color );
+                clear_color = sf::Color(); // Reset clear color when done
+            }
             shall_clear_window = false;
         }
 
