@@ -1,3 +1,7 @@
+#include "Tree/Util.hpp"
+#include "Tree/Butler.hpp"
+#include "Tree/Tweaks.hpp"
+
 #include "PixMap.hpp"
 
 PixMap::PixMap()

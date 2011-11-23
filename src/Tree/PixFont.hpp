@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Tree/All.hpp"
-
 #include "PixMap.hpp"
 
 // A simple pixelated font

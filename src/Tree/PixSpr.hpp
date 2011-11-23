@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Tree/All.hpp"
-
 class PixSpr {
 public:
     virtual ~PixSpr() { }

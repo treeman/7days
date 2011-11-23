@@ -1,4 +1,4 @@
-#include "Tree/All.hpp"
+#include "Tree.hpp"
 #include "Demo.hpp"
 
 int main()

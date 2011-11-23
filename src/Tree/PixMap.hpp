@@ -2,7 +2,8 @@
 
 #include <boost/unordered_set.hpp>
 
-#include "Tree/All.hpp"
+#include "Tree/Graphics.hpp"
+
 #include "PixSpr.hpp"
 
 class PixMap {

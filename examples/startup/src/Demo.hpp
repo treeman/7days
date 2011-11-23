@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Tree/All.hpp"
+#include "Tree.hpp"
 
 //this demo tests some things :)
 class Demo : public Tree::GameState {

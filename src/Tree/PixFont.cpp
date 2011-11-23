@@ -1,3 +1,4 @@
+#include "Butler.hpp"
 #include "PixFont.hpp"
 
 PixFont::PixFont( std::string image, int w, int h, int space ) :
