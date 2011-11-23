@@ -8,10 +8,12 @@ void Tree::Draw( const sf::Drawable &obj )
 
 bool Tree::IsVisible( const Tree::Rect &r )
 {
-    return r.x2 > 0 && r.y2 > 0;
+    //return r.x2 > 0 && r.y2 > 0;
         //&& r.x1 < Tree::GetWindowWidth()
         //&& r.y1 < Tree::GetWindowHeight();
-    return false;
+    return ( r.x2 > 0 && r.x1 < Tree::GetWindowWidth() )
+        || ( r.y2 > 0 && r.y1 < Tree::GetWindowHeight() );
+    //return false;
 }
 
 void Tree::Redraw()

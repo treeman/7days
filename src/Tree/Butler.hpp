@@ -39,13 +39,13 @@ namespace Tree
         sf::Sound CreateSound( std::string snd_path )
             throw( Error::resource_not_found );
     private:
+        SpriteLoader spr_loader;
+
         typedef std::multimap<std::string, FntPtr> FontMap;
         FontMap font_map;
 
         typedef std::map<std::string, ImgPtr> ImageMap;
         ImageMap image_map;
-
-        SpriteLoader spr_loader;
 
         typedef std::map<std::string, SndPtr> SoundMap;
         SoundMap sound_map;

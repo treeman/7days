@@ -12,7 +12,6 @@ License:
 
 Todo/Ideas:
     Versioning and numbering inside
-    Use include-all file instead of listing (All.hpp, rename to reflect)
 
     What name shall we have?
         Tree?
@@ -39,4 +38,41 @@ Todo/Ideas:
         Take lessons from Java project there
             immutable Vec2D (dunno if it is now)
         Incorporate more lua perhaps?
+
+        Stuff to check:
+            Console is huge and not commented enough
+
+            Uncommented debug code there, should use a switch or remove it
+
+            Comment Dator a bit?
+
+            Make a macro for creating exceptions?
+
+            Some uncommented code in game debug, dunno what it's for
+
+            Graphics isVisible not working
+                Changed it, test if it's working
+
+            Is PixFont used inside Pix graphics style?
+                Maybe make a subfolder for Pix graphics style?
+                Comment a bit more?
+                What does PixMap do? Why do we need it?
+                Might want to find a faster way of drawing pixmap
+
+            How does Settings work? Why do we need it? Comment a bit better
+
+            Don't use iterators for ShuffleBag, slow and ugly code
+                Use a simple vector...
+
+            We don't have any animation sprite?
+                We only use sf::Sprite? Check how it works, and can we do something better?
+
+            What does Tweak do? Why?
+                Change name? T.T
+
+            Make Vec2D immutable
+
+            Does VisualDebug work?
+                Make examples of all functionality!
+
 
