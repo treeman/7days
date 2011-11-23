@@ -20,9 +20,6 @@ Todo/Ideas:
     Developer build
         Either don't build static library but link to source directly or update library automatically?
 
-    Makefiles should check for changes in header files too...
-        How should we do it for other files that uses that header? That's a good Q.
-
     Makefile
         Install/Remove
 

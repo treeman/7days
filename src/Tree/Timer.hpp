@@ -3,8 +3,8 @@
 
 #include <SFML/System.hpp>
 
-namespace Tree {
-
+namespace Tree
+{
     class Timer {
     public:
         Timer();

@@ -5,9 +5,9 @@ export CC = gcc
 # Plain compiling:
 export CFLAGS= -Wno-unused-value -Wall -I$(SRCDIR)
 
-export SRCDIR = src
+export SRCDIR = src/Tree
 # Bunch up all cpp files
-SRC = $(wildcard $(SRCDIR)/Tree/*cpp)
+SRC = $(wildcard $(SRCDIR)/*cpp)
 
 export OBJDIR = obj
 # Place object files in an object directory
@@ -24,7 +24,7 @@ EXAMPLES = $(patsubst %,$(EXAMPLEDIR)/%,$(_EXAMPLES))
 
 all: lib
 
-# Recursively call make all in the examples directories
+# Recursively call make in the examples directories
 examples:
 	$(foreach path,$(EXAMPLES),cd $(path) && $(MAKE) all; cd ../../;)
 
@@ -33,14 +33,26 @@ clean_examples:
 
 remake_examples: clean_examples examples
 
+# Construct a static library
 lib: $(LIB)
 
-$(LIB): $(OBJ)
+$(LIB): .depend $(OBJ)
 	ar -rcs $(LIB) $(OBJ)
 
 $(OBJDIR)/%.o: %.cpp
 	@(mkdir -p $(@D))
 	$(CC) -c -o $@ $< $(CFLAGS)
+
+# Generate dependency information for all source files
+.depend: $(SRC)
+	rm -f ./.depend
+# Generate dependency information
+	$(CC) $(CFLAGS) -MM $^ >> ./.depend
+# Set correct directory for object files
+	sed -i 's|\(^.*:\)|$(OBJDIR)/$(SRCDIR)/\1|g' ./.depend
+
+# Insert object file rules into Makefile so we can keep track of their dependencies
+include .depend
 
 clean:
 	rm $(OBJDIR)/* $(LIB) -rf

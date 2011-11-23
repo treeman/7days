@@ -6,6 +6,7 @@
 
 #include "Dator.hpp"
 
+// Maybe not necessary? Managers aren't particulary good...
 namespace Tree
 {
     class WindowManager {
