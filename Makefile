@@ -20,9 +20,9 @@ export EXAMPLEDIR = examples
 _EXAMPLES = hello-world
 EXAMPLES = $(patsubst %,$(EXAMPLEDIR)/%,$(_EXAMPLES))
 
-.PHONY: all clean lib remake examples dev
+.PHONY: all clean lib remake remake_all examples clean_examples remake_examples dev
 
-all: lib dev
+all: lib dev examples
 
 # Recursively call make in the examples directories
 examples:
@@ -32,9 +32,6 @@ clean_examples:
 	$(foreach path,$(EXAMPLES),cd $(path) && $(MAKE) clean; cd ../../;)
 
 remake_examples: clean_examples examples
-
-dev:
-	cd dev && $(MAKE) all
 
 # Construct a static library
 lib: $(OUTPUT)
@@ -57,9 +54,45 @@ $(OBJDIR)/%.o: %.cpp
 # Insert object file rules into Makefile so we can keep track of their dependencies
 include .depend
 
-clean:
+# Dev configurations, done here so we get a clean separation from lib and dev
+export DEVLIBS = -lX11 -lGL -lXrandr -lfreetype -lsndfile -lopenal -lpthread\
+ -lsfml-graphics-s -lsfml-audio -lsfml-window-s -lsfml-system-s -lboost_iostreams -llua
+
+export DEVDIR = dev
+
+export DEVSRCDIR = $(DEVDIR)/src
+DEVSRC = $(wildcard $(DEVSRCDIR)/*cpp)
+
+export DEVCFLAGS = $(CFLAGS) -I./$(DEVSRCDIR)
+
+export DEVOBJDIR = $(DEVDIR)/obj
+DEVOBJ = $(patsubst %,$(DEVOBJDIR)/%,$(DEVSRC:.cpp=.o))
+
+DEVEXE = $(DEVDIR)/bin/startme
+
+dev: $(DEVEXE)
+
+# Dev exe depends on both dev specific and library files
+$(DEVEXE): .depend dev/.depend $(OBJ) $(DEVOBJ)
+	$(CC) $(OBJ) $(DEVOBJ) -o $@ $(DEVLIBS)
+
+$(DEVOBJDIR)/%.o: %.cpp
+	@(mkdir -p $(@D))
+	$(CC) -c -o $@ $< $(DEVCFLAGS)
+
+# Dependency information for dev specific files
+dev/.depend: $(DEVSRC)
+	rm -f ./dev/.depend
+	$(CC) $(DEVCFLAGS) -MM $^ >> ./dev/.depend
+	sed -i 's|\(^.*:\)|$(DEVOBJDIR)/$(DEVSRCDIR)/\1|g' ./dev/.depend
+
+include dev/.depend
+
+clean_dev:
+	rm $(DEVOBJDIR)/* $(DEVEXE) -rf
+
+clean: clean_dev clean_examples
 	rm $(OBJDIR)/* $(OUTPUT) -rf
-	@(cd dev && $(MAKE) $@)
 
 remake: clean all
 
