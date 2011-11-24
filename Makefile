@@ -14,15 +14,15 @@ export OBJDIR = obj
 OBJ = $(patsubst %,$(OBJDIR)/%,$(SRC:.cpp=.o))
 
 # Output name of our static library
-LIB = ./lib/lib7days.a
+OUTPUT = ./lib/lib7days.a
 
 export EXAMPLEDIR = examples
-_EXAMPLES = hello-world dev
+_EXAMPLES = hello-world
 EXAMPLES = $(patsubst %,$(EXAMPLEDIR)/%,$(_EXAMPLES))
 
-.PHONY: all clean lib remake examples
+.PHONY: all clean lib remake examples dev
 
-all: lib
+all: lib dev
 
 # Recursively call make in the examples directories
 examples:
@@ -33,11 +33,14 @@ clean_examples:
 
 remake_examples: clean_examples examples
 
-# Construct a static library
-lib: $(LIB)
+dev:
+	cd dev && $(MAKE) all
 
-$(LIB): .depend $(OBJ)
-	ar -rcs $(LIB) $(OBJ)
+# Construct a static library
+lib: $(OUTPUT)
+
+$(OUTPUT): .depend $(OBJ)
+	ar -rcs $(OUTPUT) $(OBJ)
 
 $(OBJDIR)/%.o: %.cpp
 	@(mkdir -p $(@D))
@@ -55,7 +58,8 @@ $(OBJDIR)/%.o: %.cpp
 include .depend
 
 clean:
-	rm $(OBJDIR)/* $(LIB) -rf
+	rm $(OBJDIR)/* $(OUTPUT) -rf
+	@(cd dev && $(MAKE) $@)
 
 remake: clean all
 

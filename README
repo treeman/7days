@@ -15,14 +15,13 @@ Todo/Ideas:
 
     Makefile
         Install/Remove
+        Combine dev Makefile and main Makefile somehow
 
     More examples to showcase:
         Pixelated style
         Isometric tiles and stuff with that
         Square tiled with objects moving around there
         Lazy drawing
-
-    Share resources between examples!
 
     Go through whole codebase and find stuff to refactor/change
         Console is huge and not commented enough

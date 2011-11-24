@@ -16,9 +16,9 @@ DEBUG_EXE = bin/startme-debug
 
 .PHONY: all clean remake debug
 
-all: $(SRC) $(EXE)
+all: $(EXE)
 
-debug: $(SRC) $(DEBUG_EXE)
+debug: $(DEBUG_EXE)
 
 $(EXE): .depend $(OBJ)
 	$(CC) $(OBJ) -o $@ $(LIBS)
