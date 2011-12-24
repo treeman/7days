@@ -1,0 +1,92 @@
+
+* Install/Remove in Makefile
+
+* More examples
+    * Pixelated style
+    * Isometric tiling
+    * Squared tiling
+    * Lazy drawing
+    * VisualDebug
+
+* Add in gridhandling
+    Subfolders/Namespace
+    Includes movement and selections in grids
+    * Isometric
+    * Squared
+
+* Simple GUI elements & handling
+
+* Console
+    * Is huge and not commented enough
+    * Make GUI elements from parts
+
+* Pix
+    * Make Pix namespace
+    * Comment more
+    * Need a faster way to draw pixmap, maybe opengl bunch up rectangles to draw
+
+* Settings
+    * Better commenting
+
+* Sprites
+    * Animationsprite
+    * BoundingBox conversion for sprites
+    * Easier way for setting transparency value for sprites
+    * Indexed sprites
+        Ability to use TileSets or similar
+        Create a sprite from a with/height and index in Butler
+    * Shorten sprites.lua
+        Might be doable in lua?
+
+* Countdown Timer
+    Timer but check wheter finished
+
+* Game shouldn't load tweaks, we should manually do it
+
+* Vector
+    * Find angle between two vectors
+    * () operator for easy changing
+    * Generate surrounding vectors
+
+        - * -       * * *
+        * X *  and  * X *
+        - * -       * * *
+
+        in a list
+
+* VisualDebug
+    * Setting to turn it off
+    * printf like
+    * Examples
+    * Test if working
+
+* Graphics
+    * Draw outline of rectangle
+    * DrawBar( pos, colors, box ) draw a statusbar
+    * DrawRect shorthand for Tree::Draw( sf::Shape::Rectangle ...
+    * Align center sf::String
+    * Generic in/out fader
+    * isVisible Check if working?
+
+* Shortened/Simplified
+    * WINDOW_WIDTH
+    * MAGIC_NUM for TWEAKS->GetNum ?
+    * Tree::Exit
+
+* Sound
+    * Store and play an sf::Sound, store a copy and do it so we can discard it after
+
+* Investigate assertions
+
+* Random
+    * Produce selection out of weighted numbers
+        ex: r(hej -> 0.3, då -> 0.7)
+        will give a 30% chance of 'hej' and 70% of 'då'
+
+* Versioning
+    * Ability to demand at least version X from users
+    * Tag in git
+
+* Release generation tools
+    * (Bundle bin + README) to tar/zip
+
