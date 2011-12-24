@@ -48,10 +48,10 @@ DONE * Countdown Timer
 
 DONE * Game shouldn't load tweaks, we should manually do it
 
-* Vector
+DONE * Vector
     DONE * Find angle between two vectors
     DONE * () operator for easy changing
-    * Generate surrounding vectors
+    DONE * Generate surrounding vectors
 
         - * -       * * *
         * X *  and  * X *
@@ -91,14 +91,18 @@ DONE * Shortened/Simplified
     Boost assert looks promising
 
 * Versioning
-    * Ability to demand at least version X from users
+    DONE * Ability to demand at least version X from users
     * Tag in git
 
 * Release generation tools
     * (Bundle bin + README) to tar/zip
+    * Tag new versioning releases
+        Create new libs to store?
+        Modify Version.hpp
+        Tag as new release in git
 
 * Math
-    * Break out to .cpp
+    * Break out to .cpp Maybe not?! Lot's of template functions which won't work
     * Utility functions for vector? clip max length?
 
 * WeightBag

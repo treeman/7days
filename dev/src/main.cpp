@@ -9,26 +9,31 @@ int main()
         // Load magic numbers
         TWEAKS->Load( "magic_numbers.lua" );
 
-        //create the game
-        Tree::Game::Instance()->Init(
-              800             //width
-            , 600             //height
-            , true            //windowed
-            , "7days demo"    //window title
-            , "settings.ini"  //settings file
-            , true            //lazy drawing
+        // Load custom sprites
+        BUTLER->LoadSprites( "sprites.lua" );
+
+        // We need at least this version to be able to build
+        GAME->RequestMinVersion( 0.1 );
+
+        // Create the game
+        GAME->Init(
+              800             // width
+            , 600             // height
+            , true            // windowed
+            , "7days demo"    // window title
+            , "settings.ini"  // settings file
         );
 
-        //push your gamestates here
+        // Push your gamestates here
         {
             boost::shared_ptr<Tree::GameState> state( new Demo() );
-            Tree::Game::Instance()->Push( state );
+            GAME->Push( state );
             state.reset( new Tree::Logo() );
-            Tree::Game::Instance()->Push( state );
+            GAME->Push( state );
         }
 
         //start the main game loop
-        Tree::Game::Instance()->Start();
+        GAME->Start();
     }
     catch( std::exception &e )
     {
@@ -40,7 +45,7 @@ int main()
     }
 
     //Destroy the singletons
-    Tree::Game::Instance()->Destroy();
+    GAME->Destroy();
     L_.Destroy();
 
     return EXIT_SUCCESS;

@@ -7,8 +7,6 @@
 #include <boost/unordered_set.hpp>
 #include <sstream>
 
-#include "Math.hpp"
-
 template<typename T>
 class Vec2D {
 public:

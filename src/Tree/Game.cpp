@@ -4,12 +4,14 @@
 
 #include "Game.hpp"
 #include "Log.hpp"
+#include "Version.hpp"
 
 using Tree::Game;
 
 Game::Game() : exit_called( false ), state_changed( true ),
-    fps( 0 ), fps_buff( 0 ), fps_frame_count( 0 ),
-    drawn_lazy( false ), need_redraw( false ), clear_allowed( true ), clear_color( sf::Color() )
+    fps( 0 ), /*fps_buff( 0 ),*/ fps_frame_count( 0 ),
+    drawn_lazy( false ), need_redraw( false ), clear_allowed( true ),
+    min_version( 0 )
 {
     settings.reset( new Settings() );
     input_chain.reset( new InputChain() );
@@ -120,6 +122,15 @@ void Game::Init(
     std::string settings_file,
     bool _drawn_lazy
 ) {
+    if( min_version != 0 && VERSION < min_version ) {
+        std::stringstream ss;
+        ss << "You're using an old version!\n";
+        ss << "You have version " << VERSION
+            << " but you need version " << min_version;
+
+        throw( Tree::old_version( ss.str() ) );
+    }
+
     srand( time( NULL ) );
 
     drawn_lazy = _drawn_lazy;
@@ -168,13 +179,14 @@ void Game::Init(
     input_chain->AddHandler( game_debug.get() );
 
     visual_debug.reset( new VisualDebug() );
+
 }
 
 void Game::Start()
 {
     if( ShallExit() ) return;
 
-    sf::Font fnt;
+    fps_timer.Start();
 
     curr_state = Top();
 
@@ -285,15 +297,23 @@ bool Game::ShallExit() const
     return state_list.empty() || exit_called;
 }
 
+void Game::RequestMinVersion( float version )
+{
+    min_version = version;
+}
+
 void Game::UpdateFPS( float dt )
 {
     //simply update each second
     //no need for anything more sophisticated
-    fps_buff += dt;
+    //fps_buff += dt;
     ++fps_frame_count;
-    if( fps_buff > 1.0 ) {
-        fps = fps_frame_count / fps_buff;
-        fps_buff = fps_frame_count = 0;
+    //if( fps_buff > 1.0 ) {
+    if( fps_timer.GetTime() > 1.0 ) {
+        fps = fps_frame_count / fps_timer.GetTime();
+        //fps_buff = fps_frame_count = 0;
+        fps_frame_count = 0;
+        fps_timer.Restart();
     }
 }
 

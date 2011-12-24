@@ -24,4 +24,5 @@
 #include "Tree/Tweaks.hpp"
 #include "Tree/Util.hpp"
 #include "Tree/VisualDebug.hpp"
+#include "Tree/Version.hpp"
 

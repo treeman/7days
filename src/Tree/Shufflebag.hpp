@@ -3,11 +3,11 @@
 
 #include <vector>
 
-#include "Tree.hpp"
 #include "Exceptions.hpp"
+#include "Math.hpp"
 
-namespace Tree {
-
+namespace Tree
+{
     template<typename T>
     class ShuffleBag {
     public:
@@ -83,3 +83,4 @@ namespace Tree {
 }
 
 #endif
+

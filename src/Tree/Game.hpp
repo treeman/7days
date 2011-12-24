@@ -69,6 +69,8 @@ namespace Tree
 
         void Exit();
         bool ShallExit() const;
+
+        void RequestMinVersion( float version );
     private:
         typedef std::list<boost::shared_ptr<GameState> > StateList;
         StateList state_list;
@@ -88,8 +90,8 @@ namespace Tree
 
         void UpdateFPS( float dt );
         float fps;
-        float fps_buff;
         int fps_frame_count;
+        Timer fps_timer;
 
         Vec2f mpos;
 
@@ -101,6 +103,8 @@ namespace Tree
 
         typedef std::vector<Tree::Rect> Rects;
         Rects portions_redrawn;
+
+        float min_version;
 
     //encapsulate them in Game instead of being their own Singleton
     public:

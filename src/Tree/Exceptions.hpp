@@ -37,5 +37,8 @@ namespace Tree
 
     // A logical fault (similar to assert?)
     MAKEEXCEPTION(logical_fault)
+
+    // Old version
+    MAKEEXCEPTION(old_version)
 }
 

@@ -37,6 +37,13 @@ namespace Tree
         return deg / 180.0 * PI;
     }
 
+    //transform a range [0-1] to [0-255]
+    inline float enbyten( float zero_to_one )
+    {
+        if( zero_to_one == 0 ) return 0;
+        else return zero_to_one / 1.0f * 255;
+    }
+
     // 0 < x < 1
     inline const float frandom() {
         return (float)rand() / (float)RAND_MAX;
@@ -51,36 +58,47 @@ namespace Tree
         return min + (int)( frandom() * ( max - min ) + 1 );
     }
 
-    template<class Iterator>
-    Iterator random( Iterator first, Iterator last )
+    /*
+     *      *
+     *    * X *
+     *      *
+     */
+    inline std::vector<Vec2i> GenerateNeighbours( const Vec2i &v )
     {
-        //will crash if first == last
-        if( first == last ) {
-            return first;
-        }
-        int n = 0;
-        Iterator it = first;
-        for( ; it != last; ++it ) {
-            ++n;
-        }
-        if( n == 1 ) {
-            return first;
-        }
-
-        int r = irandom( 0, n - 1 );
-        for( int i = 0; i < n; ++i, ++first ) {
-            if( i == r ) {
-                return first;
-            }
-        }
-        return first;
+        std::vector<Vec2i> l;
+        l.push_back( Vec2i( v.x - 1, v.y ) );
+        l.push_back( Vec2i( v.x + 1, v.y ) );
+        l.push_back( Vec2i( v.x, v.y - 1 ) );
+        l.push_back( Vec2i( v.x, v.y + 1 ) );
+        return l;
     }
 
-    //transform a range [0-1] to [0-255]
-    inline float enbyten( float zero_to_one )
+    /*
+     *    *   *
+     *      X
+     *    *   *
+     */
+    inline std::vector<Vec2i> GenerateCorners( const Vec2i &v )
     {
-        if( zero_to_one == 0 ) return 0;
-        else return zero_to_one / 1.0f * 255;
+        std::vector<Vec2i> l;
+        l.push_back( Vec2i( v.x - 1, v.y - 1 ) );
+        l.push_back( Vec2i( v.x - 1, v.y + 1 ) );
+        l.push_back( Vec2i( v.x + 1, v.y - 1 ) );
+        l.push_back( Vec2i( v.x + 1, v.y + 1 ) );
+        return l;
+    }
+
+    /*
+     *    * * *
+     *    * X *
+     *    * * *
+     */
+    inline std::vector<Vec2i> GenerateSurroundings( const Vec2i &v )
+    {
+        std::vector<Vec2i> l1 = GenerateNeighbours( v );
+        std::vector<Vec2i> l2 = GenerateCorners( v );
+        l1.insert( l1.end(), l2.begin(), l2.end() );
+        return l1;
     }
 }
 

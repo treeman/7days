@@ -75,6 +75,9 @@ namespace Tree
     // Remove persistent debug val
     extern void DebugRemove( std::string id );
 
+    // Request at least this version of the library
+    extern void RequestMinVersion( float version );
+
     class Butler;
     class Settings;
     class Tweaks;

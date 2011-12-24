@@ -61,6 +61,10 @@ namespace Tree {
 
             Write( str );
         }
+        void operator() ( std::string str )
+        {
+            Write( str );
+        }
     private:
         std::ofstream file;
 

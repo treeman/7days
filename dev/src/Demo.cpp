@@ -24,9 +24,6 @@ Demo::Demo() : count(0)
     }
     ShuffleNext();
 
-    // Need to load sprites file
-    BUTLER->LoadSprites( "sprites.lua" );
-
     dude = BUTLER->CreateSprite( "dude" );
     dude.SetPosition( 230, 200 );
 
@@ -159,6 +156,44 @@ void Demo::Draw()
     str.SetPosition( point.x + 20, point.y - 20 );
     str.SetText( boost::lexical_cast<std::string>( degree ) );
     Tree::Draw( str );
+
+    // Check neighbours
+    str.SetPosition( 250, 350 );
+    str.SetText( "neighbours" );
+    Tree::Draw( str );
+
+    typedef std::vector<Vec2i> Points;
+    Points ps = Tree::GenerateNeighbours( point );
+    n = 1;
+    for( Points::iterator it = ps.begin(); it < ps.end(); ++it, ++n ) {
+        str.SetPosition( 250, 350 + h * n );
+        str.SetText( boost::lexical_cast<std::string>( *it ) );
+        Tree::Draw( str );
+    }
+
+    str.SetPosition( 320, 350 );
+    str.SetText( "corners" );
+    Tree::Draw( str );
+
+    ps = Tree::GenerateCorners( point );
+    n = 1;
+    for( Points::iterator it = ps.begin(); it < ps.end(); ++it, ++n ) {
+        str.SetPosition( 320, 350 + h * n );
+        str.SetText( boost::lexical_cast<std::string>( *it ) );
+        Tree::Draw( str );
+    }
+
+    str.SetPosition( 400, 350 );
+    str.SetText( "both" );
+    Tree::Draw( str );
+
+    ps = Tree::GenerateSurroundings( point );
+    n = 1;
+    for( Points::iterator it = ps.begin(); it < ps.end(); ++it, ++n ) {
+        str.SetPosition( 400, 350 + h * n );
+        str.SetText( boost::lexical_cast<std::string>( *it ) );
+        Tree::Draw( str );
+    }
 }
 
 void Demo::ShuffleNext()
