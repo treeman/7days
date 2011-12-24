@@ -41,5 +41,10 @@ private:
     int count;
 
     Vec2i point;
+
+    Tree::WeightBag<std::string> weight_bag;
+    int apples, oranges, strawberries;
+    int total_weight;
+    std::string curr_weight;
 };
 

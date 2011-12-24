@@ -9,7 +9,7 @@
 using Tree::Game;
 
 Game::Game() : exit_called( false ), state_changed( true ),
-    fps( 0 ), /*fps_buff( 0 ),*/ fps_frame_count( 0 ),
+    fps( 0 ), fps_frame_count( 0 ),
     drawn_lazy( false ), need_redraw( false ), clear_allowed( true ),
     min_version( 0 )
 {
@@ -306,12 +306,9 @@ void Game::UpdateFPS( float dt )
 {
     //simply update each second
     //no need for anything more sophisticated
-    //fps_buff += dt;
     ++fps_frame_count;
-    //if( fps_buff > 1.0 ) {
     if( fps_timer.GetTime() > 1.0 ) {
         fps = fps_frame_count / fps_timer.GetTime();
-        //fps_buff = fps_frame_count = 0;
         fps_frame_count = 0;
         fps_timer.Restart();
     }

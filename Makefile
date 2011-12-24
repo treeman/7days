@@ -89,10 +89,10 @@ dev/.depend: $(DEVSRC)
 include dev/.depend
 
 clean_dev:
-	rm $(DEVOBJDIR)/* $(DEVEXE) -rf
+	rm $(DEVOBJDIR)/* $(DEVEXE) dev/.depend -rf
 
 clean: clean_dev clean_examples
-	rm $(OBJDIR)/* $(OUTPUT) -rf
+	rm $(OBJDIR)/* $(OUTPUT) .depend -rf
 
 remake: clean all
 

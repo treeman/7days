@@ -41,7 +41,7 @@ $(OBJDIR)/%.o: %.cpp
 include .depend
 
 clean:
-	rm $(EXE) $(DEBUG_EXE) $(OBJDIR)/* -rf
+	rm $(EXE) $(DEBUG_EXE) $(OBJDIR)/* .depend -rf
 
 remake: clean all
 

@@ -18,11 +18,12 @@
 #include "Tree/Math.hpp"
 #include "Tree/Rect.hpp"
 #include "Tree/Settings.hpp"
-#include "Tree/Shufflebag.hpp"
+#include "Tree/ShuffleBag.hpp"
 #include "Tree/Sprite.hpp"
 #include "Tree/Timer.hpp"
 #include "Tree/Tweaks.hpp"
 #include "Tree/Util.hpp"
 #include "Tree/VisualDebug.hpp"
 #include "Tree/Version.hpp"
+#include "Tree/WeightBag.hpp"
 

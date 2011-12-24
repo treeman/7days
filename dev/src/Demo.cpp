@@ -8,9 +8,7 @@ Demo::Demo() : count(0)
     st.SetSpeed( 2 );
     cd.SetLimit( 10 );
 
-    t.Start();
-    st.Start();
-    cd.Start();
+    Reset();
 
     str = BUTLER->CreateString( "fnt/consola.ttf", 10 );
     str.SetColor( Tree::Color( 0xFFFFFFFF ) );
@@ -18,11 +16,9 @@ Demo::Demo() : count(0)
     // Init shufflebag
     bag.reset( new Tree::ShuffleBag<int>() );
 
-    //for( int i = 0; i < TWEAKS->GetNum( "boxes" ); ++i ) {
     for( int i = 0; i < MAGIC_NUM( "boxes" ); ++i ) {
         bag->Add( i );
     }
-    ShuffleNext();
 
     dude = BUTLER->CreateSprite( "dude" );
     dude.SetPosition( 230, 200 );
@@ -36,6 +32,12 @@ Demo::Demo() : count(0)
     L_( "hi: %d\n", 1337 );
 
     point( 400, 300 );
+
+    weight_bag.Add( 0.6, "Strawberry" );
+    weight_bag.Add( 0.2, "Apple" );
+    weight_bag.Add( 0.2, "Orange" );
+
+    ShuffleNext();
 }
 
 bool Demo::HandleEvent( sf::Event &e )
@@ -194,6 +196,59 @@ void Demo::Draw()
         str.SetText( boost::lexical_cast<std::string>( *it ) );
         Tree::Draw( str );
     }
+
+    // Draw weight bag's selections
+
+    typedef std::vector<std::string> Vals;
+    typedef std::vector<float> Weights;
+
+    Vals vals = weight_bag.GetVals();
+    Weights weights = weight_bag.GetWeights();
+
+    std::stringstream ss;
+    ss.precision( 2 );
+
+    n = 1;
+    for( Weights::iterator it = weights.begin(); it < weights.end(); ++it, ++n ) {
+        str.SetPosition( 60, 30 + h * n );
+        ss.str("");
+        ss << *it;
+        //str.SetText( boost::lexical_cast<std::string>( *it ) );
+        str.SetText( ss.str() );
+        Tree::Draw( str );
+    }
+
+    n = 1;
+    for( Vals::iterator it = vals.begin(); it < vals.end(); ++it, ++n ) {
+        str.SetPosition( 85, 30 + h * n );
+        str.SetText( boost::lexical_cast<std::string>( *it ) );
+        Tree::Draw( str );
+    }
+
+    str.SetPosition( 170, 40 );
+    ss.str("");
+    ss << "0.2: " << apples << " " << (float)apples / (float)total_weight
+        << " Apples";
+    str.SetText( ss.str() );
+    Tree::Draw( str );
+
+    str.SetPosition( 170, 50 );
+    ss.str("");
+    ss << "0.2: " << oranges << " " << (float)oranges / (float)total_weight
+        << " Oranges";
+    str.SetText( ss.str() );
+    Tree::Draw( str );
+
+    str.SetPosition( 170, 60 );
+    ss.str("");
+    ss << "0.6: " << strawberries << " " <<
+        (float)strawberries / (float)total_weight << " Strawberries";
+    str.SetText( ss.str() );
+    Tree::Draw( str );
+
+    str.SetPosition( 170, 70 );
+    str.SetText( "last: " + curr_weight );
+    Tree::Draw( str );
 }
 
 void Demo::ShuffleNext()
@@ -201,6 +256,13 @@ void Demo::ShuffleNext()
     latest = bag->Get();
     bagged = bag->GetBag();
     rest = bag->GetRest();
+
+    curr_weight = weight_bag.Get();
+    if( curr_weight == "Apple" ) ++apples;
+    else if( curr_weight == "Orange" ) ++oranges;
+    else if( curr_weight == "Strawberry" ) ++strawberries;
+
+    ++total_weight;
 }
 
 void Demo::SetSpeed( float speed )
@@ -220,6 +282,7 @@ void Demo::Reset()
     st.Restart();
     cd.Restart();
     count = 0;
+    total_weight = apples = oranges = strawberries = 0;
 }
 void Demo::Toggle()
 {
