@@ -5,7 +5,9 @@
 #include <cstdlib>
 #include <cfloat>
 
-namespace math
+#include "Vec2D.hpp"
+
+namespace Tree
 {
     static const float PI = 3.14159265358979323846f;
     static const float PI_2 = 1.57079632679489661923f;
@@ -19,6 +21,22 @@ namespace math
     {
         return x0 + ( (x1 - x0) * dt );
     }
+
+    template<typename T>
+    inline const T clip( const T &x, const T &min, const T &max ) {
+        if( x < min ) return min;
+        if( x > max ) return max;
+        return x;
+    }
+
+    inline float rad2deg( float rad ) {
+        return 180.0 / PI * rad;
+    }
+
+    inline float deg2rad( float deg ) {
+        return deg / 180.0 * PI;
+    }
+
     // 0 < x < 1
     inline const float frandom() {
         return (float)rand() / (float)RAND_MAX;
@@ -31,13 +49,6 @@ namespace math
     inline const int irandom( int min, int max ) {
         if( min == max ) return min;
         return min + (int)( frandom() * ( max - min ) + 1 );
-    }
-
-    template<typename T>
-    inline const T clip( const T &x, const T &min, const T &max ) {
-        if( x < min ) return min;
-        if( x > max ) return max;
-        return x;
     }
 
     template<class Iterator>
@@ -56,7 +67,7 @@ namespace math
             return first;
         }
 
-        int r = math::irandom( 0, n - 1 );
+        int r = irandom( 0, n - 1 );
         for( int i = 0; i < n; ++i, ++first ) {
             if( i == r ) {
                 return first;

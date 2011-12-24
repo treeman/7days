@@ -7,6 +7,8 @@
     * Squared tiling
     * Lazy drawing
     * VisualDebug
+    * Timers
+    * Logging
 
 * Add in gridhandling
     Subfolders/Namespace
@@ -47,8 +49,8 @@ DONE * Countdown Timer
 DONE * Game shouldn't load tweaks, we should manually do it
 
 * Vector
-    * Find angle between two vectors
-    * () operator for easy changing
+    DONE * Find angle between two vectors
+    DONE * () operator for easy changing
     * Generate surrounding vectors
 
         - * -       * * *
@@ -86,11 +88,7 @@ DONE * Shortened/Simplified
     * Make a Tree::Play which plays a sf::Sound or a string to a sound file
 
 * Investigate assertions
-
-* Random
-    * Produce selection out of weighted numbers
-        ex: r(hej -> 0.3, då -> 0.7)
-        will give a 30% chance of 'hej' and 70% of 'då'
+    Boost assert looks promising
 
 * Versioning
     * Ability to demand at least version X from users
@@ -98,4 +96,15 @@ DONE * Shortened/Simplified
 
 * Release generation tools
     * (Bundle bin + README) to tar/zip
+
+* Math
+    * Break out to .cpp
+    * Utility functions for vector? clip max length?
+
+* WeightBag
+    * Produce selection out of weighted numbers
+        ex: r(hej -> 0.3, då -> 0.7)
+        will give a 30% chance of 'hej' and 70% of 'då'
+        r(a -> 0.4, b -> 0.4)
+        give 50% chance either way
 

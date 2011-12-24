@@ -15,10 +15,11 @@ public:
     Vec2D( const T _x = 0, const T _y = 0 ) : x(_x), y(_y) { }
 
     Vec2D( const Vec2D &v ) { x = v.x; y = v.y; }
+    // implicit conversion between differently typed vectors
     template<typename S>
     Vec2D( const Vec2D<S> &v ) { x = v.x; y = v.y; }
 
-    //implicit conversion between sfml's point type
+    // implicit conversion between sfml's point type
     template<typename S>
     Vec2D( const sf::Vector2<S> &v ) { x = v.x; y = v.y; }
     template<typename S>
@@ -41,14 +42,12 @@ public:
     bool operator != ( const Vec2D &v ) const { return !(*this == v); }
 
     // If we want to use it en a set we need them to be comparable unique
-    // Use conversion to Magnitude or MagnitudeSq before if you want sensible compare
-    // Could've probably used something to specify comparison but w/e
+    // Hard to find a good way to compare, for now compare magnitude
     bool operator < ( const Vec2D &v ) const {
-        if( x == v.x ) return y < v.y;
-        else return x < v.x;
+        return MagnitudeSq() < v.MagnitudeSq();
     }
 
-    T Dot( const Vec2D &v ) const { return x * v.x + y * v.y; }
+    void operator () ( const T _x, const T _y ) { x = _x; y = _y; }
 
     T Magnitude() const { return std::sqrt( x * x + y * y ); }
     T MagnitudeSq() const { return x * x + y * y; }
@@ -88,6 +87,16 @@ std::size_t hash_value( const Vec2D<T> &v )
 
 typedef Vec2D<float> Vec2f;
 typedef Vec2D<int> Vec2i;
+
+template<typename T>
+inline T dot( const Vec2D<T> v1, const Vec2D<T> v2 ) {
+    return  v1.x * v2.x + v1.y * v2.y;
+}
+
+template<typename T>
+inline float angle( const Vec2D<T> v1, const Vec2D<T> v2 ) {
+    return std::atan2( v1.x, v1.y ) - std::atan2( v2.x, v2.y );
+}
 
 template<typename T>
 inline Vec2D<T> operator * ( const T f, const Vec2D<T> v ) {

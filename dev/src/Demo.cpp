@@ -12,11 +12,8 @@ Demo::Demo() : count(0)
     st.Start();
     cd.Start();
 
-    time_str = BUTLER->CreateString( "fnt/consola.ttf", 10 );
-    time_str.SetColor( Tree::Color( 0xFFFFFFFF ) );
-
-    shuffle_str = BUTLER->CreateString( "fnt/consola.ttf", 10 );
-    shuffle_str.SetColor( sf::Color( 255, 255, 255 ) );
+    str = BUTLER->CreateString( "fnt/consola.ttf", 10 );
+    str.SetColor( Tree::Color( 0xFFFFFFFF ) );
 
     // Init shufflebag
     bag.reset( new Tree::ShuffleBag<int>() );
@@ -40,6 +37,8 @@ Demo::Demo() : count(0)
     background.SetPosition( 0, 0 );
 
     L_( "hi: %d\n", 1337 );
+
+    point( 400, 300 );
 }
 
 bool Demo::HandleEvent( sf::Event &e )
@@ -95,47 +94,71 @@ void Demo::Draw()
 {
     Tree::Draw( background );
 
-    time_str.SetText( boost::lexical_cast<std::string>( t.GetTime() ) );
-    time_str.SetPosition( 50, 5 );
-    Tree::Draw( time_str );
+    str.SetText( boost::lexical_cast<std::string>( t.GetTime() ) );
+    str.SetPosition( 50, 5 );
+    Tree::Draw( str );
 
-    time_str.SetText( boost::lexical_cast<std::string>( st.GetTime() ) );
-    time_str.SetPosition( 50, 15 );
-    Tree::Draw( time_str );
+    str.SetText( boost::lexical_cast<std::string>( st.GetTime() ) );
+    str.SetPosition( 50, 15 );
+    Tree::Draw( str );
 
-    time_str.SetText( boost::lexical_cast<std::string>( cd.GetTime() ) );
-    time_str.SetPosition( 200, 5 );
-    Tree::Draw( time_str );
+    str.SetText( boost::lexical_cast<std::string>( cd.GetTime() ) );
+    str.SetPosition( 200, 5 );
+    Tree::Draw( str );
 
     if( cd.IsDone() ) {
-        time_str.SetText( "done" );
+        str.SetText( "done" );
     }
     else {
-        time_str.SetText( "not done" );
+        str.SetText( "not done" );
     }
-    time_str.SetPosition( 200, 15 );
-    Tree::Draw( time_str );
+    str.SetPosition( 200, 15 );
+    Tree::Draw( str );
 
     // Draw shuffle bag's contents
     int n = 1;
     const float h = 10;
     for( Ints::iterator it = bagged.begin(); it != bagged.end(); ++it, ++n )
     {
-        shuffle_str.SetPosition( 10, 30 + h * n );
-        shuffle_str.SetText( boost::lexical_cast<std::string>( *it ) );
-        Tree::Draw( shuffle_str );
+        str.SetPosition( 10, 30 + h * n );
+        str.SetText( boost::lexical_cast<std::string>( *it ) );
+        Tree::Draw( str );
     }
 
     n = 1;
     for( Ints::iterator it = rest.begin(); it != rest.end(); ++it, ++n )
     {
-        shuffle_str.SetPosition( 30, 30 + h * n );
-        shuffle_str.SetText( boost::lexical_cast<std::string>( *it ) );
-        Tree::Draw( shuffle_str );
+        str.SetPosition( 30, 30 + h * n );
+        str.SetText( boost::lexical_cast<std::string>( *it ) );
+        Tree::Draw( str );
     }
 
     Tree::Draw( dude );
     Tree::Draw( girl );
+
+    Vec2i mpos = Tree::GetMousePos();
+    Vec2i l1 = point - mpos;
+    if( l1.Magnitude() > 50 ) l1.SetMagnitude( 50 );
+
+    Tree::Draw( sf::Shape::Line( point, point - l1, 1.0, Tree::Color( 0xff557733)));
+
+    Vec2i p2( point.x, point.y - 50 );
+    Vec2i l2 = point - p2;
+    if( l1.Magnitude() > 50 ) l1.SetMagnitude( 50 );
+
+    Tree::Draw( sf::Shape::Line( point, point - l2, 1.0, Tree::Color( 0xff775533)));
+
+    float rad = angle( l1, l2 );
+
+    str.SetPosition( point.x + 20, point.y - 30 );
+    str.SetText( boost::lexical_cast<std::string>( rad ) );
+    Tree::Draw( str );
+
+    float degree = Tree::rad2deg( rad );
+
+    str.SetPosition( point.x + 20, point.y - 20 );
+    str.SetText( boost::lexical_cast<std::string>( degree ) );
+    Tree::Draw( str );
 }
 
 void Demo::ShuffleNext()

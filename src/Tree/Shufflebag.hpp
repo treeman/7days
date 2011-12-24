@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "Math.hpp"
+#include "Tree.hpp"
 #include "Exceptions.hpp"
 
 namespace Tree {
@@ -46,7 +46,7 @@ namespace Tree {
                 bag.swap( rest );
             }
 
-            int i = math::irandom( 0, bag.size() - 1 );
+            int i = Tree::irandom( 0, bag.size() - 1 );
 
             T item = bag.at(i);
             rest.push_back( item );

@@ -17,7 +17,7 @@ private:
 
     Tree::CountDown cd;
 
-    sf::String time_str;
+    sf::String str;
 
     //testing the shufflebag
     boost::shared_ptr<Tree::ShuffleBag<int> > bag;
@@ -26,8 +26,6 @@ private:
     Ints bagged;
     Ints rest;
     int latest;
-
-    sf::String shuffle_str;
 
     void ShuffleNext();
     void SetTime( float speed );
@@ -41,5 +39,7 @@ private:
     sf::Sprite background;
 
     int count;
+
+    Vec2i point;
 };
 

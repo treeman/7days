@@ -25,9 +25,9 @@ namespace Tree
         StringMap persistent;
 
         sf::String render_str;
-        const float x_pos;
-        const float y_pos;
-        const float line_height;
+        const int x_pos;
+        const int y_pos;
+        const int line_height;
     };
 }
 
