@@ -3,3 +3,5 @@
 boxes = 45
 font_debug_color = 0xffddccbb
 
+shout = "Oh lalalala!"
+

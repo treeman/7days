@@ -21,7 +21,8 @@ Demo::Demo() : count(0)
     // Init shufflebag
     bag.reset( new Tree::ShuffleBag<int>() );
 
-    for( int i = 0; i < TWEAKS->GetNum( "boxes" ); ++i ) {
+    //for( int i = 0; i < TWEAKS->GetNum( "boxes" ); ++i ) {
+    for( int i = 0; i < MAGIC_NUM( "boxes" ); ++i ) {
         bag->Add( i );
     }
     ShuffleNext();
@@ -73,6 +74,9 @@ bool Demo::HandleEvent( sf::Event &e )
             case sf::Key::R:
                 Tree::DebugRemove( "persist" );
                 break;
+            case sf::Key::F10:
+                Tree::Exit();
+                break;
             default:
                 break;
         }
@@ -84,6 +88,7 @@ void Demo::Update( float dt )
 {
     Tree::Debug( "Debug!" );
     D_( "window = %dx%d", WINDOW_WIDTH, WINDOW_HEIGHT );
+    D_( MAGIC_STRING( "shout" ) );
 }
 
 void Demo::Draw()

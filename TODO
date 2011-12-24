@@ -75,10 +75,10 @@ DONE * VisualDebug
         * Own namespace
         * Examples
 
-* Shortened/Simplified
+DONE * Shortened/Simplified
     DONE * WINDOW_WIDTH
-    * MAGIC_NUM for TWEAKS->GetNum ?
-    * Tree::Exit
+    DONE * MAGIC_NUM for TWEAKS->GetNum ?
+    DONE * Tree::Exit
     DONE * VisualDebug
 
 * Sound

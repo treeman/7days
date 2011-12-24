@@ -276,6 +276,8 @@ boost::shared_ptr<Tree::GameState> Game::Top()
 
 void Game::Exit()
 {
+    L_( "Exit called\n" );
+
     exit_called = true;
 }
 bool Game::ShallExit() const

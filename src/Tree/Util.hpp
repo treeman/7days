@@ -41,6 +41,9 @@
 #define WINDOW_WIDTH Tree::GetWindowWidth()
 #define WINDOW_HEIGHT Tree::GetWindowHeight()
 
+#define MAGIC_NUM(name) TWEAKS->GetNum( name )
+#define MAGIC_STRING(name) TWEAKS->GetString( name )
+
 // Make life easier
 typedef std::vector<std::string> Strings;
 typedef std::map<std::string, std::string> StringMap;
@@ -58,6 +61,8 @@ namespace Tree
     extern Vec2f GetMousePos();
     extern void SetMousePos( const Vec2f &pos );
     extern void SetMousePos( float x, float y );
+
+    extern void Exit();
 
     // Debug stuff and print on screen every frame
     extern void Debug( std::string str );
