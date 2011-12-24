@@ -15,6 +15,9 @@
     * Squared
 
 * Simple GUI elements & handling
+    * Text input
+    * Scrolldown list
+    * Buttons/Selectors
 
 * Console
     * Is huge and not commented enough
@@ -38,10 +41,10 @@
     * Shorten sprites.lua
         Might be doable in lua?
 
-* Countdown Timer
+DONE * Countdown Timer
     Timer but check wheter finished
 
-* Game shouldn't load tweaks, we should manually do it
+DONE * Game shouldn't load tweaks, we should manually do it
 
 * Vector
     * Find angle between two vectors
@@ -54,11 +57,11 @@
 
         in a list
 
-* VisualDebug
-    * Setting to turn it off
-    * printf like
-    * Examples
-    * Test if working
+DONE * VisualDebug
+    DONE * Setting to turn it off
+    DONE * printf like
+    DONE * Examples
+    DONE * Test if working
 
 * Graphics
     * Draw outline of rectangle
@@ -67,14 +70,20 @@
     * Align center sf::String
     * Generic in/out fader
     * isVisible Check if working?
+    * Lazy Drawing
+        * Test if working
+        * Own namespace
+        * Examples
 
 * Shortened/Simplified
-    * WINDOW_WIDTH
+    DONE * WINDOW_WIDTH
     * MAGIC_NUM for TWEAKS->GetNum ?
     * Tree::Exit
+    DONE * VisualDebug
 
 * Sound
     * Store and play an sf::Sound, store a copy and do it so we can discard it after
+    * Make a Tree::Play which plays a sf::Sound or a string to a sound file
 
 * Investigate assertions
 

@@ -15,6 +15,8 @@ private:
     Tree::Timer t;
     Tree::Timer st;
 
+    Tree::CountDown cd;
+
     sf::String time_str;
 
     //testing the shufflebag
@@ -28,10 +30,16 @@ private:
     sf::String shuffle_str;
 
     void ShuffleNext();
+    void SetTime( float speed );
+    void SetSpeed( float speed );
+    void Reset();
+    void Toggle();
 
     sf::Sprite dude;
     sf::Sprite girl;
 
     sf::Sprite background;
+
+    int count;
 };
 

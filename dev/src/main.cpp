@@ -6,6 +6,9 @@ int main()
     L_.Init( "log.txt" );
 
     try {
+        // Load magic numbers
+        TWEAKS->Load( "magic_numbers.lua" );
+
         //create the game
         Tree::Game::Instance()->Init(
               800             //width

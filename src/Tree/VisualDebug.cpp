@@ -4,29 +4,31 @@
 #include "Tweaks.hpp"
 #include "Graphics.hpp"
 #include "Log.hpp"
+#include "Settings.hpp"
 
-using Tree::Debug;
+using Tree::VisualDebug;
 
-Debug::Debug() :
+VisualDebug::VisualDebug() :
     x_pos( Tree::GetWindowWidth() - 5 ),
     y_pos( 7 ),
     line_height( 12 )
 {
     render_str = BUTLER->CreateString( "fnt/consola.ttf", 10 );
-    render_str.SetColor( Tree::Color(
-        Tree::GetTweaks()->GetNum( "font_debug_color" ) ) );
+    render_str.SetColor( Tree::Color( TWEAKS->GetNum( "font_debug_color" ) ) );
+
+    SETTINGS->Register( "visual_debug_show", false );
 }
 
-void Debug::Add( std::string s )
+void VisualDebug::Add( std::string s )
 {
     temp.push_back( s );
 }
-void Debug::SetPersistent( std::string id, std::string s )
+void VisualDebug::SetPersistent( std::string id, std::string s )
 {
     RemovePersistent( id );
     persistent.insert( std::make_pair( id, s ) );
 }
-void Debug::RemovePersistent( std::string id )
+void VisualDebug::RemovePersistent( std::string id )
 {
     StringMap::iterator it = persistent.find( id );
     if( it != persistent.end() ) {
@@ -34,12 +36,17 @@ void Debug::RemovePersistent( std::string id )
     }
 }
 
-void Debug::ResetTempStrings()
+void VisualDebug::ResetTempStrings()
 {
     temp.clear();
 }
-void Debug::Render()
+void VisualDebug::Render()
 {
+    // We shouldn't show anything
+    if( !SETTINGS->GetValue<bool>( "visual_debug_show" ) ) {
+        return;
+    }
+
     int i = 0;
     for( StringMap::iterator it = persistent.begin();
          it != persistent.end(); ++it, ++i )

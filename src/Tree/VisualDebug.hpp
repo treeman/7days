@@ -9,9 +9,9 @@
 
 namespace Tree
 {
-    class Debug : public DrawnLazy {
+    class VisualDebug : public DrawnLazy {
     public:
-        Debug();
+        VisualDebug();
 
         void Add( std::string s );
         void SetPersistent( std::string id, std::string s );

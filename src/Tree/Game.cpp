@@ -103,6 +103,15 @@ void Game::SetMousePos( float x, float y )
     mpos.x = x; mpos.y = y;
 }
 
+int Game::GetWindowWidth()
+{
+    return window_manager->Width();
+}
+int Game::GetWindowHeight()
+{
+    return window_manager->Height();
+}
+
 void Game::Init(
     int width,
     int height,
@@ -114,8 +123,6 @@ void Game::Init(
     srand( time( NULL ) );
 
     drawn_lazy = _drawn_lazy;
-
-    TWEAKS->Load( "magic_numbers.lua" );
 
     settings->SetValue( "video_screen_width", width );
     settings->SetValue( "video_screen_height", height );
@@ -160,7 +167,7 @@ void Game::Init(
     game_debug.reset( new Tree::GameDebug() );
     input_chain->AddHandler( game_debug.get() );
 
-    visual_debug.reset( new Debug() );
+    visual_debug.reset( new VisualDebug() );
 }
 
 void Game::Start()

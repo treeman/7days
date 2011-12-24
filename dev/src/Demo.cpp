@@ -3,16 +3,16 @@
 
 #include "Demo.hpp"
 
-Demo::Demo()
+Demo::Demo() : count(0)
 {
-    // Load in magic numbers
-    TWEAKS->Load( "magic_numbers.lua" );
+    st.SetSpeed( 2 );
+    cd.SetLimit( 10 );
 
     t.Start();
     st.Start();
-    st.SetSpeed( 2 );
+    cd.Start();
 
-    time_str = BUTLER->CreateString( "fnt/consola.ttf", 14 );
+    time_str = BUTLER->CreateString( "fnt/consola.ttf", 10 );
     time_str.SetColor( Tree::Color( 0xFFFFFFFF ) );
 
     shuffle_str = BUTLER->CreateString( "fnt/consola.ttf", 10 );
@@ -46,38 +46,32 @@ bool Demo::HandleEvent( sf::Event &e )
     if( e.Type == sf::Event::KeyPressed ) {
         switch( e.Key.Code ) {
             case( sf::Key::Return ):
-                t.Restart();
-                st.Restart();
+                Reset();
                 break;
             case sf::Key::Space:
-                if( t.IsPaused() ) {
-                    t.Start();
-                }
-                else {
-                    t.Pause();
-                }
-                if( st.IsPaused() ) {
-                    st.Start();
-                }
-                else {
-                    st.Pause();
-                }
+                Toggle();
                 break;
             case sf::Key::G:
-                t.SetTime( 10.0 );
-                st.SetTime( 10.0 );
+                SetTime( 10.0 );
                 break;
             case sf::Key::Num1:
-                st.SetSpeed( 0.5 );
+                SetSpeed( 0.5 );
                 break;
             case sf::Key::Num2:
-                st.SetSpeed( 1.0 );
+                SetSpeed( 1.0 );
                 break;
             case sf::Key::Num3:
-                st.SetSpeed( 2.0 );
+                SetSpeed( 2.0 );
                 break;
             case sf::Key::S:
                 ShuffleNext();
+                break;
+            case sf::Key::C:
+                ++count;
+                Tree::DebugPersist( "persist", "count %d", count );
+                break;
+            case sf::Key::R:
+                Tree::DebugRemove( "persist" );
                 break;
             default:
                 break;
@@ -88,8 +82,10 @@ bool Demo::HandleEvent( sf::Event &e )
 
 void Demo::Update( float dt )
 {
-
+    Tree::Debug( "Debug!" );
+    D_( "window = %dx%d", WINDOW_WIDTH, WINDOW_HEIGHT );
 }
+
 void Demo::Draw()
 {
     Tree::Draw( background );
@@ -100,6 +96,19 @@ void Demo::Draw()
 
     time_str.SetText( boost::lexical_cast<std::string>( st.GetTime() ) );
     time_str.SetPosition( 50, 15 );
+    Tree::Draw( time_str );
+
+    time_str.SetText( boost::lexical_cast<std::string>( cd.GetTime() ) );
+    time_str.SetPosition( 200, 5 );
+    Tree::Draw( time_str );
+
+    if( cd.IsDone() ) {
+        time_str.SetText( "done" );
+    }
+    else {
+        time_str.SetText( "not done" );
+    }
+    time_str.SetPosition( 200, 15 );
     Tree::Draw( time_str );
 
     // Draw shuffle bag's contents
@@ -129,5 +138,30 @@ void Demo::ShuffleNext()
     latest = bag->Get();
     bagged = bag->GetBag();
     rest = bag->GetRest();
+}
+
+void Demo::SetSpeed( float speed )
+{
+    st.SetSpeed( speed );
+    cd.SetSpeed( speed );
+}
+void Demo::SetTime( float time )
+{
+    t.SetTime( time );
+    st.SetTime( time );
+    cd.SetTime( time );
+}
+void Demo::Reset()
+{
+    t.Restart();
+    st.Restart();
+    cd.Restart();
+    count = 0;
+}
+void Demo::Toggle()
+{
+    t.Toggle();
+    st.Toggle();
+    cd.Toggle();
 }
 

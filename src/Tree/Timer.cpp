@@ -1,6 +1,6 @@
 #include "Timer.hpp"
 
-using Tree::Timer;
+using namespace Tree;
 
 Timer::Timer() : start_tick(0), pause_tick(0), time(0), speed( 1 ),
     is_started(false), is_paused(false)
@@ -47,11 +47,6 @@ void Timer::Restart()
     Stop();
     Start();
 }
-void Timer::Reset()
-{
-    time = 0;
-    is_started = false;
-}
 
 float Timer::GetTime() const
 {
@@ -95,5 +90,32 @@ void Timer::UpdateTimeAcc()
 {
     time = GetTime();
     start_tick = clock.GetElapsedTime();
+}
+
+CountDown::CountDown() : limit(0)
+{
+
+}
+CountDown::CountDown( float _limit ) : limit(_limit)
+{
+
+}
+CountDown::~CountDown()
+{
+
+}
+
+void CountDown::SetLimit( float _limit )
+{
+    limit = _limit;
+}
+float CountDown::GetLimit() const
+{
+    return limit;
+}
+
+bool CountDown::IsDone()
+{
+    return GetTime() >= limit;
 }
 

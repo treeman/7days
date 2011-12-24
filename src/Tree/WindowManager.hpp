@@ -16,6 +16,9 @@ namespace Tree
 
         boost::shared_ptr<sf::RenderWindow> GetWindow() const { return window; }
 
+        int Width();
+        int Height();
+
         std::string SetWindowed( bool predicate );
         std::string SetScreenWidth( int val );
         std::string SetScreenHeight( int val );

@@ -50,6 +50,9 @@ namespace Tree
         Vec2f GetMousePos() const;
         void SetMousePos( float x, float y );
 
+        int GetWindowWidth();
+        int GetWindowHeight();
+
         void Init(
             int width,
             int height,
@@ -105,13 +108,13 @@ namespace Tree
         boost::shared_ptr<Butler> GetButler() const { return butler; }
         boost::shared_ptr<Tweaks> GetTweaks() const { return tweaks; }
         boost::shared_ptr<LogHelper> GetLogHelper() const { return log_helper; }
-        boost::shared_ptr<Debug> GetVisualDebug() const { return visual_debug; }
+        boost::shared_ptr<VisualDebug> GetVisualDebug() const { return visual_debug; }
     private:
         boost::shared_ptr<Settings> settings;
         boost::shared_ptr<Butler> butler;
         boost::shared_ptr<Tweaks> tweaks;
         boost::shared_ptr<LogHelper> log_helper;
-        boost::shared_ptr<Debug> visual_debug;
+        boost::shared_ptr<VisualDebug> visual_debug;
     };
 }
 

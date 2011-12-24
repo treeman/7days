@@ -44,6 +44,15 @@ WindowManager::~WindowManager()
     if( window->IsOpened() ) window->Close();
 }
 
+int WindowManager::Width()
+{
+    return width->Val();
+}
+int WindowManager::Height()
+{
+    return height->Val();
+}
+
 void WindowManager::UpdateWindow()
 {
     //prevent from recreating the screen while setting initial values

@@ -10,13 +10,12 @@ namespace Tree
         Timer();
         virtual ~Timer();
 
-        void Start();
+        void Start(); // Will not restart, you can call in a loop!
         void Pause();
         void Stop();
-        void Toggle();
+        void Toggle(); // Will toggle start and pause
 
-        void Restart();
-        void Reset();
+        void Restart(); // Stop and Start
 
         float GetTime() const;
         void SetTime( float time );
@@ -26,7 +25,7 @@ namespace Tree
 
         bool IsStarted() const;
         bool IsPaused() const;
-    protected:
+    private:
         virtual float GetTimeStep() const;
         virtual void UpdateTimeAcc();
 
@@ -42,6 +41,19 @@ namespace Tree
         sf::Clock clock;
     };
 
+    class CountDown : public Timer {
+    public:
+        CountDown();
+        CountDown( float limit );
+        virtual ~CountDown();
+
+        void SetLimit( float limit );
+        float GetLimit() const;
+
+        bool IsDone();
+    private:
+        float limit;
+    };
 }
 
 #endif
