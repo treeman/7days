@@ -108,5 +108,17 @@ namespace Tree
         const Color &outline_col = Color::clear, float outline = 0.f
     );
 
+    // Draw horisontal status bar
+    // x1,y1 top left and x2,y2 bottom right
+    void DrawBar(
+        float x1, float y1, float x2, float y2, float perc,
+        const Color &bg_col, const Color &fg_col,
+        const Color &outline_col = Color::clear, float outline = 0.f
+    );
+    void DrawBar(
+        Vec2f p1, Vec2f p2, float perc,
+        const Color &bg_col, const Color &fg_col,
+        const Color &outline_col = Color::clear, float outline = 0.f
+    );
 }
 

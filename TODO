@@ -72,7 +72,7 @@ DONE * VisualDebug
 
 * Graphics
     * Draw outline of rectangle
-    * DrawBar( pos, colors, box ) draw a statusbar
+    DONE * DrawBar( pos, colors, box ) draw a statusbar
     DONE * DrawRect shorthand for Tree::Draw( sf::Shape::Rectangle ...
     * Align center sf::String
     * Generic in/out fader

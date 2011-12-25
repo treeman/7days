@@ -259,3 +259,29 @@ void Tree::DrawCircle(
     Tree::Draw( sf::Shape::Circle( center, rad, col, outline, outline_col ) );
 }
 
+void Tree::DrawBar(
+    float x1, float y1, float x2, float y2, float perc,
+    const Color &bg_col, const Color &fg_col,
+    const Color &outline_col, float outline
+)
+{
+    if( perc > 1.0 ) perc = 1.0;
+    if( perc < 0 ) perc = 0.0;
+
+    const int w = std::abs( x1 - x2 );
+    const int filled = w * perc;
+
+    // Background + outline
+    Tree::DrawRect( x1, y1, x2, y2, bg_col, outline_col, outline );
+
+    // Filled
+    Tree::DrawRect( x1, y1, x1 + filled, y2, fg_col );
+}
+void Tree::DrawBar(
+    Vec2f p1, Vec2f p2, float perc, const Color &bg_col, const Color &fg_col,
+    const Color &outline_col, float outline
+)
+{
+    DrawBar( p1.x, p1.y, p2.x, p2.y, perc, bg_col, fg_col, outline_col, outline );
+}
+

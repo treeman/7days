@@ -253,6 +253,11 @@ void Demo::Draw()
     Tree::DrawTriangle( 610, 300, 600, 320, 620, 320, Tree::Color::white );
     Tree::DrawTriangle( 610, 360, 600, 340, 620, 340, Tree::Color::white,
         Tree::Color::red, 2.0 );
+
+    // Draw statusbar
+    float perc = st.GetTime() - (int)(st.GetTime() / 1.0);
+    Tree::DrawBar( 700, 580, 790, 590, perc, Tree::Color( 0xff333333 ),
+        Tree::Color( 0xffaaaaaa ), Tree::Color::white, 1.0 );
 }
 
 void Demo::ShuffleNext()
