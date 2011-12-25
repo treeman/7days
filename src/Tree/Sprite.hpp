@@ -16,8 +16,8 @@ namespace Tree
     public:
         SpriteLoader();
 
-        //different ways to load a file, either load it once or force a load
-        //even if loaded before
+        // Different ways to load a file, either load it once or force a load
+        // even if loaded before
         void Load( std::string lua_file ) throw( Tree::lua_error & );
         void ForceLoad( std::string lua_file ) throw( Tree::lua_error & );
 
@@ -29,7 +29,7 @@ namespace Tree
         SpriteMap sprite_map;
         Strings parsed_files;
 
-        //lua helper to load a sprite
+        // Lua helper to load a sprite
         bool LoadSprite( lua_State *L, sf::Sprite *spr ) throw( Tree::lua_error & );
     };
 }

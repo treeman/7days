@@ -24,7 +24,8 @@ namespace Tree
 
         bool HandleEvent( sf::Event &e );
 
-        void HearSetting( std::string setting, std::string value, std::string return_val );
+        void HearSetting( std::string setting, std::string value,
+            std::string return_val );
 
         void AddHistory( std::string str );
 

@@ -6,9 +6,9 @@
     * Isometric tiling
     * Squared tiling
     * Lazy drawing
-    * VisualDebug
     * Timers
-    * Logging
+    * Random
+    DONE * Logging & Debug
 
 * Add in gridhandling
     Subfolders/Namespace
@@ -24,6 +24,11 @@
 * Console
     * Is huge and not commented enough
     * Make GUI elements from parts
+
+DONE * Loghelper
+    DONE What does it do? How does it work?
+    + Prevents spam to log
+    + Added in Tree::SetLogKey and Tree::ShallLog for easier logging
 
 * Pix
     * Make Pix namespace
@@ -85,7 +90,9 @@ DONE * VisualDebug
         * Own namespace
         * Examples
 
-DONE * Placeholder mouse cursor
+* Placeholder mouse cursor
+    DONE * Functionality
+    * Should not crash the program if gfx isn't found!!
 
 DONE * Shortened/Simplified
     DONE * WINDOW_WIDTH
@@ -98,19 +105,21 @@ DONE * Shortened/Simplified
     * Make a Tree::Play which plays a sf::Sound or a string to a sound file
     * Take sound level settings as arguments
 
-* Investigate assertions
-    Boost assert looks promising
+* Assertions
+    Just use BOOST_ASSERT
+    * Log results as well
 
 * Versioning
     DONE * Ability to demand at least version X from users
     * Tag in git
 
-* Release generation tools
+* Tools
     * (Bundle bin + README) to tar/zip
     * Tag new versioning releases
         Create new libs to store?
         Modify Version.hpp
         Tag as new release in git
+    * Create new project
 
 DONE * Math
     DONE * Break out to .cpp

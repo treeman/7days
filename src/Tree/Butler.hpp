@@ -25,6 +25,7 @@ namespace Tree
 
         void LoadSprites( std::string lua_file );
 
+        // Create direct resources
         FntPtr GetFont( std::string path, unsigned int size = 30 )
             throw( Tree::resource_not_found );
         ImgPtr GetImage( std::string path, bool shall_smooth = false )
@@ -32,6 +33,7 @@ namespace Tree
         SndPtr GetSoundBuffer( std::string path )
             throw( Tree::resource_not_found );
 
+        // Create throw-away handlers
         sf::Sprite CreateSprite( std::string name )
             throw( Tree::resource_not_found );
         sf::String CreateString( std::string fnt_path, int size )

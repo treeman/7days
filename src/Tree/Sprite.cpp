@@ -9,7 +9,9 @@ SpriteLoader::SpriteLoader() { }
 
 void SpriteLoader::Load( std::string lua_file ) throw( Tree::lua_error & )
 {
-    if( std::find( parsed_files.begin(), parsed_files.end(), lua_file ) != parsed_files.end() ) {
+    if( std::find( parsed_files.begin(), parsed_files.end(), lua_file )
+        != parsed_files.end() )
+    {
         return;
     }
 
@@ -48,16 +50,19 @@ bool SpriteLoader::HasCustomSprite( std::string name )
     return sprite_map.find( name ) != sprite_map.end();
 }
 
-sf::Sprite SpriteLoader::Create( std::string name ) throw( Tree::resource_not_found & )
+sf::Sprite SpriteLoader::Create( std::string name )
+    throw( Tree::resource_not_found & )
 {
     SpriteMap::iterator it = sprite_map.find( name );
     if( it == sprite_map.end() ) {
-        throw( Tree::resource_not_found( ( "sprite '" + name + "' not found\n" ).c_str() ) );
+        throw( Tree::resource_not_found( ( "sprite '" + name + "' not found\n" )
+            .c_str() ) );
     }
     else { return it->second; }
 }
 
-bool SpriteLoader::LoadSprite( lua_State *L, sf::Sprite *spr ) throw( Tree::lua_error & )
+bool SpriteLoader::LoadSprite( lua_State *L, sf::Sprite *spr )
+    throw( Tree::lua_error & )
 {
     if( lua_istable( L, -1 ) ) {
         // Hack to not try to load package.path into our sprite loading

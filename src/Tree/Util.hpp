@@ -75,6 +75,11 @@ namespace Tree
     // Remove persistent debug val
     extern void DebugRemove( std::string id );
 
+    // Set a key for event logging
+    extern void SetLogKey( int key );
+    // Is log key pressed? Don't spam the log
+    extern bool ShallLog();
+
     // Request at least this version of the library
     extern void RequestMinVersion( float version );
 

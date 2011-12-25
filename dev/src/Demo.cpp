@@ -29,6 +29,8 @@ Demo::Demo() : count(0)
     weight_bag.Add( 0.2, "Orange" );
 
     ShuffleNext();
+
+    Tree::SetLogKey( sf::Key:: L );
 }
 
 bool Demo::HandleEvent( sf::Event &e )
@@ -78,6 +80,10 @@ void Demo::Update( float dt )
     Tree::Debug( "Debug!" );
     D_( "window = %dx%d", WINDOW_WIDTH, WINDOW_HEIGHT );
     D_( MAGIC_STRING( "shout" ) );
+
+    if( Tree::ShallLog() ) {
+        L_( "Log when needed\n" );
+    }
 }
 
 void Demo::Draw()

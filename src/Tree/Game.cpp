@@ -192,7 +192,7 @@ void Game::Start()
 
     while( window->IsOpened() )
     {
-        //if we change state, change it now and not in the middle of things
+        // If we change state, change it now and not in the middle of things
         if( state_changed ) {
             curr_state->Unloaded();
 
@@ -215,12 +215,15 @@ void Game::Start()
                 mpos.y = event.MouseMove.Y;
             }
 
-            //pass down events in a chain
+            // Check log interrupt
+            log_helper->HandleEvent( event );
+
+            // Pass down events in a chain
             if( input_chain->HandleEvent( event ) ) {
                 curr_state->HandleEvent( event );
             }
 
-            //if we close the window, quit gracefully
+            // If we close the window, quit gracefully
             if( event.Type == sf::Event::Closed ) {
                 Exit();
                 break;
@@ -231,12 +234,12 @@ void Game::Start()
         console->Update( dt );
         game_debug->Update( dt );
 
-        //exit as fast as we can, no need to render if we want to quit
+        // Exit as fast as we can, no need to render if we want to quit
         if( ShallExit() ) {
             window->Close();
         }
 
-        //begin render loop
+        // Begin render loop
         if( !drawn_lazy || shall_clear_window ) {
             if( clear_allowed ) {
                 window->Clear( clear_color );
@@ -250,14 +253,14 @@ void Game::Start()
         visual_debug->Draw();
         console->Draw();
 
-        //actually draw everything
+        // Actually draw everything
         window->Display();
 
-        //necessary to call it here so we can log rendering stuff too
-        //this will simply reset the one time frame log
+        // Necessary to call it here so we can log rendering stuff too
+        // This will simply reset the one time frame log
         log_helper->EndofLoop();
 
-        //update lazy rendering
+        // Update lazy rendering
         if( drawn_lazy ) {
             need_redraw = false;
             portions_redrawn.clear();
