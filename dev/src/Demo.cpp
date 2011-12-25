@@ -125,13 +125,13 @@ void Demo::Draw()
 
     Vec2i mpos = Tree::GetMousePos();
     Vec2i l1 = point - mpos;
-    if( l1.Magnitude() > 50 ) l1.SetMagnitude( 50 );
+    Tree::clip( l1, 0, 50 );
 
     Tree::Draw( sf::Shape::Line( point, point - l1, 1.0, Tree::Color( 0xff557733)));
 
     Vec2i p2( point.x, point.y - 50 );
     Vec2i l2 = point - p2;
-    if( l1.Magnitude() > 50 ) l1.SetMagnitude( 50 );
+    Tree::clip( l2, 0, 50 );
 
     Tree::Draw( sf::Shape::Line( point, point - l2, 1.0, Tree::Color( 0xff775533)));
 
@@ -186,7 +186,6 @@ void Demo::Draw()
     }
 
     // Draw weight bag's selections
-
     typedef std::vector<std::string> Vals;
     typedef std::vector<float> Weights;
 

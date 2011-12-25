@@ -29,6 +29,13 @@ namespace Tree
         return x;
     }
 
+    template<typename T>
+    inline void clip( Vec2D<T> &v, const T &min, const T &max ) {
+        const T l = v.Magnitude();
+        if( l < min ) v.SetMagnitude( min );
+        if( l > max ) v.SetMagnitude( max );
+    }
+
     inline float rad2deg( float rad ) {
         return 180.0 / PI * rad;
     }
