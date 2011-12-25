@@ -112,9 +112,9 @@ DONE * Shortened/Simplified
         Modify Version.hpp
         Tag as new release in git
 
-* Math
-    * Break out to .cpp Maybe not?! Lot's of template functions which won't work
-    DONE * Utility functions for vector? clip max length?
+DONE * Math
+    DONE * Break out to .cpp
+    DONE * Utility functions for vector clip max length
 
 * WeightBag
     DONE * Produce selection out of weighted numbers

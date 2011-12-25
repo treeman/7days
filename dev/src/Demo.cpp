@@ -254,7 +254,7 @@ void Demo::Draw()
         Tree::Color::red, 2.0 );
 
     // Draw statusbar
-    float perc = st.GetTime() - (int)(st.GetTime() / 1.0);
+    float perc = st.GetTime() - (int)(st.GetTime() / 2.0) * 2.0;
     Tree::DrawBar( 700, 580, 790, 590, perc, Tree::Color( 0xff333333 ),
         Tree::Color( 0xffaaaaaa ), Tree::Color::white, 1.0 );
 }
