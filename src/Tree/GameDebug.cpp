@@ -28,6 +28,8 @@ GameDebug::GameDebug()
     mpos = Tree::GetButler()->CreateString( "fnt/consola.ttf", 10 );
     mpos.SetColor( Tree::Color( Tree::GetTweaks()->GetNum( "font_debug_color" ) ) );
     mpos.SetPosition( 50, 7 );
+
+    mptr = BUTLER->CreateSprite( "gfx/ptr.png" );
 }
 
 bool GameDebug::HandleEvent( sf::Event &e )
@@ -44,6 +46,7 @@ void GameDebug::Update( float )
     fps.SetText( s );
 
     Vec2f mouse_pos = Tree::GetMousePos();
+    mptr.SetPosition( mouse_pos );
     std::stringstream ss;
     ss << mouse_pos.x << "," << mouse_pos.y;
     mpos.SetText( ss.str() );
@@ -56,6 +59,7 @@ void GameDebug::Render()
     }
     if( show_mouse_pos->Val() ) {
         Tree::Draw( mpos );
+        Tree::Draw( mptr );
     }
 }
 

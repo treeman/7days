@@ -85,11 +85,11 @@ void Demo::Draw()
     Tree::ClearWindow( Tree::Color::black );
 
     str.SetText( boost::lexical_cast<std::string>( t.GetTime() ) );
-    str.SetPosition( 50, 5 );
+    str.SetPosition( 100, 5 );
     Tree::Draw( str );
 
     str.SetText( boost::lexical_cast<std::string>( st.GetTime() ) );
-    str.SetPosition( 50, 15 );
+    str.SetPosition( 100, 15 );
     Tree::Draw( str );
 
     str.SetText( boost::lexical_cast<std::string>( cd.GetTime() ) );

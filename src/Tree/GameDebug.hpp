@@ -25,6 +25,8 @@ namespace Tree
 
         sf::String fps;
         sf::String mpos;
+
+        sf::Sprite mptr;
     };
 }
 
