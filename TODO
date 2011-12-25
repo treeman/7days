@@ -90,9 +90,9 @@ DONE * VisualDebug
         * Own namespace
         * Examples
 
-* Placeholder mouse cursor
+DONE * Placeholder mouse cursor
     DONE * Functionality
-    * Should not crash the program if gfx isn't found!!
+    DONE * Should not crash the program if gfx isn't found!!
 
 DONE * Shortened/Simplified
     DONE * WINDOW_WIDTH

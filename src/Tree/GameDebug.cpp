@@ -29,7 +29,12 @@ GameDebug::GameDebug()
     mpos.SetColor( Tree::Color( Tree::GetTweaks()->GetNum( "font_debug_color" ) ) );
     mpos.SetPosition( 50, 7 );
 
-    mptr = BUTLER->CreateSprite( "gfx/ptr.png" );
+    // Placeholder mouse pointer
+    // doesn't matter if we find it or not
+    try {
+        mptr = BUTLER->CreateSprite( "gfx/ptr.png" );
+    }
+    catch( Tree::resource_not_found &e ) { }
 }
 
 bool GameDebug::HandleEvent( sf::Event &e )
