@@ -65,7 +65,7 @@ public:
 
     T x, y;
 
-    //names for common vectors
+    // Names for common vectors
     static const Vec2D zero;
     static const Vec2D right;
     static const Vec2D left;
@@ -73,7 +73,7 @@ public:
     static const Vec2D down;
 };
 
-// work with boost hash functions eg unordered_set
+// Work with boost hash functions eg unordered_set
 template<typename T>
 std::size_t hash_value( const Vec2D<T> &v )
 {

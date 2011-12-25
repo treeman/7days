@@ -20,15 +20,6 @@ Demo::Demo() : count(0)
         bag->Add( i );
     }
 
-    dude = BUTLER->CreateSprite( "dude" );
-    dude.SetPosition( 230, 200 );
-
-    girl = BUTLER->CreateSprite( "girl" );
-    girl.SetPosition( 400, 150 );
-
-    background = BUTLER->CreateSprite( "gfx/dude.png" );
-    background.SetPosition( 0, 0 );
-
     L_( "hi: %d\n", 1337 );
 
     point( 400, 300 );
@@ -91,7 +82,7 @@ void Demo::Update( float dt )
 
 void Demo::Draw()
 {
-    Tree::Draw( background );
+    Tree::ClearWindow( Tree::Color::black );
 
     str.SetText( boost::lexical_cast<std::string>( t.GetTime() ) );
     str.SetPosition( 50, 5 );
@@ -131,9 +122,6 @@ void Demo::Draw()
         str.SetText( boost::lexical_cast<std::string>( *it ) );
         Tree::Draw( str );
     }
-
-    Tree::Draw( dude );
-    Tree::Draw( girl );
 
     Vec2i mpos = Tree::GetMousePos();
     Vec2i l1 = point - mpos;

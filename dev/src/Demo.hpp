@@ -33,11 +33,6 @@ private:
     void Reset();
     void Toggle();
 
-    sf::Sprite dude;
-    sf::Sprite girl;
-
-    sf::Sprite background;
-
     int count;
 
     Vec2i point;

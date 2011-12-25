@@ -30,8 +30,13 @@
     * Comment more
     * Need a faster way to draw pixmap, maybe opengl bunch up rectangles to draw
 
-* Settings
-    * Better commenting
+DONE * Settings
+    DONE * Better commenting
+
+* Rect
+    Is this really needed? Why duplicate?
+    * Check corresponding sf::IntRect or similar.
+    Might be simpler with direct access to members but eh?
 
 * Sprites
     * Animationsprite
@@ -86,6 +91,7 @@ DONE * Shortened/Simplified
 * Sound
     * Store and play an sf::Sound, store a copy and do it so we can discard it after
     * Make a Tree::Play which plays a sf::Sound or a string to a sound file
+    * Take sound level settings as arguments
 
 * Investigate assertions
     Boost assert looks promising

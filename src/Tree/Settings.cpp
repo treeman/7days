@@ -115,7 +115,7 @@ void Settings::ParseFile( std::string file ) throw( Tree::resource_not_found )
 void Settings::ParseSetting( std::string str ) throw()
 {
     if( !str.size() ) {
-        return; //"Parsing an empty setting? Pff...";
+        return; // "Parsing an empty setting? Pff...";
     }
 
     std::string name, value;
@@ -151,7 +151,7 @@ void Settings::SetVariable( std::string name, std::string value )
     ItPair ret = dator_map.equal_range( name );
 
     if( ret.first == ret.second ) {
-        //no setting found
+        // No setting found
         StringMap::iterator it = unparsed_settings_map.find( name );
         if( it != unparsed_settings_map.end() ) {
             it->second = value;
@@ -184,7 +184,8 @@ void Settings::AddListener( SettingsListener *listener )
 void Settings::UpdateListeners( std::string setting, std::string value,
     std::string return_val )
 {
-    for( ListenerList::iterator it = listener_list.begin(); it != listener_list.end(); ++it )
+    for( ListenerList::iterator it = listener_list.begin();
+        it != listener_list.end(); ++it )
     {
         (*it)->HearSetting( setting, value, return_val );
     }
