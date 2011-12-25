@@ -237,6 +237,22 @@ void Demo::Draw()
     str.SetPosition( 170, 70 );
     str.SetText( "last: " + curr_weight );
     Tree::Draw( str );
+
+    // Draw shapes
+    Tree::DrawLine( 500, 200, 520, 220, Tree::Color::white );
+    Tree::DrawLine( 520, 220, 540, 180, Tree::Color::yellow, 2.0 );
+    Tree::DrawLine( Vec2i( 540, 180 ), Vec2i( 560, 200 ),
+        Tree::Color::magenta, 2.0, Tree::Color::cyan, 1.0 );
+
+    Tree::DrawRect( 600, 100, 640, 140, Tree::Color::blue );
+    Tree::DrawRect( 600, 200, 640, 240, Tree::Color::green,
+        Tree::Color::red, 1.0 );
+
+    Tree::DrawCircle( 700, 250, 40, Tree::Color::white );
+
+    Tree::DrawTriangle( 610, 300, 600, 320, 620, 320, Tree::Color::white );
+    Tree::DrawTriangle( 610, 360, 600, 340, 620, 340, Tree::Color::white,
+        Tree::Color::red, 2.0 );
 }
 
 void Demo::ShuffleNext()

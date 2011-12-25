@@ -205,6 +205,30 @@ void Tree::DrawLine(
     Tree::Draw( sf::Shape::Line( p1, p2, thickness, col, outline, outline_col ) );
 }
 
+void Tree::DrawTriangle(
+    float x1, float y1, float x2, float y2, float x3, float y3,
+    const Color &col, const Color &outline_col, float outline
+)
+{
+    DrawTriangle(
+        Vec2f( x1, y1 ), Vec2f( x2, y2 ), Vec2f( x3, y3 ),
+        col, outline_col, outline
+    );
+}
+void Tree::DrawTriangle(
+    Vec2f p1, Vec2f p2, Vec2f p3,
+    const Color &col, const Color &outline_col, float outline
+)
+{
+    sf::Shape s;
+    s.AddPoint( p1, col, outline_col );
+    s.AddPoint( p2, col, outline_col );
+    s.AddPoint( p3, col, outline_col );
+
+    s.SetOutlineWidth( outline );
+    Tree::Draw( s );
+}
+
 void Tree::DrawRect(
     float x1, float y1, float x2, float y2, const Color &col,
     const Color &outline_col, float outline

@@ -81,6 +81,15 @@ namespace Tree
         const Color &outline_col = Color::clear, float outline = 0.f
     );
 
+    void DrawTriangle(
+        float x1, float y1, float x2, float y2, float x3, float y3, const Color &col,
+        const Color &outline_col = Color::clear, float outline = 0.f
+    );
+    void DrawTriangle(
+        Vec2f p1, Vec2f p2, Vec2f p3, const Color &col,
+        const Color &outline_col = Color::clear, float outline = 0.f
+    );
+
     void DrawRect(
         float x1, float y1, float x2, float y2, const Color &col,
         const Color &outline_col = Color::clear, float outline = 0.f
