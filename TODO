@@ -134,4 +134,5 @@ DONE * Math
     * Modify weights for numbers
     * Remove specific weights/values?
     * If slow optimize to binary search when Get
+    DONE * Clear
 
