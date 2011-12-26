@@ -16,7 +16,12 @@ namespace Tree
         void Load( std::string path );
 
         double GetNum( std::string s );
+        bool HasNum( std::string s );
+        void SetNum( std::string s, double val );
+
         std::string GetString( std::string s );
+        bool HasString( std::string s );
+        void SetString( std::string s, std::string val );
     private:
         typedef std::map<std::string, double> DoubleMap;
         DoubleMap doubles;

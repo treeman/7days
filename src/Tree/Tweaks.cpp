@@ -45,6 +45,14 @@ double Tweaks::GetNum( std::string s )
             " wasn't found in tweaks\n").c_str() ) );
     }
 }
+bool Tweaks::HasNum( std::string s )
+{
+    return doubles.find( s ) != doubles.end();
+}
+void Tweaks::SetNum( std::string s, double val )
+{
+    doubles[s] = val;
+}
 
 std::string Tweaks::GetString( std::string s )
 {
@@ -54,5 +62,13 @@ std::string Tweaks::GetString( std::string s )
         throw( Tree::setting_not_found( ("The string " + s +
             " wasn't found in tweaks\n").c_str() ) );
     }
+}
+bool Tweaks::HasString( std::string s )
+{
+    return strings.find( s ) != strings.end();
+}
+void Tweaks::SetString( std::string s, std::string val )
+{
+    strings[s] = val;
 }
 

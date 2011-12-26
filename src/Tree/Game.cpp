@@ -135,6 +135,7 @@ void Game::Init(
 
     drawn_lazy = _drawn_lazy;
 
+    // Setup settings
     settings->SetValue( "video_screen_width", width );
     settings->SetValue( "video_screen_height", height );
     settings->SetValue( "video_screen_windowed", windowed );
@@ -161,6 +162,11 @@ void Game::Init(
     settings->SetValue( "video_screen_bpp", 32 );
     settings->SetValue( "video_caption_title", title );
 
+    // Setup default magic variables
+    if( !tweaks->HasNum( "font_debug_color" ) )
+        tweaks->SetNum( "font_debug_color", 0xffffffff );
+
+    // Init classes
     window_manager.reset( new Tree::WindowManager() );
     window = window_manager->GetWindow();
 
@@ -179,7 +185,6 @@ void Game::Init(
     input_chain->AddHandler( game_debug.get() );
 
     visual_debug.reset( new VisualDebug() );
-
 }
 
 void Game::Start()

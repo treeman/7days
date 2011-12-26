@@ -5,10 +5,8 @@
 
 Demo::Demo()
 {
-    Tree::GetTweaks()->Load( "magic_numbers.lua" );
-
     str = BUTLER->CreateString( "fnt/arial.ttf", 60 );
-    str.SetColor( Tree::Color( 0xFFC989C7 ) );
+    str.SetColor( Tree::Color( 0xFFCC4343 ) );
     str.SetText( "Hello World!" );
     str.SetPosition( 300, 200 );
 }
