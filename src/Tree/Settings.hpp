@@ -58,7 +58,7 @@ namespace Tree
         std::map<std::string, std::string> GetSettingsValues();
 
         // Parse settings.
-        void ParseFile( std::string path ) throw( Tree::resource_not_found );
+        void ParseFile( std::string path ) throw( Tree::resource_load_error );
         void ParseSetting( std::string str ) throw();
 
         // Generate a default settings file if it's been deleted.

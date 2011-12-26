@@ -47,7 +47,7 @@ DONE * Settings
     * Animationsprite
     * BoundingBox conversion for sprites
     * Easier way for setting transparency value for sprites
-    * Indexed sprites
+    DONE * Indexed sprites
         Ability to use TileSets or similar
         Create a sprite from a with/height and index in Butler
     * Shorten sprites.lua

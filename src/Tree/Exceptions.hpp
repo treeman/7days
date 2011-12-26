@@ -26,8 +26,8 @@ namespace Tree
 
     // A bunch of exceptions for different things
 
-    // When a resource doesn't exist
-    MAKEEXCEPTION(resource_not_found)
+    // When a resource loading goes wrong
+    MAKEEXCEPTION(resource_load_error)
 
     // When a setting can't be found
     MAKEEXCEPTION(setting_not_found)
@@ -35,7 +35,7 @@ namespace Tree
     // Something gone wrong with our lua loading
     MAKEEXCEPTION(lua_error)
 
-    // A logical fault (similar to assert?)
+    // A logical fault
     MAKEEXCEPTION(logical_fault)
 
     // Old version

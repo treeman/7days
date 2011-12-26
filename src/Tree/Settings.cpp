@@ -90,13 +90,13 @@ std::map<std::string, std::string> Settings::GetSettingsValues()
     return m;
 }
 
-void Settings::ParseFile( std::string file ) throw( Tree::resource_not_found )
+void Settings::ParseFile( std::string file ) throw( Tree::resource_load_error )
 {
     std::ifstream in( file.c_str() );
 
     if( !in.is_open() ) {
         std::string s = "Error opening: " + file;
-        throw( Tree::resource_not_found( s.c_str() ) );
+        throw( Tree::resource_load_error( s.c_str() ) );
     }
 
     while( !in.eof() )

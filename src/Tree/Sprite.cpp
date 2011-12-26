@@ -51,11 +51,11 @@ bool SpriteLoader::HasCustomSprite( std::string name )
 }
 
 sf::Sprite SpriteLoader::Create( std::string name )
-    throw( Tree::resource_not_found & )
+    throw( Tree::resource_load_error & )
 {
     SpriteMap::iterator it = sprite_map.find( name );
     if( it == sprite_map.end() ) {
-        throw( Tree::resource_not_found( ( "sprite '" + name + "' not found\n" )
+        throw( Tree::resource_load_error( ( "sprite '" + name + "' not found\n" )
             .c_str() ) );
     }
     else { return it->second; }
@@ -69,7 +69,6 @@ bool SpriteLoader::LoadSprite( lua_State *L, sf::Sprite *spr )
         // But it is trying to load a crapload of other stuff..
         std::string name = lua_tostring( L, -2 );
         if( name == "package" ) return false;
-        //L_<< "trying to load " << name << '\n';
 
         std::string path = "";
         float x = 0, y = 0;

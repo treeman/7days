@@ -41,5 +41,8 @@ private:
     int apples, oranges, strawberries;
     int total_weight;
     std::string curr_weight;
+
+    typedef std::vector<sf::Sprite> Sprites;
+    Sprites sprites;
 };
 

@@ -149,7 +149,7 @@ void Game::Init(
         try {
             settings->ParseFile( settings_file );
         }
-        catch( Tree::resource_not_found &e ) {
+        catch( Tree::resource_load_error &e ) {
             L_ << "Oops, you've deleted the settings file '" + settings_file + "'\n";
             L_ << "God will not forgive you!!! :@\n";
             L_ << "Well... I'll just recreate it for you then I guess\n";

@@ -34,7 +34,7 @@ GameDebug::GameDebug()
     try {
         mptr = BUTLER->CreateSprite( "gfx/ptr.png" );
     }
-    catch( Tree::resource_not_found &e ) { }
+    catch( Tree::resource_load_error &e ) { }
 }
 
 bool GameDebug::HandleEvent( sf::Event &e )

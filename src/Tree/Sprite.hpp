@@ -12,6 +12,7 @@
 
 namespace Tree
 {
+    // Manage sprites specified in a lua config file
     class SpriteLoader {
     public:
         SpriteLoader();
@@ -22,8 +23,7 @@ namespace Tree
         void ForceLoad( std::string lua_file ) throw( Tree::lua_error & );
 
         bool HasCustomSprite( std::string name );
-        sf::Sprite Create( std::string name )
-            throw( Tree::resource_not_found & );
+        sf::Sprite Create( std::string name ) throw( Tree::resource_load_error & );
     private:
         typedef std::map<std::string, sf::Sprite> SpriteMap;
         SpriteMap sprite_map;

@@ -31,6 +31,11 @@ Demo::Demo() : count(0)
     ShuffleNext();
 
     Tree::SetLogKey( sf::Key:: L );
+
+    for( int i = 0; i < 8; ++i ) {
+        // Create indexed sprite from file
+        sprites.push_back( BUTLER->CreateSprite( "gfx/tiles.png", i, 32, 32 ) );
+    }
 }
 
 bool Demo::HandleEvent( sf::Event &e )
@@ -263,6 +268,13 @@ void Demo::Draw()
     float perc = st.GetTime() - (int)(st.GetTime() / 2.0) * 2.0;
     Tree::DrawBar( 700, 580, 790, 590, perc, Tree::Color( 0xff333333 ),
         Tree::Color( 0xffaaaaaa ), Tree::Color::white, 1.0 );
+
+    // Draw indexed sprites
+    for( size_t i = 0; i < sprites.size(); ++i ) {
+        sf::Sprite &spr = sprites[i];
+        spr.SetPosition( 40 + i * 32, 530 );
+        Tree::Draw( spr );
+    }
 }
 
 void Demo::ShuffleNext()

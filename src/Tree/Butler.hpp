@@ -27,19 +27,24 @@ namespace Tree
 
         // Create direct resources
         FntPtr GetFont( std::string path, unsigned int size = 30 )
-            throw( Tree::resource_not_found );
+            throw( Tree::resource_load_error );
         ImgPtr GetImage( std::string path, bool shall_smooth = false )
-            throw( Tree::resource_not_found );
+            throw( Tree::resource_load_error );
         SndPtr GetSoundBuffer( std::string path )
-            throw( Tree::resource_not_found );
+            throw( Tree::resource_load_error );
 
         // Create throw-away handlers
         sf::Sprite CreateSprite( std::string name )
-            throw( Tree::resource_not_found );
+            throw( Tree::resource_load_error );
+        sf::Sprite CreateSprite( std::string img_path, int index,
+            int width, int height ) throw( Tree::resource_load_error );
+        sf::Sprite CreateSprite( const sf::Image &image, int index,
+            int width, int height ) throw( Tree::resource_load_error );
+
         sf::String CreateString( std::string fnt_path, int size )
-            throw( Tree::resource_not_found );
+            throw( Tree::resource_load_error );
         sf::Sound CreateSound( std::string snd_path )
-            throw( Tree::resource_not_found );
+            throw( Tree::resource_load_error );
     private:
         SpriteLoader spr_loader;
 
