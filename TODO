@@ -109,16 +109,13 @@ DONE * Shortened/Simplified
     Just use BOOST_ASSERT
     * Log results as well
 
-* Versioning
+DONE * Versioning
     DONE * Ability to demand at least version X from users
-    * Tag in git
+    DONE * Tag in git
+        Do it manually!
 
 * Tools
     * (Bundle bin + README) to tar/zip
-    * Tag new versioning releases
-        Create new libs to store?
-        Modify Version.hpp
-        Tag as new release in git
     * Create new project
 
 DONE * Math
