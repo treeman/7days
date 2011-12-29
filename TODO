@@ -1,6 +1,4 @@
 
-* Install/Remove in Makefile
-
 * More examples
     * Pixelated style
     * Isometric tiling
@@ -27,10 +25,16 @@
     * Comment more
     * Need a faster way to draw pixmap, maybe opengl bunch up rectangles to draw
 
+* Lazy Drawing
+    * Test if working
+    * Own namespace
+    * Examples
+
 * Rect
     Is this really needed? Why duplicate?
-    * Check corresponding sf::IntRect or similar.
     Might be simpler with direct access to members but eh?
+    * Check corresponding sf::IntRect or similar.
+    * IsVisible uses this
 
 * Sprites
     * Animationsprite
@@ -47,11 +51,6 @@
     * Draw outline of rectangle
     * Align center sf::String
     * Generic in/out fader
-    * isVisible Check if working?
-    * Lazy Drawing
-        * Test if working
-        * Own namespace
-        * Examples
 
 * Sound
     * Store and play an sf::Sound, store a copy and do it so we can discard it after
