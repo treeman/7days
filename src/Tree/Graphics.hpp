@@ -6,22 +6,22 @@
 
 namespace Tree
 {
-    void Draw( const sf::Drawable &obj );
+    void draw( const sf::Drawable &obj );
 
-    bool IsVisible( const Tree::Rect &r );
+    bool is_visible( const Tree::Rect &r );
 
     // Mostly for lazy drawing
-    void Redraw();
-    void Redraw( const Tree::Rect &rect );
-    void ClearWindow( sf::Color col = sf::Color() );
-    bool NeedRedraw();
+    void redraw();
+    void redraw( const Tree::Rect &rect );
+    void clear_window( sf::Color col = sf::Color() );
+    bool need_redraw();
 
-    void DrawLazy();
-    void DrawNonLazy();
-    bool DrawingLazy();
+    void draw_lazy();
+    void draw_non_lazy();
+    bool drawing_lazy();
 
-    void NeverClear();
-    void SetClear();
+    void never_clear();
+    void set_clear();
 
     // Utility class. Transparent with sf::Color
     // and allows for easy hex conversions.
@@ -65,55 +65,55 @@ namespace Tree
 
     std::ostream &operator << ( std::ostream &o, const Color &c );
 
-    void SetAlpha( sf::Sprite &spr, int a );
+    void set_alpha( sf::Sprite &spr, int a );
 
     // Drawing of simple symbols.
-    void DrawLine(
+    void draw_line(
         float x1, float y1, float x2, float y2,
         const Color &col, float thickness = 1.0,
         const Color &outline_col = Color::clear, float outline = 0.f
     );
-    void DrawLine(
+    void draw_line(
         Vec2f p1, Vec2f p2,
         const Color &col, float thickness = 1.0,
         const Color &outline_col = Color::clear, float outline = 0.f
     );
 
-    void DrawTriangle(
+    void draw_triangle(
         float x1, float y1, float x2, float y2, float x3, float y3, const Color &col,
         const Color &outline_col = Color::clear, float outline = 0.f
     );
-    void DrawTriangle(
+    void draw_triangle(
         Vec2f p1, Vec2f p2, Vec2f p3, const Color &col,
         const Color &outline_col = Color::clear, float outline = 0.f
     );
 
-    void DrawRect(
+    void draw_rect(
         float x1, float y1, float x2, float y2, const Color &col,
         const Color &outline_col = Color::clear, float outline = 0.f
     );
-    void DrawRect(
+    void draw_rect(
         Vec2f p1, Vec2f p2, const Color &col,
         const Color &outline_col = Color::clear, float outline = 0.f
     );
 
-    void DrawCircle(
+    void draw_circle(
         float x, float y, float rad, const Color &col,
         const Color &outline_col = Color::clear, float outline = 0.f
     );
-    void DrawCircle(
+    void draw_circle(
         Vec2f center, float rad, const Color &col,
         const Color &outline_col = Color::clear, float outline = 0.f
     );
 
     // Draw horisontal status bar
     // x1,y1 top left and x2,y2 bottom right
-    void DrawBar(
+    void draw_bar(
         float x1, float y1, float x2, float y2, float perc,
         const Color &bg_col, const Color &fg_col,
         const Color &outline_col = Color::clear, float outline = 0.f
     );
-    void DrawBar(
+    void draw_bar(
         Vec2f p1, Vec2f p2, float perc,
         const Color &bg_col, const Color &fg_col,
         const Color &outline_col = Color::clear, float outline = 0.f

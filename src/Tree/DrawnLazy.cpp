@@ -26,6 +26,6 @@ void DrawnLazy::Redraw()
 }
 bool DrawnLazy::WillRedraw()
 {
-    return need_to_redraw || Tree::NeedRedraw() || !DrawingLazy();
+    return need_to_redraw || Tree::need_redraw() || !drawing_lazy();
 }
 

@@ -243,7 +243,7 @@ void Console::Activate()
 void Console::Deactivate()
 {
     is_active = false;
-    Tree::Redraw();
+    Tree::redraw();
 }
 
 float Console::GetStringWidth( std::string str )
@@ -536,7 +536,7 @@ void Console::SelectionPaste( int pos )
 
 void Console::RenderBones()
 {
-    Tree::Draw( back );
+    Tree::draw( back );
 }
 void Console::RenderHistory()
 {
@@ -553,7 +553,7 @@ void Console::RenderHistory()
             render_str.SetPosition( x + text_off_left,
                 y + text_off_top + n * line_height );
 
-            Tree::Draw( render_str );
+            Tree::draw( render_str );
 
             float pre_w = render_str.GetRect().GetWidth();
 
@@ -562,14 +562,14 @@ void Console::RenderHistory()
             render_str.SetPosition( x + text_off_left + pre_w,
                 y + text_off_top + n * line_height );
 
-            Tree::Draw( render_str );
+            Tree::draw( render_str );
         }
         else {
             render_str.SetText( it->c_str() );
             render_str.SetPosition( x + text_off_left,
                 y + text_off_top + n * line_height );
 
-            Tree::Draw( render_str );
+            Tree::draw( render_str );
         }
         --n;
         if( n < 0 ) {
@@ -583,7 +583,7 @@ void Console::RenderInputLine()
     render_str.SetPosition( x + text_off_left, y + h - text_off_down - line_height );
     render_str.SetText( input_line );
 
-    Tree::Draw( render_str );
+    Tree::draw( render_str );
 
     if( SelectionIsActive() ) {
 
@@ -608,13 +608,13 @@ void Console::RenderInputLine()
         sf::Shape rect = sf::Shape::Rectangle( sel_x1, sel_y1, sel_x2, sel_y2,
             selection_color );
 
-        Tree::Draw( rect );
+        Tree::draw( rect );
     }
 
     render_str.SetPosition( x + text_off_left, y + h - text_off_down - line_height );
     render_str.SetText( input_line );
 
-    Tree::Draw( render_str );
+    Tree::draw( render_str );
 
     if( blink_timer.GetTime() < blinkie_time ) {
 
@@ -627,7 +627,7 @@ void Console::RenderInputLine()
         sf::Shape line = sf::Shape::Line( line_x, line_y, line_x, line_y + line_h,
             1, blinkie_color );
 
-        Tree::Draw( line );
+        Tree::draw( line );
     }
     else if( blink_timer.GetTime() > 2 * blinkie_time ) {
         blink_timer.Restart();
@@ -647,7 +647,7 @@ void Console::RenderTypeSuggestions()
     sf::Shape box = sf::Shape::Rectangle( x1, y1, x2, y2,
         suggestion_back_color );
 
-    Tree::Draw( box );
+    Tree::draw( box );
 
     int n = 0;
     for( StrMap::iterator it = suggestion_map.begin(); it != suggestion_map.end(); ++it )
@@ -662,7 +662,7 @@ void Console::RenderTypeSuggestions()
         render_str.SetText( it->first + ' ' + it->second );
         render_str.SetPosition( x + text_off_left, y + h + line_height * n );
 
-        Tree::Draw( render_str );
+        Tree::draw( render_str );
         n++;
     }
 }

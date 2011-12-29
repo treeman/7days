@@ -34,7 +34,7 @@ bool Logo::HandleEvent( sf::Event &event )
 
 void Logo::Loaded()
 {
-    Tree::DrawNonLazy();
+    Tree::draw_non_lazy();
 }
 
 void Logo::Update( float dt )
@@ -70,6 +70,6 @@ void Logo::Update( float dt )
 void Logo::Draw()
 {
     logo.SetColor( sf::Color( 255, 255, 255, 255 - fade ) );
-    Tree::Draw( logo );
+    Tree::draw( logo );
 }
 

@@ -5,53 +5,53 @@
 
 namespace Tree {
 
-void Draw( const sf::Drawable &obj )
+void draw( const sf::Drawable &obj )
 {
     GAME->Draw( obj );
 }
 
-bool IsVisible( const Rect &r )
+bool is_visible( const Rect &r )
 {
     return ( r.x2 > 0 && r.x1 < GetWindowWidth() )
         || ( r.y2 > 0 && r.y1 < GetWindowHeight() );
 }
 
-void Redraw()
+void redraw()
 {
-    ClearWindow();
+    clear_window();
 }
-void Redraw( const Rect &rect )
+void redraw( const Rect &rect )
 {
     GAME->PortionRedrawn( rect );
 }
 
-void ClearWindow( sf::Color col )
+void clear_window( sf::Color col )
 {
     GAME->ClearWindow( col );
 }
-bool NeedRedraw()
+bool need_redraw()
 {
     return GAME->NeedRedraw();
 }
 
-void DrawLazy()
+void draw_lazy()
 {
     GAME->DrawLazy();
 }
-void DrawNonLazy()
+void draw_non_lazy()
 {
     GAME->DrawNormal();
 }
-bool DrawingLazy()
+bool drawing_lazy()
 {
     return GAME->DrawingLazy();
 }
 
-void NeverClear()
+void never_clear()
 {
     GAME->NeverClear();
 }
-void SetClear()
+void set_clear()
 {
     GAME->SetClear();
 }
@@ -194,40 +194,40 @@ std::ostream &operator << ( std::ostream &o, const Color &c )
     return o << c.a <<","<< c.r <<","<< c.g <<","<< c.b;
 }
 
-void SetAlpha( sf::Sprite &spr, int a )
+void set_alpha( sf::Sprite &spr, int a )
 {
     sf::Color col = spr.GetColor();
     col.a = a;
     spr.SetColor( col );
 }
 
-void DrawLine(
+void draw_line(
     float x1, float y1, float x2, float y2, const Color &col, float thickness,
     const Color &outline_col, float outline
 )
 {
-    Draw( sf::Shape::Line( x1, y1, x2, y2,
+    draw( sf::Shape::Line( x1, y1, x2, y2,
         thickness, col, outline, outline_col ) );
 }
-void DrawLine(
+void draw_line(
     Vec2f p1, Vec2f p2, const Color &col, float thickness,
     const Color &outline_col, float outline
 )
 {
-    Draw( sf::Shape::Line( p1, p2, thickness, col, outline, outline_col ) );
+    draw( sf::Shape::Line( p1, p2, thickness, col, outline, outline_col ) );
 }
 
-void DrawTriangle(
+void draw_triangle(
     float x1, float y1, float x2, float y2, float x3, float y3,
     const Color &col, const Color &outline_col, float outline
 )
 {
-    DrawTriangle(
+    draw_triangle(
         Vec2f( x1, y1 ), Vec2f( x2, y2 ), Vec2f( x3, y3 ),
         col, outline_col, outline
     );
 }
-void DrawTriangle(
+void draw_triangle(
     Vec2f p1, Vec2f p2, Vec2f p3,
     const Color &col, const Color &outline_col, float outline
 )
@@ -238,40 +238,40 @@ void DrawTriangle(
     s.AddPoint( p3, col, outline_col );
 
     s.SetOutlineWidth( outline );
-    Draw( s );
+    draw( s );
 }
 
-void DrawRect(
+void draw_rect(
     float x1, float y1, float x2, float y2, const Color &col,
     const Color &outline_col, float outline
 )
 {
-    Draw( sf::Shape::Rectangle( x1, y1, x2, y2, col, outline, outline_col ) );
+    draw( sf::Shape::Rectangle( x1, y1, x2, y2, col, outline, outline_col ) );
 }
-void DrawRect(
+void draw_rect(
     Vec2f p1, Vec2f p2, const Color &col,
     const Color &outline_col, float outline
 )
 {
-    Draw( sf::Shape::Rectangle( p1, p2, col, outline, outline_col ) );
+    draw( sf::Shape::Rectangle( p1, p2, col, outline, outline_col ) );
 }
 
-void DrawCircle(
+void draw_circle(
     float x, float y, float rad, const Color &col,
     const Color &outline_col, float outline
 )
 {
-    Draw( sf::Shape::Circle( x, y, rad, col, outline, outline_col ) );
+    draw( sf::Shape::Circle( x, y, rad, col, outline, outline_col ) );
 }
-void DrawCircle(
+void draw_circle(
     Vec2f center, float rad, const Color &col,
     const Color &outline_col, float outline
 )
 {
-    Draw( sf::Shape::Circle( center, rad, col, outline, outline_col ) );
+    draw( sf::Shape::Circle( center, rad, col, outline, outline_col ) );
 }
 
-void DrawBar(
+void draw_bar(
     float x1, float y1, float x2, float y2, float perc,
     const Color &bg_col, const Color &fg_col,
     const Color &outline_col, float outline
@@ -284,17 +284,17 @@ void DrawBar(
     const int filled = w * perc;
 
     // Background + outline
-    DrawRect( x1, y1, x2, y2, bg_col, outline_col, outline );
+    draw_rect( x1, y1, x2, y2, bg_col, outline_col, outline );
 
     // Filled
-    DrawRect( x1, y1, x1 + filled, y2, fg_col );
+    draw_rect( x1, y1, x1 + filled, y2, fg_col );
 }
-void DrawBar(
+void draw_bar(
     Vec2f p1, Vec2f p2, float perc, const Color &bg_col, const Color &fg_col,
     const Color &outline_col, float outline
 )
 {
-    DrawBar( p1.x, p1.y, p2.x, p2.y, perc, bg_col, fg_col, outline_col, outline );
+    draw_bar( p1.x, p1.y, p2.x, p2.y, perc, bg_col, fg_col, outline_col, outline );
 }
 
 } // Namespace

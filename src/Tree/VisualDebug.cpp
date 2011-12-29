@@ -54,7 +54,7 @@ void VisualDebug::Render()
         render_str.SetText( it->second );
         render_str.SetPosition( x_pos - render_str.GetRect().GetWidth(),
             y_pos + i * line_height );
-        Tree::Draw( render_str );
+        Tree::draw( render_str );
     }
 
     for( Strings::iterator it = temp.begin();
@@ -63,7 +63,7 @@ void VisualDebug::Render()
         render_str.SetText( *it );
         render_str.SetPosition( x_pos - render_str.GetRect().GetWidth(),
             y_pos + i * line_height );
-        Tree::Draw( render_str );
+        Tree::draw( render_str );
     }
 }
 

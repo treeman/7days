@@ -95,19 +95,19 @@ void Demo::Update( float dt )
 
 void Demo::Draw()
 {
-    Tree::ClearWindow( Tree::Color::black );
+    Tree::clear_window( Tree::Color::black );
 
     str.SetText( boost::lexical_cast<std::string>( t.GetTime() ) );
     str.SetPosition( 100, 5 );
-    Tree::Draw( str );
+    Tree::draw( str );
 
     str.SetText( boost::lexical_cast<std::string>( st.GetTime() ) );
     str.SetPosition( 100, 15 );
-    Tree::Draw( str );
+    Tree::draw( str );
 
     str.SetText( boost::lexical_cast<std::string>( cd.GetTime() ) );
     str.SetPosition( 200, 5 );
-    Tree::Draw( str );
+    Tree::draw( str );
 
     if( cd.IsDone() ) {
         str.SetText( "done" );
@@ -116,7 +116,7 @@ void Demo::Draw()
         str.SetText( "not done" );
     }
     str.SetPosition( 200, 15 );
-    Tree::Draw( str );
+    Tree::draw( str );
 
     // Draw shuffle bag's contents
     int n = 1;
@@ -125,7 +125,7 @@ void Demo::Draw()
     {
         str.SetPosition( 10, 30 + h * n );
         str.SetText( boost::lexical_cast<std::string>( *it ) );
-        Tree::Draw( str );
+        Tree::draw( str );
     }
 
     n = 1;
@@ -133,37 +133,37 @@ void Demo::Draw()
     {
         str.SetPosition( 30, 30 + h * n );
         str.SetText( boost::lexical_cast<std::string>( *it ) );
-        Tree::Draw( str );
+        Tree::draw( str );
     }
 
     Vec2i mpos = Tree::GetMousePos();
     Vec2i l1 = point - mpos;
     Tree::clip( l1, 0, 50 );
 
-    Tree::Draw( sf::Shape::Line( point, point - l1, 1.0, Tree::Color( 0xff557733)));
+    Tree::draw( sf::Shape::Line( point, point - l1, 1.0, Tree::Color( 0xff557733)));
 
     Vec2i p2( point.x, point.y - 50 );
     Vec2i l2 = point - p2;
     Tree::clip( l2, 0, 50 );
 
-    Tree::Draw( sf::Shape::Line( point, point - l2, 1.0, Tree::Color( 0xff775533)));
+    Tree::draw( sf::Shape::Line( point, point - l2, 1.0, Tree::Color( 0xff775533)));
 
     float rad = angle( l1, l2 );
 
     str.SetPosition( point.x + 20, point.y - 30 );
     str.SetText( boost::lexical_cast<std::string>( rad ) );
-    Tree::Draw( str );
+    Tree::draw( str );
 
     float degree = Tree::rad2deg( rad );
 
     str.SetPosition( point.x + 20, point.y - 20 );
     str.SetText( boost::lexical_cast<std::string>( degree ) );
-    Tree::Draw( str );
+    Tree::draw( str );
 
     // Check neighbours
     str.SetPosition( 250, 350 );
     str.SetText( "neighbours" );
-    Tree::Draw( str );
+    Tree::draw( str );
 
     typedef std::vector<Vec2i> Points;
     Points ps = Tree::generate_neighbours( point );
@@ -171,31 +171,31 @@ void Demo::Draw()
     for( Points::iterator it = ps.begin(); it < ps.end(); ++it, ++n ) {
         str.SetPosition( 250, 350 + h * n );
         str.SetText( boost::lexical_cast<std::string>( *it ) );
-        Tree::Draw( str );
+        Tree::draw( str );
     }
 
     str.SetPosition( 320, 350 );
     str.SetText( "corners" );
-    Tree::Draw( str );
+    Tree::draw( str );
 
     ps = Tree::generate_corners( point );
     n = 1;
     for( Points::iterator it = ps.begin(); it < ps.end(); ++it, ++n ) {
         str.SetPosition( 320, 350 + h * n );
         str.SetText( boost::lexical_cast<std::string>( *it ) );
-        Tree::Draw( str );
+        Tree::draw( str );
     }
 
     str.SetPosition( 400, 350 );
     str.SetText( "both" );
-    Tree::Draw( str );
+    Tree::draw( str );
 
     ps = Tree::generate_surroundings( point );
     n = 1;
     for( Points::iterator it = ps.begin(); it < ps.end(); ++it, ++n ) {
         str.SetPosition( 400, 350 + h * n );
         str.SetText( boost::lexical_cast<std::string>( *it ) );
-        Tree::Draw( str );
+        Tree::draw( str );
     }
 
     // Draw weight bag's selections
@@ -215,14 +215,14 @@ void Demo::Draw()
         ss << *it;
         //str.SetText( boost::lexical_cast<std::string>( *it ) );
         str.SetText( ss.str() );
-        Tree::Draw( str );
+        Tree::draw( str );
     }
 
     n = 1;
     for( Vals::iterator it = vals.begin(); it < vals.end(); ++it, ++n ) {
         str.SetPosition( 85, 30 + h * n );
         str.SetText( boost::lexical_cast<std::string>( *it ) );
-        Tree::Draw( str );
+        Tree::draw( str );
     }
 
     str.SetPosition( 170, 40 );
@@ -230,59 +230,59 @@ void Demo::Draw()
     ss << "0.2: " << apples << " " << (float)apples / (float)total_weight
         << " Apples";
     str.SetText( ss.str() );
-    Tree::Draw( str );
+    Tree::draw( str );
 
     str.SetPosition( 170, 50 );
     ss.str("");
     ss << "0.2: " << oranges << " " << (float)oranges / (float)total_weight
         << " Oranges";
     str.SetText( ss.str() );
-    Tree::Draw( str );
+    Tree::draw( str );
 
     str.SetPosition( 170, 60 );
     ss.str("");
     ss << "0.6: " << strawberries << " " <<
         (float)strawberries / (float)total_weight << " Strawberries";
     str.SetText( ss.str() );
-    Tree::Draw( str );
+    Tree::draw( str );
 
     str.SetPosition( 170, 70 );
     str.SetText( "last: " + curr_weight );
-    Tree::Draw( str );
+    Tree::draw( str );
 
     // Draw shapes
-    Tree::DrawLine( 500, 200, 520, 220, Tree::Color::white );
-    Tree::DrawLine( 520, 220, 540, 180, Tree::Color::yellow, 2.0 );
-    Tree::DrawLine( Vec2i( 540, 180 ), Vec2i( 560, 200 ),
+    Tree::draw_line( 500, 200, 520, 220, Tree::Color::white );
+    Tree::draw_line( 520, 220, 540, 180, Tree::Color::yellow, 2.0 );
+    Tree::draw_line( Vec2i( 540, 180 ), Vec2i( 560, 200 ),
         Tree::Color::magenta, 2.0, Tree::Color::cyan, 1.0 );
 
-    Tree::DrawRect( 600, 100, 640, 140, Tree::Color::blue );
-    Tree::DrawRect( 600, 200, 640, 240, Tree::Color::green,
+    Tree::draw_rect( 600, 100, 640, 140, Tree::Color::blue );
+    Tree::draw_rect( 600, 200, 640, 240, Tree::Color::green,
         Tree::Color::red, 1.0 );
 
-    Tree::DrawCircle( 700, 250, 40, Tree::Color::white );
+    Tree::draw_circle( 700, 250, 40, Tree::Color::white );
 
-    Tree::DrawTriangle( 610, 300, 600, 320, 620, 320, Tree::Color::white );
-    Tree::DrawTriangle( 610, 360, 600, 340, 620, 340, Tree::Color::white,
+    Tree::draw_triangle( 610, 300, 600, 320, 620, 320, Tree::Color::white );
+    Tree::draw_triangle( 610, 360, 600, 340, 620, 340, Tree::Color::white,
         Tree::Color::red, 2.0 );
 
     // Draw statusbar
     float perc = st.GetTime() - (int)(st.GetTime() / 2.0) * 2.0;
-    Tree::DrawBar( 700, 580, 790, 590, perc, Tree::Color( 0xff333333 ),
+    Tree::draw_bar( 700, 580, 790, 590, perc, Tree::Color( 0xff333333 ),
         Tree::Color( 0xffaaaaaa ), Tree::Color::white, 1.0 );
 
     // Draw indexed sprites
     for( size_t i = 0; i < sprites.size(); ++i ) {
         sf::Sprite &spr = sprites[i];
         spr.SetPosition( 40 + i * 32, 530 );
-        Tree::Draw( spr );
+        Tree::draw( spr );
     }
 
     // Draw regular sprite
     aspr.SetPosition( 50, 200 );
     if( perc > 1.0 ) perc = 1.0;
-    Tree::SetAlpha( aspr, Tree::enbyten( perc ) );
-    Tree::Draw( aspr );
+    Tree::set_alpha( aspr, Tree::enbyten( perc ) );
+    Tree::draw( aspr );
 }
 
 void Demo::ShuffleNext()

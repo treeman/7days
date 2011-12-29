@@ -118,13 +118,13 @@ void PixMap::Draw()
             const int rx = p.x * pix_width;
             const int ry = p.y * pix_width;
 
-            Tree::Draw( sf::Shape::Rectangle(
+            Tree::draw( sf::Shape::Rectangle(
                 rx, ry,
                 rx + pix_width, ry + pix_width,
                 new_col
             ));
             mask.SetPosition( rx, ry );
-            Tree::Draw( mask );
+            Tree::draw( mask );
 
             Points::iterator it2 = it++;
             points_to_update.erase( it2 );

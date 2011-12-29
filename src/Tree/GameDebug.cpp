@@ -60,11 +60,11 @@ void GameDebug::Render()
 {
     // Will not really work with lazy drawing!
     if( show_fps->Val() ) {
-        Tree::Draw( fps );
+        Tree::draw( fps );
     }
     if( show_mouse_pos->Val() ) {
-        Tree::Draw( mpos );
-        Tree::Draw( mptr );
+        Tree::draw( mpos );
+        Tree::draw( mptr );
     }
 }
 
