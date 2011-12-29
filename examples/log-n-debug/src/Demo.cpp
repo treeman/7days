@@ -27,7 +27,7 @@ bool Demo::HandleEvent( sf::Event &e )
             case sf::Key::Q:
                 // Programming with assertions is a great way
                 // not to program by coincidence
-                BOOST_ASSERT( !"DIE DIE DIE" );
+                BOOST_ASSERT( 1 == 0 && "Nice to check stuff." );
             case sf::Key::L:
                 L_ << "Now we log. Count is: " << count << '\n';
             default:
@@ -47,6 +47,7 @@ void Demo::Update( float dt )
 
     if( Tree::shall_log() ) {
         L_( "Lazy logging. This way we don't have to spam the log file!\n" );
+        L_( "printf style here %.3f\n", 1.2345 );
     }
 }
 
