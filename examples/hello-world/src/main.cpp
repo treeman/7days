@@ -5,9 +5,16 @@ int main()
 {
     L_.Init( "log.txt" );
 
-    TWEAKS->Load( "magic_numbers.lua" );
-
     try {
+        // Load magic numbers
+        TWEAKS->Load( "magic_numbers.lua" );
+
+        // Load custom sprites
+        BUTLER->LoadSprites( "sprites.lua" );
+
+        // We need at least this version to be able to build
+        Tree::request_version( 0.1 );
+
         // Create the game
         GAME->Init(
               800             // width
@@ -15,7 +22,7 @@ int main()
             , true            // windowed
             , "Hello World!"  // window title
             , "settings.ini"  // settings file
-            , true            // lazy drawing
+            , false           // lazy drawing
         );
 
         // Push your gamestates here
