@@ -75,6 +75,12 @@ bool Demo::HandleEvent( sf::Event &e )
             case sf::Key::F10:
                 Tree::exit();
                 break;
+            case sf::Key::Q:
+                BOOST_ASSERT(!"DIE DIE DIE");
+                break;
+            /*case sf::Key::W:
+                BOOST_ASSERT_MSG(1 == 0, "Slower death\n");
+                break;*/
             default:
                 break;
         }

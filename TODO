@@ -6,8 +6,6 @@
     * Isometric tiling
     * Squared tiling
     * Lazy drawing
-    DONE * Timers & Random
-    DONE * Logging & Debug
 
 * Add in gridhandling
     Subfolders/Namespace
@@ -24,18 +22,10 @@
     * Is huge and not commented enough
     * Make GUI elements from parts
 
-DONE * Loghelper
-    DONE What does it do? How does it work?
-    + Prevents spam to log
-    + Added in Tree::SetLogKey and Tree::ShallLog for easier logging
-
 * Pix
     * Make Pix namespace
     * Comment more
     * Need a faster way to draw pixmap, maybe opengl bunch up rectangles to draw
-
-DONE * Settings
-    DONE * Better commenting
 
 * Rect
     Is this really needed? Why duplicate?
@@ -45,42 +35,16 @@ DONE * Settings
 * Sprites
     * Animationsprite
     * BoundingBox conversion for sprites
-    DONE * Easier way for setting transparency value for sprites
-    DONE * Indexed sprites
-        Ability to use TileSets or similar
-        Create a sprite from a with/height and index in Butler
     * Shorten sprites.lua
         Might be doable in lua?
-
-DONE * Countdown Timer
-    Timer but check wheter finished
-
-DONE * Game shouldn't load tweaks, we should manually do it
 
 * Vector
     * Make it immutable??
         Pros: Safer code
         Cons: Mutable might be faster to prototype
-    DONE * Find angle between two vectors
-    DONE * () operator for easy changing
-    DONE * Generate surrounding vectors
-
-        - * -       * * *
-        * X *  and  * X *
-        - * -       * * *
-
-        in a list
-
-DONE * VisualDebug
-    DONE * Setting to turn it off
-    DONE * printf like
-    DONE * Examples
-    DONE * Test if working
 
 * Graphics
     * Draw outline of rectangle
-    DONE * DrawBar( pos, colors, box ) draw a statusbar
-    DONE * DrawRect shorthand for Tree::Draw( sf::Shape::Rectangle ...
     * Align center sf::String
     * Generic in/out fader
     * isVisible Check if working?
@@ -89,48 +53,17 @@ DONE * VisualDebug
         * Own namespace
         * Examples
 
-DONE * Placeholder mouse cursor
-    DONE * Functionality
-    DONE * Should not crash the program if gfx isn't found!!
-
-DONE * Shortened/Simplified
-    DONE * WINDOW_WIDTH
-    DONE * MAGIC_NUM for TWEAKS->GetNum ?
-    DONE * Tree::Exit
-    DONE * VisualDebug
-
 * Sound
     * Store and play an sf::Sound, store a copy and do it so we can discard it after
     * Make a Tree::Play which plays a sf::Sound or a string to a sound file
     * Take sound level settings as arguments
 
-* Assertions
-    Just use BOOST_ASSERT
-    * Log results as well
-
-DONE * Versioning
-    DONE * Ability to demand at least version X from users
-    DONE * Tag in git
-        Do it manually!
-
 * Tools
     * (Bundle bin + README) to tar/zip
     * Create new project
 
-DONE * Math
-    DONE * Break out to .cpp
-    DONE * Utility functions for vector clip max length
-
 * WeightBag
-    DONE * Produce selection out of weighted numbers
-        ex: r(hej -> 0.3, då -> 0.7)
-        will give a 30% chance of 'hej' and 70% of 'då'
-        r(a -> 0.4, b -> 0.4)
-        give 50% chance either way
     * Modify weights for numbers
     * Remove specific weights/values?
     * If slow optimize to binary search when Get
-    DONE * Clear
-
-* Functions should be lower_case
 

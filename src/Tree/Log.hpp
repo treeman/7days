@@ -7,6 +7,11 @@
 
 #include "Singleton.hpp"
 
+// Comment if we don't want to override BOOST_ASSERT
+#define BOOST_ENABLE_ASSERT_HANDLER
+
+#include <boost/assert.hpp>
+
 /*
  * Our simple logging facility.
  * Logs to stdout and to a log file. Ability to log with c or c++ styles:
@@ -26,20 +31,10 @@ namespace Tree {
 
     class Log : public Tree::Singleton<Log> {
     public:
-        Log() { }
-        ~Log()
-        {
-            if( file.is_open() ) {
-                file.close();
-            }
-            std::cout << "Log file closed\n" << std::flush;
-        }
+        Log();
+        ~Log();
 
-        void Init( std::string logfile )
-        {
-            file.open( logfile.c_str() );
-            std::cout << "Log file opened\n" << std::flush;
-        }
+        void Init( std::string logfile );
 
         // stream style logging
         template<typename T>
@@ -50,21 +45,8 @@ namespace Tree {
         }
 
         // printf style logging
-        void operator() ( const char *msg, ... )
-        {
-            va_list args;
-            va_start( args, msg );
-            char buf[1024];
-            vsprintf( buf, msg, args );
-
-            std::string str = buf;
-
-            Write( str );
-        }
-        void operator() ( std::string str )
-        {
-            Write( str );
-        }
+        void operator() ( const char *msg, ... );
+        void operator() ( std::string str );
     private:
         std::ofstream file;
 

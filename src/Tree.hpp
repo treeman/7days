@@ -1,7 +1,5 @@
 #pragma once
 
-#include <boost/assert.hpp>
-
 #include "Tree/Butler.hpp"
 #include "Tree/Console.hpp"
 #include "Tree/Controller.hpp"
