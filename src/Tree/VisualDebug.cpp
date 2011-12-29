@@ -9,7 +9,7 @@
 using Tree::VisualDebug;
 
 VisualDebug::VisualDebug() :
-    x_pos( Tree::GetWindowWidth() - 5 ),
+    x_pos( WINDOW_WIDTH - 5 ),
     y_pos( 7 ),
     line_height( 12 )
 {

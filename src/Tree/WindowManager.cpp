@@ -21,17 +21,17 @@ WindowManager::WindowManager() : window( new sf::RenderWindow() ), has_setup( fa
     framerate.reset( new Dator<int>( 0,
         boost::bind( &WindowManager::SetFrameRate, this, _1 ) ) );
 
-    Tree::GetSettings()->RegisterVariable( "video_screen_width",
+    SETTINGS->RegisterVariable( "video_screen_width",
         boost::weak_ptr<BaseDator>( width ) );
-    Tree::GetSettings()->RegisterVariable( "video_screen_height",
+    SETTINGS->RegisterVariable( "video_screen_height",
         boost::weak_ptr<BaseDator>( height ) );
-    Tree::GetSettings()->RegisterVariable( "video_screen_bpp",
+    SETTINGS->RegisterVariable( "video_screen_bpp",
         boost::weak_ptr<BaseDator>( bpp ) );
-    Tree::GetSettings()->RegisterVariable( "video_screen_windowed",
+    SETTINGS->RegisterVariable( "video_screen_windowed",
         boost::weak_ptr<BaseDator>( is_windowed ) );
-    Tree::GetSettings()->RegisterVariable( "video_caption_title",
+    SETTINGS->RegisterVariable( "video_caption_title",
         boost::weak_ptr<BaseDator>( title ) );
-    Tree::GetSettings()->RegisterVariable( "frame_rate_limit",
+    SETTINGS->RegisterVariable( "frame_rate_limit",
         boost::weak_ptr<BaseDator>( framerate ) );
 
     has_setup = true;

@@ -6,12 +6,12 @@ using Tree::Logo;
 
 Logo::Logo()
 {
-    logo = Tree::GetButler()->CreateSprite( "gfx/treelogo.png" );
+    logo = BUTLER->CreateSprite( "gfx/treelogo.png" );
 
-    const int w = Tree::GetWindowWidth();
-    const int h = Tree::GetWindowHeight();
-
-    logo.SetPosition( ( w - 300 ) / 2, ( h - 200 ) / 2 - 50 );
+    logo.SetPosition(
+        ( WINDOW_WIDTH - 300 ) / 2,
+        ( WINDOW_HEIGHT - 200 ) / 2 - 50
+    );
 
     fade = 0;
     fade_dir = -1;

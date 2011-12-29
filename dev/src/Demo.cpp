@@ -30,7 +30,7 @@ Demo::Demo() : count(0)
 
     ShuffleNext();
 
-    Tree::SetLogKey( sf::Key:: L );
+    Tree::set_log_key( sf::Key:: L );
 
     for( int i = 0; i < 8; ++i ) {
         // Create indexed sprite from file
@@ -67,13 +67,13 @@ bool Demo::HandleEvent( sf::Event &e )
                 break;
             case sf::Key::C:
                 ++count;
-                Tree::DebugPersist( "persist", "count %d", count );
+                Tree::debug_persist( "persist", "count %d", count );
                 break;
             case sf::Key::R:
-                Tree::DebugRemove( "persist" );
+                Tree::debug_remove( "persist" );
                 break;
             case sf::Key::F10:
-                Tree::Exit();
+                Tree::exit();
                 break;
             default:
                 break;
@@ -84,11 +84,11 @@ bool Demo::HandleEvent( sf::Event &e )
 
 void Demo::Update( float dt )
 {
-    Tree::Debug( "Debug!" );
+    Tree::debug( "Debug!" );
     D_( "window = %dx%d", WINDOW_WIDTH, WINDOW_HEIGHT );
     D_( MAGIC_STRING( "shout" ) );
 
-    if( Tree::ShallLog() ) {
+    if( Tree::shall_log() ) {
         L_( "Log when needed\n" );
     }
 }
@@ -136,7 +136,7 @@ void Demo::Draw()
         Tree::draw( str );
     }
 
-    Vec2i mpos = Tree::GetMousePos();
+    Vec2i mpos = Tree::get_mouse_pos();
     Vec2i l1 = point - mpos;
     Tree::clip( l1, 0, 50 );
 

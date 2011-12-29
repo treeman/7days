@@ -11,8 +11,8 @@ PixMap::PixMap()
 
     pix_width = mask.GetSubRect().GetWidth();
 
-    width = Tree::GetWindowWidth() / pix_width;
-    height = Tree::GetWindowHeight() / pix_width;
+    width = WINDOW_WIDTH / pix_width;
+    height = WINDOW_HEIGHT / pix_width;
 
     for( size_t x = 0; x < width; ++x ) {
         PixRow row;

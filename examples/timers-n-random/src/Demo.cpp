@@ -57,7 +57,7 @@ bool Demo::HandleEvent( sf::Event &e )
                 cd.SetSpeed( 2.0 );
                 break;
             case sf::Key::F10:
-                Tree::Exit();
+                Tree::exit();
                 break;
             default:
                 break;
@@ -73,20 +73,20 @@ void Demo::Update( float dt )
 
 void Demo::Draw()
 {
-    Tree::ClearWindow( Tree::Color::black );
+    Tree::clear_window( Tree::Color::black );
 
     // Draw timers
     str.SetText( boost::lexical_cast<std::string>( t.GetTime() ) );
     str.SetPosition( 100, 5 );
-    Tree::Draw( str );
+    Tree::draw( str );
 
     str.SetText( boost::lexical_cast<std::string>( st.GetTime() ) );
     str.SetPosition( 100, 15 );
-    Tree::Draw( str );
+    Tree::draw( str );
 
     str.SetText( boost::lexical_cast<std::string>( cd.GetTime() ) );
     str.SetPosition( 200, 5 );
-    Tree::Draw( str );
+    Tree::draw( str );
 
     if( cd.IsDone() ) {
         str.SetText( "done" );
@@ -95,7 +95,7 @@ void Demo::Draw()
         str.SetText( "not done" );
     }
     str.SetPosition( 200, 15 );
-    Tree::Draw( str );
+    Tree::draw( str );
 
     // Draw shuffle bag's contents
     int n = 1;
@@ -104,7 +104,7 @@ void Demo::Draw()
     {
         str.SetPosition( 10, 30 + h * n );
         str.SetText( boost::lexical_cast<std::string>( *it ) );
-        Tree::Draw( str );
+        Tree::draw( str );
     }
 
     n = 1;
@@ -112,7 +112,7 @@ void Demo::Draw()
     {
         str.SetPosition( 30, 30 + h * n );
         str.SetText( boost::lexical_cast<std::string>( *it ) );
-        Tree::Draw( str );
+        Tree::draw( str );
     }
 
     // Draw weight bag's selections
@@ -131,14 +131,14 @@ void Demo::Draw()
         ss.str("");
         ss << *it;
         str.SetText( ss.str() );
-        Tree::Draw( str );
+        Tree::draw( str );
     }
 
     n = 1;
     for( Vals::iterator it = vals.begin(); it < vals.end(); ++it, ++n ) {
         str.SetPosition( 85, 30 + h * n );
         str.SetText( boost::lexical_cast<std::string>( *it ) );
-        Tree::Draw( str );
+        Tree::draw( str );
     }
 
     str.SetPosition( 170, 40 );
@@ -146,25 +146,25 @@ void Demo::Draw()
     ss << "0.2: " << apples << " " << (float)apples / (float)total_weight
         << " Apples";
     str.SetText( ss.str() );
-    Tree::Draw( str );
+    Tree::draw( str );
 
     str.SetPosition( 170, 50 );
     ss.str("");
     ss << "0.2: " << oranges << " " << (float)oranges / (float)total_weight
         << " Oranges";
     str.SetText( ss.str() );
-    Tree::Draw( str );
+    Tree::draw( str );
 
     str.SetPosition( 170, 60 );
     ss.str("");
     ss << "0.6: " << strawberries << " " <<
         (float)strawberries / (float)total_weight << " Strawberries";
     str.SetText( ss.str() );
-    Tree::Draw( str );
+    Tree::draw( str );
 
     str.SetPosition( 170, 70 );
     str.SetText( "last: " + curr_weight );
-    Tree::Draw( str );
+    Tree::draw( str );
 }
 
 void Demo::Next()

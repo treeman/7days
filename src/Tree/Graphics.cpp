@@ -12,8 +12,8 @@ void draw( const sf::Drawable &obj )
 
 bool is_visible( const Rect &r )
 {
-    return ( r.x2 > 0 && r.x1 < GetWindowWidth() )
-        || ( r.y2 > 0 && r.y1 < GetWindowHeight() );
+    return ( r.x2 > 0 && r.x1 < WINDOW_WIDTH )
+        || ( r.y2 > 0 && r.y1 < WINDOW_HEIGHT );
 }
 
 void redraw()

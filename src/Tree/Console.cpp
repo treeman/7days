@@ -9,9 +9,9 @@ using Tree::Console;
 
 Console::Console()
 {
-    Tree::GetSettings()->AddListener( this );
+    SETTINGS->AddListener( this );
 
-    render_str = Tree::GetButler()->CreateString( "fnt/arial.ttf", 10 );
+    render_str = BUTLER->CreateString( "fnt/arial.ttf", 10 );
 
     x = 10; y = 10;
     w = 400;
@@ -60,16 +60,16 @@ Console::Console()
     blink_timer.Start();
 
     showDebug.reset( new Dator<bool>( false ) );
-    Tree::GetSettings()->RegisterVariable( "console_show_debug", boost::weak_ptr<BaseDator>( showDebug ) );
+    SETTINGS->RegisterVariable( "console_show_debug", boost::weak_ptr<BaseDator>( showDebug ) );
 
     clearHistory.reset( new CallDator( boost::bind( &Console::Clear, this ) ) );
-    Tree::GetSettings()->RegisterVariable( "console_clear", boost::weak_ptr<BaseDator>( clearHistory ) );
+    SETTINGS->RegisterVariable( "console_clear", boost::weak_ptr<BaseDator>( clearHistory ) );
 
     showCommands.reset( new CallDator( boost::bind( &Console::ShowCommands, this ) ) );
-    Tree::GetSettings()->RegisterVariable( "console_show_commands", boost::weak_ptr<BaseDator>( showCommands ) );
+    SETTINGS->RegisterVariable( "console_show_commands", boost::weak_ptr<BaseDator>( showCommands ) );
 
     showCommandsValues.reset( new CallDator( boost::bind( &Console::ShowCommandsValues, this ) ) );
-    Tree::GetSettings()->RegisterVariable( "console_show_commands_values", boost::weak_ptr<BaseDator>( showCommandsValues ) );
+    SETTINGS->RegisterVariable( "console_show_commands_values", boost::weak_ptr<BaseDator>( showCommandsValues ) );
 }
 Console::~Console()
 {
@@ -198,7 +198,7 @@ std::string Console::Clear()
 }
 std::string Console::ShowCommands()
 {
-    StrList cmd_list = Tree::GetSettings()->GetSettings();
+    StrList cmd_list = SETTINGS->GetSettings();
     for( StrList::iterator it = cmd_list.begin(); it != cmd_list.end(); ++it )
     {
         PushHistory( "* " + *it );
@@ -208,7 +208,7 @@ std::string Console::ShowCommands()
 
 std::string Console::ShowCommandsValues()
 {
-    StrMap cmd_map = Tree::GetSettings()->GetSettingsValues();
+    StrMap cmd_map = SETTINGS->GetSettingsValues();
     for( StrMap::iterator it = cmd_map.begin(); it != cmd_map.end(); ++it )
     {
         if( !it->second.empty() ) {
@@ -369,7 +369,7 @@ void Console::UpdateSuggestionList()
         return;
     }
 
-    StrMap allsettings_map = Tree::GetSettings()->GetSettingsValues();
+    StrMap allsettings_map = SETTINGS->GetSettingsValues();
     for( StrMap::iterator it = allsettings_map.begin(); it != allsettings_map.end(); ++it )
     {
         std::string composit = it->first + ' ' + it->second;
@@ -443,7 +443,7 @@ void Console::InputLineAddChar( char ch, int pos )
 void Console::InputLineExecute()
 {
     PushCmd( input_line );
-    Tree::GetSettings()->ParseSetting( input_line );
+    SETTINGS->ParseSetting( input_line );
     InputLineClear();
 }
 void Console::InputLineClear()

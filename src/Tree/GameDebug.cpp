@@ -14,19 +14,19 @@ using Tree::GameDebug;
 GameDebug::GameDebug()
 {
     show_mouse_pos.reset( new Dator<bool>( false ) );
-    Tree::GetSettings()->RegisterVariable( "mouse_pos_show",
+    SETTINGS->RegisterVariable( "mouse_pos_show",
         boost::weak_ptr<BaseDator>( show_mouse_pos ) );
 
     show_fps.reset( new Dator<bool>( false ) );
-    Tree::GetSettings()->RegisterVariable( "fps_show",
+    SETTINGS->RegisterVariable( "fps_show",
         boost::weak_ptr<BaseDator>( show_fps ) );
 
-    fps = Tree::GetButler()->CreateString( "fnt/lucon.ttf", 20 );
-    fps.SetColor( Tree::Color( Tree::GetTweaks()->GetNum( "font_debug_color" ) ) );
+    fps = BUTLER->CreateString( "fnt/lucon.ttf", 20 );
+    fps.SetColor( Tree::Color( TWEAKS->GetNum( "font_debug_color" ) ) );
     fps.SetPosition( 5, 3 );
 
-    mpos = Tree::GetButler()->CreateString( "fnt/consola.ttf", 10 );
-    mpos.SetColor( Tree::Color( Tree::GetTweaks()->GetNum( "font_debug_color" ) ) );
+    mpos = BUTLER->CreateString( "fnt/consola.ttf", 10 );
+    mpos.SetColor( Tree::Color( TWEAKS->GetNum( "font_debug_color" ) ) );
     mpos.SetPosition( 50, 7 );
 
     // Placeholder mouse pointer
@@ -44,13 +44,13 @@ bool GameDebug::HandleEvent( sf::Event &e )
 
 void GameDebug::Update( float )
 {
-    int my_fps = Tree::GetFPS();
+    int my_fps = Tree::get_FPS();
 
     const std::string s = boost::lexical_cast<std::string>( my_fps );
     const std::string old_s = fps.GetText();
     fps.SetText( s );
 
-    Vec2f mouse_pos = Tree::GetMousePos();
+    Vec2f mouse_pos = Tree::get_mouse_pos();
     mptr.SetPosition( mouse_pos );
     std::stringstream ss;
     ss << mouse_pos.x << "," << mouse_pos.y;

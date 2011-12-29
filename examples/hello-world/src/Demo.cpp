@@ -13,7 +13,7 @@ Demo::Demo()
 
 void Demo::Draw()
 {
-    Tree::ClearWindow( Tree::Color( 0xFF89C98B ) );
-    Tree::Draw( str );
+    Tree::clear_window( Tree::Color( 0xFF89C98B ) );
+    Tree::draw( str );
 }
 

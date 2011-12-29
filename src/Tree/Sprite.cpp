@@ -94,7 +94,7 @@ bool SpriteLoader::LoadSprite( lua_State *L, sf::Sprite *spr )
 
         if( Tree::get_string( L, "path", path ) )
         {
-            Tree::ImgPtr img = Tree::GetButler()->GetImage( path );
+            Tree::ImgPtr img = BUTLER->GetImage( path );
 
             if( img ) {
                 img->SetSmooth( smoothen );
