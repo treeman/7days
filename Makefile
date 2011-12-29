@@ -17,7 +17,7 @@ OBJ = $(patsubst %,$(OBJDIR)/%,$(SRC:.cpp=.o))
 OUTPUT = ./lib/lib7days.a
 
 export EXAMPLEDIR = examples
-_EXAMPLES = hello-world
+_EXAMPLES = hello-world log-n-debug timers-n-random
 EXAMPLES = $(patsubst %,$(EXAMPLEDIR)/%,$(_EXAMPLES))
 
 .PHONY: all clean lib remake remake_all examples clean_examples remake_examples dev

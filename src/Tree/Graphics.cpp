@@ -3,58 +3,58 @@
 #include "Graphics.hpp"
 #include "Game.hpp"
 
-void Tree::Draw( const sf::Drawable &obj )
+namespace Tree {
+
+void Draw( const sf::Drawable &obj )
 {
     GAME->Draw( obj );
 }
 
-bool Tree::IsVisible( const Tree::Rect &r )
+bool IsVisible( const Rect &r )
 {
-    return ( r.x2 > 0 && r.x1 < Tree::GetWindowWidth() )
-        || ( r.y2 > 0 && r.y1 < Tree::GetWindowHeight() );
+    return ( r.x2 > 0 && r.x1 < GetWindowWidth() )
+        || ( r.y2 > 0 && r.y1 < GetWindowHeight() );
 }
 
-void Tree::Redraw()
+void Redraw()
 {
-    Tree::ClearWindow();
+    ClearWindow();
 }
-void Tree::Redraw( const Tree::Rect &rect )
+void Redraw( const Rect &rect )
 {
     GAME->PortionRedrawn( rect );
 }
 
-void Tree::ClearWindow( sf::Color col )
+void ClearWindow( sf::Color col )
 {
     GAME->ClearWindow( col );
 }
-bool Tree::NeedRedraw()
+bool NeedRedraw()
 {
     return GAME->NeedRedraw();
 }
 
-void Tree::DrawLazy()
+void DrawLazy()
 {
     GAME->DrawLazy();
 }
-void Tree::DrawNonLazy()
+void DrawNonLazy()
 {
     GAME->DrawNormal();
 }
-bool Tree::DrawingLazy()
+bool DrawingLazy()
 {
     return GAME->DrawingLazy();
 }
 
-void Tree::NeverClear()
+void NeverClear()
 {
     GAME->NeverClear();
 }
-void Tree::SetClear()
+void SetClear()
 {
     GAME->SetClear();
 }
-
-using Tree::Color;
 
 const Color Color::clear( 0, 0, 0, 0 );
 const Color Color::black( 0, 0, 0 );
@@ -149,7 +149,7 @@ Color operator * ( const Color &c1, const Color &c2 )
     return c;
 }
 
-Color Tree::linear( const Color &start, const Color &end, float percent )
+Color linear( const Color &start, const Color &end, float percent )
 {
     Color result;
     result.a = start.a * ( 1.0f - percent ) + end.a * percent;
@@ -159,7 +159,7 @@ Color Tree::linear( const Color &start, const Color &end, float percent )
     return result;
 }
 
-Color Tree::normalize( const Color &start, const Color &end, float percent )
+Color normalize( const Color &start, const Color &end, float percent )
 {
     float start_length = std::sqrt( start.r * start.r +
                                     start.g * start.g +
@@ -189,23 +189,35 @@ Color Tree::normalize( const Color &start, const Color &end, float percent )
     return result;
 }
 
-void Tree::DrawLine(
+std::ostream &operator << ( std::ostream &o, const Color &c )
+{
+    return o << c.a <<","<< c.r <<","<< c.g <<","<< c.b;
+}
+
+void SetAlpha( sf::Sprite &spr, int a )
+{
+    sf::Color col = spr.GetColor();
+    col.a = a;
+    spr.SetColor( col );
+}
+
+void DrawLine(
     float x1, float y1, float x2, float y2, const Color &col, float thickness,
     const Color &outline_col, float outline
 )
 {
-    Tree::Draw( sf::Shape::Line( x1, y1, x2, y2,
+    Draw( sf::Shape::Line( x1, y1, x2, y2,
         thickness, col, outline, outline_col ) );
 }
-void Tree::DrawLine(
+void DrawLine(
     Vec2f p1, Vec2f p2, const Color &col, float thickness,
     const Color &outline_col, float outline
 )
 {
-    Tree::Draw( sf::Shape::Line( p1, p2, thickness, col, outline, outline_col ) );
+    Draw( sf::Shape::Line( p1, p2, thickness, col, outline, outline_col ) );
 }
 
-void Tree::DrawTriangle(
+void DrawTriangle(
     float x1, float y1, float x2, float y2, float x3, float y3,
     const Color &col, const Color &outline_col, float outline
 )
@@ -215,7 +227,7 @@ void Tree::DrawTriangle(
         col, outline_col, outline
     );
 }
-void Tree::DrawTriangle(
+void DrawTriangle(
     Vec2f p1, Vec2f p2, Vec2f p3,
     const Color &col, const Color &outline_col, float outline
 )
@@ -226,40 +238,40 @@ void Tree::DrawTriangle(
     s.AddPoint( p3, col, outline_col );
 
     s.SetOutlineWidth( outline );
-    Tree::Draw( s );
+    Draw( s );
 }
 
-void Tree::DrawRect(
+void DrawRect(
     float x1, float y1, float x2, float y2, const Color &col,
     const Color &outline_col, float outline
 )
 {
-    Tree::Draw( sf::Shape::Rectangle( x1, y1, x2, y2, col, outline, outline_col ) );
+    Draw( sf::Shape::Rectangle( x1, y1, x2, y2, col, outline, outline_col ) );
 }
-void Tree::DrawRect(
+void DrawRect(
     Vec2f p1, Vec2f p2, const Color &col,
     const Color &outline_col, float outline
 )
 {
-    Tree::Draw( sf::Shape::Rectangle( p1, p2, col, outline, outline_col ) );
+    Draw( sf::Shape::Rectangle( p1, p2, col, outline, outline_col ) );
 }
 
-void Tree::DrawCircle(
+void DrawCircle(
     float x, float y, float rad, const Color &col,
     const Color &outline_col, float outline
 )
 {
-    Tree::Draw( sf::Shape::Circle( x, y, rad, col, outline, outline_col ) );
+    Draw( sf::Shape::Circle( x, y, rad, col, outline, outline_col ) );
 }
-void Tree::DrawCircle(
+void DrawCircle(
     Vec2f center, float rad, const Color &col,
     const Color &outline_col, float outline
 )
 {
-    Tree::Draw( sf::Shape::Circle( center, rad, col, outline, outline_col ) );
+    Draw( sf::Shape::Circle( center, rad, col, outline, outline_col ) );
 }
 
-void Tree::DrawBar(
+void DrawBar(
     float x1, float y1, float x2, float y2, float perc,
     const Color &bg_col, const Color &fg_col,
     const Color &outline_col, float outline
@@ -272,16 +284,18 @@ void Tree::DrawBar(
     const int filled = w * perc;
 
     // Background + outline
-    Tree::DrawRect( x1, y1, x2, y2, bg_col, outline_col, outline );
+    DrawRect( x1, y1, x2, y2, bg_col, outline_col, outline );
 
     // Filled
-    Tree::DrawRect( x1, y1, x1 + filled, y2, fg_col );
+    DrawRect( x1, y1, x1 + filled, y2, fg_col );
 }
-void Tree::DrawBar(
+void DrawBar(
     Vec2f p1, Vec2f p2, float perc, const Color &bg_col, const Color &fg_col,
     const Color &outline_col, float outline
 )
 {
     DrawBar( p1.x, p1.y, p2.x, p2.y, perc, bg_col, fg_col, outline_col, outline );
 }
+
+} // Namespace
 

@@ -36,6 +36,8 @@ Demo::Demo() : count(0)
         // Create indexed sprite from file
         sprites.push_back( BUTLER->CreateSprite( "gfx/tiles.png", i, 32, 32 ) );
     }
+
+    aspr = BUTLER->CreateSprite( "gfx/dod.png" );
 }
 
 bool Demo::HandleEvent( sf::Event &e )
@@ -164,7 +166,7 @@ void Demo::Draw()
     Tree::Draw( str );
 
     typedef std::vector<Vec2i> Points;
-    Points ps = Tree::GenerateNeighbours( point );
+    Points ps = Tree::generate_neighbours( point );
     n = 1;
     for( Points::iterator it = ps.begin(); it < ps.end(); ++it, ++n ) {
         str.SetPosition( 250, 350 + h * n );
@@ -176,7 +178,7 @@ void Demo::Draw()
     str.SetText( "corners" );
     Tree::Draw( str );
 
-    ps = Tree::GenerateCorners( point );
+    ps = Tree::generate_corners( point );
     n = 1;
     for( Points::iterator it = ps.begin(); it < ps.end(); ++it, ++n ) {
         str.SetPosition( 320, 350 + h * n );
@@ -188,7 +190,7 @@ void Demo::Draw()
     str.SetText( "both" );
     Tree::Draw( str );
 
-    ps = Tree::GenerateSurroundings( point );
+    ps = Tree::generate_surroundings( point );
     n = 1;
     for( Points::iterator it = ps.begin(); it < ps.end(); ++it, ++n ) {
         str.SetPosition( 400, 350 + h * n );
@@ -275,6 +277,12 @@ void Demo::Draw()
         spr.SetPosition( 40 + i * 32, 530 );
         Tree::Draw( spr );
     }
+
+    // Draw regular sprite
+    aspr.SetPosition( 50, 200 );
+    if( perc > 1.0 ) perc = 1.0;
+    Tree::SetAlpha( aspr, Tree::enbyten( perc ) );
+    Tree::Draw( aspr );
 }
 
 void Demo::ShuffleNext()

@@ -45,17 +45,17 @@ namespace Tree
     /*      *
      *    * X *
      *      *       */
-    extern std::vector<Vec2i> GenerateNeighbours( const Vec2i &v );
+    extern std::vector<Vec2i> generate_neighbours( const Vec2i &v );
 
     /*    *   *
      *      X
      *    *   *     */
-    extern std::vector<Vec2i> GenerateCorners( const Vec2i &v );
+    extern std::vector<Vec2i> generate_corners( const Vec2i &v );
 
     /*    * * *
      *    * X *
      *    * * *     */
-    extern std::vector<Vec2i> GenerateSurroundings( const Vec2i &v );
+    extern std::vector<Vec2i> generate_surroundings( const Vec2i &v );
 
     /** emplate implementations **/
 

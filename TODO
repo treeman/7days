@@ -6,8 +6,7 @@
     * Isometric tiling
     * Squared tiling
     * Lazy drawing
-    * Timers
-    * Random
+    DONE * Timers & Random
     DONE * Logging & Debug
 
 * Add in gridhandling
@@ -46,7 +45,7 @@ DONE * Settings
 * Sprites
     * Animationsprite
     * BoundingBox conversion for sprites
-    * Easier way for setting transparency value for sprites
+    DONE * Easier way for setting transparency value for sprites
     DONE * Indexed sprites
         Ability to use TileSets or similar
         Create a sprite from a with/height and index in Butler
@@ -132,4 +131,6 @@ DONE * Math
     * Remove specific weights/values?
     * If slow optimize to binary search when Get
     DONE * Clear
+
+* Functions should be lower_case
 

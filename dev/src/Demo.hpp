@@ -44,5 +44,7 @@ private:
 
     typedef std::vector<sf::Sprite> Sprites;
     Sprites sprites;
+
+    sf::Sprite aspr;
 };
 

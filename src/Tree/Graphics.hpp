@@ -63,11 +63,9 @@ namespace Tree
     Color linear( const Color &start, const Color &end, float percent );
     Color normalize( const Color &start, const Color &end, float percent );
 
-    inline std::ostream &operator << ( std::ostream &o, const Color &c )
-    {
-        sf::Color col = c;
-        return o << col.a <<","<< col.r <<","<< col.g <<","<< col.b << '\n';
-    }
+    std::ostream &operator << ( std::ostream &o, const Color &c );
+
+    void SetAlpha( sf::Sprite &spr, int a );
 
     // Drawing of simple symbols.
     void DrawLine(
