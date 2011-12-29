@@ -1,0 +1,122 @@
+#!/usr/bin/env perl
+
+use Modern::Perl;
+use Getopt::Long;
+use File::Basename;
+
+my @args = @ARGV;
+
+my $version;
+my $tag = 0;
+my $new_project;
+
+Getopt::Long::Configure ("bundling");
+GetOptions(
+    'version|v' => \$version,
+    'tag|t=f' => \$tag,
+    'project|p=s' => \$new_project,
+);
+
+# Hmm $0 will not follow symlinks correctly. This will do for now.
+my $base = '/home/tree/projects/7days';
+my $version_file = "$base/src/Tree/Version.hpp";
+
+if ($version) {
+    my $version = version();
+    say "v$version";
+    exit;
+}
+elsif ($tag) {
+    say "Updating 7days to version $tag!";
+
+    my $msg = "Version $tag";
+    $msg = $ARGV[0] if ($ARGV[0]);
+
+    # Perl calling perl, how perverse! Simple, but perverse!
+    `perl -p -i -e "s/VERSION\\s*=\\s*(.+);/VERSION = $tag;/" $version_file`;
+
+    # Create an annotaded tag in git
+    `cd $base && git tag -a v$tag -m "$msg"`;
+}
+elsif ($new_project) {
+    my $dir = $new_project;
+    my $name = $new_project;
+
+    if (-e $dir) {
+        say "File $dir exists!";
+        exit;
+    }
+
+    # Use hello world as base
+    `cp -r "$base/examples/hello-world" "$dir"`;
+
+    # Remove useless things
+    `rm -r "$dir/obj"`;
+    `cd "$dir/bin" && rm startme gfx snd fnt log*`;
+
+    # Add in resources
+    `mkdir -p "$dir/bin/gfx" "$dir/bin/fnt" "$dir/bin/snd"`;
+
+    # Save whole fnt folder
+    `cp -r "$base/examples/resources/fnt" "$dir/bin"`;
+
+    # Logo and mouse debug pointer
+    my @resources = qw(gfx/treelogo.png gfx/ptr.png);
+    for (@resources) {
+        `cp -r "$base/examples/resources/$_" "$dir/bin/$_"`;
+    }
+
+    # Rename Demo to Game
+    `perl -p -i -e "s/Demo/Game/g" $dir/src/*`;
+
+    `mv "$dir/src/Demo.hpp" "$dir/src/Game.hpp"`;
+    `mv "$dir/src/Demo.cpp" "$dir/src/Game.cpp"`;
+
+    # Request our current version
+    my $v = version();
+    `perl -p -i -e "s/request_version(.+);/request_version( $v );/g" $dir/src/*`;
+
+    # Fix Makefile in a slightly ineffecient manner
+    `perl -p -i -e 's|-I../../src||' $dir/Makefile`;
+    `perl -p -i -e 's|-L../../lib||' $dir/Makefile`;
+    `perl -p -i -e "s/startme/$name/g" $dir/Makefile`;
+
+    # Set binary title, even align it! In a very very ugly way :<
+    my $w = 14;
+    my $left = $w - length($name);
+    my $title = "\\\"$name\\\"" . (' ' x $left);
+
+    `perl -p -i -e "s/\\"Hello World!\\"\\s*/$title/g" $dir/src/main.cpp`;
+
+    say "Starter project made in '$dir'";
+    say "Remember to install the 7days library.";
+    say "And most important of all...\n";
+    say "Have fun!";
+}
+else {
+    my $n = basename($0);
+    say "Helper script for $n development " . version();
+    say "Usage:\n";
+    say "$n --version";
+    say "   Current version as defined in Version.hpp (dev dir)";
+    say "";
+    say "$n --tag 1.0";
+    say "$n --tag 1.0 \"Optional version message.\"";
+    say "   Helper for creating a new version.";
+    say "   Will create an annotated tag in git.";
+    say "   and will update Version.hpp";
+    say "";
+    say "$n --project \"super-game\"";
+    say "   Will create a starter prototype in directory 'super-game'";
+}
+
+sub version
+{
+    open my $fh, '<', $version_file;
+    do { local $/ = <$fh> } =~ /VERSION\s*=\s*(.+);/;
+    my $version = $1;
+    close $fh;
+
+    return $version;
+}
+
