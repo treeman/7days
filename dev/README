@@ -1,3 +1,0 @@
-Just a developer build.
-
-Will not depend on the static library but will compile directly to the source files and will check for changes automatically.
