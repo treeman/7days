@@ -35,9 +35,9 @@ Games
 ### [Bugger][]  
   <img src="http://www.madeoftree.se/games/bugger/screenshot/Bugger.png" width="400" />
 ### [Black and White][]  
-  <img src="http://www.madeoftree.se/games/black_and_white/screenshot/Black_and_White.png" width="400" />
+  <img src="http://www.madeoftree.se/games/black_and_white/screenshot/Black_and_White.jpg" width="400" />
 ### [Balls][]  
-  <img src="http://www.madeoftree.se/games/balls/screenshot/Balls.png" width="400" />
+  <img src="http://www.madeoftree.se/games/balls/screenshot/Balls.jpg" width="400" />
 
 
 [A Geek Valentine]: http://www.madeoftree.se/games/a_geek_valentine
