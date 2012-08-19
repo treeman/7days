@@ -18,18 +18,26 @@ None, do what you want with it.
 Games
 -----
 
-* [MenuCity][]  
+### [MenuCity][]  
   ![](http://www.madeoftree.se/games/menucity/screenshot/Yellow.png)
-* [Sat-E][]
-* [My Minions][]
-* [Beebop The Island Hopper][]
-* [A Geek Valentine][]
-* [The Chronicles of Bim: The 100 Fake Afros][]
-* [Jonas IceCream Stand][]
-* [MenuCity][]
-* [Bugger][]
-* [Black and White][]
-* [Balls][]
+### [Sat-E][]  
+  ![](http://www.madeoftree.se/games/sat-e/screenshot/Docking_Station.png)
+### [My Minions][]  
+  ![](http://www.madeoftree.se/games/my_minions/screenshot/LD.png)
+### [Beebop The Island Hopper][]  
+  ![](http://www.madeoftree.se/games/beebop_the_island_hopper/screenshot/Beebop.png)
+### [A Geek Valentine][]  
+  ![](http://www.madeoftree.se/games/a_geek_valentine/screenshot/Green_Valentine.png)
+### [The Chronicles of Bim: The 100 Fake Afros][]  
+  ![](http://www.madeoftree.se/games/the_chronicles_of_bim_the_100_fake_afros/screenshot/Die.png)
+### [Jonas IceCream Stand][]  
+  ![](http://www.madeoftree.se/games/jonas_icecream_stand/screenshot/Sell_Icecream.png)
+### [Bugger][]  
+  ![](http://www.madeoftree.se/games/bugger/screenshot/Bugger.png)
+### [Black and White][]  
+  ![](http://www.madeoftree.se/games/black_and_white/screenshot/Black_and_White.png)
+### [Balls][]  
+  ![](http://www.madeoftree.se/games/balls/screenshot/Balls.png)
 
 
 [A Geek Valentine]: http://www.madeoftree.se/games/a_geek_valentine
