@@ -19,25 +19,25 @@ Games
 -----
 
 ### [MenuCity][]  
-  ![](http://www.madeoftree.se/games/menucity/screenshot/Yellow.png)
+  <img src="http://www.madeoftree.se/games/menucity/screenshot/Yellow.png" width="400" />
 ### [Sat-E][]  
-  ![](http://www.madeoftree.se/games/sat-e/screenshot/Docking_Station.png)
+  <img src="http://www.madeoftree.se/games/sat-e/screenshot/Docking_Station.png" width="400" />
 ### [My Minions][]  
-  ![](http://www.madeoftree.se/games/my_minions/screenshot/LD.png)
+  <img src="http://www.madeoftree.se/games/my_minions/screenshot/LD.png" width="400" />
 ### [Beebop The Island Hopper][]  
-  ![](http://www.madeoftree.se/games/beebop_the_island_hopper/screenshot/Beebop.png)
+  <img src="www.madeoftree.se/games/beebop_the_island_hopper/screenshot/Beebop.png" width="400" />
 ### [A Geek Valentine][]  
-  ![](http://www.madeoftree.se/games/a_geek_valentine/screenshot/Green_Valentine.png)
+  <img src="www.madeoftree.se/games/a_geek_valentine/screenshot/Green_Valentine.png" width="400" />
 ### [The Chronicles of Bim: The 100 Fake Afros][]  
-  ![](http://www.madeoftree.se/games/the_chronicles_of_bim_the_100_fake_afros/screenshot/Die.png)
+  <img src="www.madeoftree.se/games/the_chronicles_of_bim_the_100_fake_afros/screenshot/Die.png" width="400" />
 ### [Jonas IceCream Stand][]  
-  ![](http://www.madeoftree.se/games/jonas_icecream_stand/screenshot/Sell_Icecream.png)
+  <img src="http://www.madeoftree.se/games/jonas_icecream_stand/screenshot/Sell_Icecream.png" width="400" />
 ### [Bugger][]  
-  ![](http://www.madeoftree.se/games/bugger/screenshot/Bugger.png)
+  <img src="http://www.madeoftree.se/games/bugger/screenshot/Bugger.png" width="400" />
 ### [Black and White][]  
-  ![](http://www.madeoftree.se/games/black_and_white/screenshot/Black_and_White.png)
+  <img src="http://www.madeoftree.se/games/black_and_white/screenshot/Black_and_White.png" width="400" />
 ### [Balls][]  
-  ![](http://www.madeoftree.se/games/balls/screenshot/Balls.png)
+  <img src="http://www.madeoftree.se/games/balls/screenshot/Balls.png" width="400" />
 
 
 [A Geek Valentine]: http://www.madeoftree.se/games/a_geek_valentine
